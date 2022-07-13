@@ -51,7 +51,7 @@ namespace Moni
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
                 SaveDayUD.SelectedIndex = 0;
-                SaveStyleUD.SelectedIndex = 0;
+                SaveStyleUD.SelectedIndex = 1;
                 dt = DateTime.Now;
                 day = dt.Day;
                 HoursUD.Value = int.Parse(dt.ToString("HH"));
@@ -946,7 +946,7 @@ namespace Moni
 
         private void NetPic_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://sites.google.com/view/moni-toppage/%E3%83%9B%E3%83%BC%E3%83%A0");
+            Process.Start("https://sites.google.com/view/moni-toppage/%E3%83%9B%E3%83%BC%E3%83%A0");
         }
 
         private void AlarmBox_CheckedChanged(object sender, EventArgs e)

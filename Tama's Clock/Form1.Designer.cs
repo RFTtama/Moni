@@ -287,9 +287,9 @@ namespace Moni
             this.SaveStyleUD.Size = new System.Drawing.Size(56, 19);
             this.SaveStyleUD.TabIndex = 37;
             this.SaveStyleUD.Text = "domainUpDown1";
-            this.toolTip1.SetToolTip(this.SaveStyleUD, "診断の設定を変更します\r\n自動:\r\nコンピュータの設定に合わせて自動的に設定します\r\n\r\nスピード:\r\n診断を高速で終わらせるように設定します\r\n・ログデータが多" +
-        "いほど多くのメモリを使用します\r\n推奨 - 性能が高いコンピュータ\r\n\r\n性能\r\nコンピュータに負荷をかけず診断を終わらせるよう設定します\r\n・ログデータが多い" +
-        "ほど診断にかかる時間が増加します\r\n推奨 - 一般的なすべてのコンピュータ");
+            this.toolTip1.SetToolTip(this.SaveStyleUD, "診断の設定を変更します\r\nスピード:\r\n診断を高速で終わらせるように設定します\r\n・ログデータが多いほど多くのメモリを使用します\r\n推奨 - 性能が高いコンピュー" +
+        "タ\r\n\r\n性能\r\nコンピュータに負荷をかけず診断を終わらせるよう設定します\r\n・ログデータが多いほど診断にかかる時間が増加します\r\n推奨 - 一般的なすべてのコ" +
+        "ンピュータ");
             this.SaveStyleUD.SelectedItemChanged += new System.EventHandler(this.SaveStyleUD_SelectedItemChanged);
             // 
             // StartupPic
