@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\rft_k\\OneDrive\\ドキュメント\\Visual Studio 2019\\Tama's Clock\\Tama's Clock\\Moni.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\rft_k\\OneDrive\\ドキュメント\\Visual Studio 2019\\Tama's Clock\\Tama's Clock\\Moni.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\rft_k\\OneDrive\\ドキュメント\\Visual Studio 2019\\Tama's Clock\\Tama's Clock\\Moni.csproj",
+        "projectName": "Moni",
+        "projectPath": "C:\\Users\\rft_k\\OneDrive\\ドキュメント\\Visual Studio 2019\\Tama's Clock\\Tama's Clock\\Moni.csproj",
+        "packagesPath": "C:\\Users\\rft_k\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rft_k\\OneDrive\\ドキュメント\\Visual Studio 2019\\Tama's Clock\\Tama's Clock\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\rft_k\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "Portable.BouncyCastle": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
+            "ScottPlot.WinForms": {
+              "target": "Package",
+              "version": "[4.1.48, )"
+            },
+            "System.Buffers": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

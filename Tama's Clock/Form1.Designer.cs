@@ -825,7 +825,6 @@ namespace Moni
             this.BusyLabel.TabIndex = 26;
             this.BusyLabel.Text = "リソース取得中…";
             this.toolTip1.SetToolTip(this.BusyLabel, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
-            this.BusyLabel.Click += new System.EventHandler(this.BusyLabel_Click);
             // 
             // DescBox
             // 
@@ -910,7 +909,6 @@ namespace Moni
             this.GPULabel.TabIndex = 22;
             this.GPULabel.Text = "リソース取得中…";
             this.toolTip1.SetToolTip(this.GPULabel, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
-            this.GPULabel.Click += new System.EventHandler(this.GPULabel_Click);
             // 
             // Received
             // 
@@ -931,7 +929,6 @@ namespace Moni
             this.CPULabel.TabIndex = 7;
             this.CPULabel.Text = "リソース取得中…";
             this.toolTip1.SetToolTip(this.CPULabel, "CPUの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            this.CPULabel.Click += new System.EventHandler(this.CPULabel_Click);
             // 
             // MaxMemLabel
             // 
@@ -974,7 +971,6 @@ namespace Moni
             this.MemoryLabel.TabIndex = 13;
             this.MemoryLabel.Text = "リソース取得中…";
             this.toolTip1.SetToolTip(this.MemoryLabel, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            this.MemoryLabel.Click += new System.EventHandler(this.MemoryLabel_Click);
             // 
             // PpmsPic
             // 

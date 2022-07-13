@@ -9,8 +9,9 @@ namespace Moni
 {
     public static class ChartViewer
     {
+        public static DateTime[] dateTimes;
 
-        public static void ShowChart(double[] x, double[] y)
+        public static void ShowChart(double[] y, string yName, string title, string head)
         {
             Form chartForm = new Form();
             chartForm.Size = new System.Drawing.Size(200, 200);
@@ -18,7 +19,7 @@ namespace Moni
             plot.Dock = DockStyle.Fill;
             chartForm.Controls.Add(plot);
 
-            plot.Plot.AddBar(x, y);
+            plot.Plot.AddBar(ArrayConverters.ConvertDateTimeToDouble(dateTimes), y);
             plot.Render();
 
             chartForm.Show();

@@ -944,22 +944,6 @@ namespace Moni
         }
 
 
-        private void CPULabel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void MemoryLabel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void GPULabel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BusyLabel_Click(object sender, EventArgs e)
-        {
-        }
-
         private void NetPic_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://sites.google.com/view/moni-toppage/%E3%83%9B%E3%83%BC%E3%83%A0");

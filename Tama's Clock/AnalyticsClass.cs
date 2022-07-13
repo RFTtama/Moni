@@ -689,77 +689,44 @@ namespace Moni
         }
 
         /// <summary>
-        /// Convert Array to Doubles(CAtD)
-        /// </summary>
-        /// <param name="dateTimes">DateTime</param>
-        /// <returns>double[]</returns>
-        public double[] CAtD(DateTime[] dateTimes)
-        {
-            List<double> ld = new List<double>();
-
-            foreach(DateTime dt in dateTimes)
-            {
-                ld.Add(dt.ToOADate());
-            }
-            return ld.ToArray();
-        }
-
-        /// <summary>
-        /// Convert Array to Doubles(CAtD)
-        /// </summary>
-        /// <typeparam name="T">Different Types Without DateTime</typeparam>
-        /// <param name="ts">double[]</param>
-        /// <returns></returns>
-        public double[] ConvertArrayToDouble<T>(T[] ts)
-        {
-            List<double> ld = new List<double>();
-
-            foreach (T t in ts)
-            {
-                ld.Add(double.Parse(t.ToString()));
-            }
-
-            return ld.ToArray();
-        }
-
-
-        /// <summary>
         /// 選択したデータをチャートに設定する
         /// </summary>
         public void SetSelectedChart()
         {
             lvl.Text = "チャート設定中";
 
+            ChartViewer.dateTimes = dts.ToArray();
+
             switch (_form.AnalyticsUpDown.SelectedIndex)
             {
                 case 0:
-                    ChartViewer.ShowChart(dts.ToArray(), ConvertArrayToDouble(receive.ToArray()),
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(receive.ToArray()),
                         "受信速度", "ネット受信速度", "Bps");
                     break;
 
                 case 1:
-                    ChartViewer.ShowChart(dts.ToArray(), send.ToArray(),
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(send.ToArray()),
                         "送信速度", "ネット送信速度", "Bps");
                     break;
 
                 case 2:
-                    //ChartViewer.ShowChart(dts.ToArray(), cpu.ToArray(),
-                    //    "CPU", "CPU使用率", "%");
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(cpu.ToArray()),
+                        "CPU", "CPU使用率", "%");
                     break;
 
                 case 3:
-                    ChartViewer.ShowChart(dts.ToArray(), mem.ToArray(),
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(mem.ToArray()),
                         "メモリ", "メモリ使用量", "Bytes");
                     break;
 
                 case 4:
-                    //ChartViewer.ShowChart(dts.ToArray(), gpu.ToArray(),
-                    //    "GPU", "GPU使用率", "%");
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(gpu.ToArray()),
+                        "GPU", "GPU使用率", "%");
                     break;
 
                 case 5:
-                    //ChartViewer.ShowChart(dts.ToArray(), disk.ToArray(),
-                    //    "ディスク", "ディスク使用率", "%");
+                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(disk.ToArray()),
+                        "ディスク", "ディスク使用率", "%");
                     break;
 
                 default:

@@ -1,0 +1,22 @@
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\Tama's Clock.exe.config
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\Tama's Clock.exe
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\Tama's Clock.pdb
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama_s_Clock.Clock.resources
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama_s_Clock.Properties.Resources.resources
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.csproj.GenerateResource.cache
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.csproj.CoreCompileInputs.cache
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.exe
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.pdb
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.csprojAssemblyReference.cache
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\Tama's Clock.exe.manifest
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\Tama's Clock.application
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.exe.manifest
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.application
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\MimeKit.dll
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\System.Buffers.dll
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\BouncyCastle.Crypto.xml
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\MimeKit.pdb
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\MimeKit.xml
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\bin\Release\System.Buffers.xml
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's Clock\Tama's Clock\obj\Release\Tama's Clock.csproj.CopyComplete
