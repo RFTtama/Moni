@@ -15,7 +15,7 @@ namespace Moni
             FormsPlot plot = new FormsPlot();
             plot.Dock = DockStyle.Fill;
             chartForm.Controls.Add(plot);
-
+            plot.Plot.XAxis.DateTimeFormat(true);
             plot.Plot.AddBar(ArrayConverters.ConvertDateTimeToDouble(dateTimes), y);
             plot.Render();
 
