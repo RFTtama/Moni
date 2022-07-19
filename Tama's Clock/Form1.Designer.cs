@@ -295,7 +295,7 @@ namespace Moni
             // StartupPic
             // 
             this.StartupPic.Image = global::Moni.Properties.Resources.windows;
-            this.StartupPic.Location = new System.Drawing.Point(141, 48);
+            this.StartupPic.Location = new System.Drawing.Point(167, 69);
             this.StartupPic.Name = "StartupPic";
             this.StartupPic.Size = new System.Drawing.Size(20, 20);
             this.StartupPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -372,7 +372,7 @@ namespace Moni
             // NetPic
             // 
             this.NetPic.Image = global::Moni.Properties.Resources.net;
-            this.NetPic.Location = new System.Drawing.Point(167, 48);
+            this.NetPic.Location = new System.Drawing.Point(167, 46);
             this.NetPic.Name = "NetPic";
             this.NetPic.Size = new System.Drawing.Size(20, 20);
             this.NetPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
