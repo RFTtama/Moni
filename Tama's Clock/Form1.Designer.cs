@@ -128,6 +128,7 @@ namespace Moni
             this.LogTimer = new System.Windows.Forms.Timer(this.components);
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
+            this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -1186,6 +1187,12 @@ namespace Moni
             // 
             this.GCTimer.Tick += new System.EventHandler(this.GCTimer_Tick);
             // 
+            // resourceUpdateTimer
+            // 
+            this.resourceUpdateTimer.Enabled = true;
+            this.resourceUpdateTimer.Interval = 300000;
+            this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
+            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1339,6 +1346,7 @@ namespace Moni
         private System.Windows.Forms.PictureBox MemUsingPic;
         private System.Windows.Forms.Timer GCTimer;
         public System.Windows.Forms.Timer LogTimer;
+        private System.Windows.Forms.Timer resourceUpdateTimer;
     }
 }
 

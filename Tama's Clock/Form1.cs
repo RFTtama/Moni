@@ -968,5 +968,11 @@ namespace Moni
         {
             GC.Collect();
         }
+
+        private void resourceUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            if (!ready) return;
+
+        }
     }
 }
