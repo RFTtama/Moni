@@ -80,7 +80,7 @@ namespace Moni
                 this.tellBef = -1;
 
                 DriveUD.Items.Add("ALL");
-                DriveInfo[] driveInfos = DriveInfo.GetDrives();
+                /*DriveInfo[] driveInfos = DriveInfo.GetDrives();
                 int j = 0;
 
                 foreach (DriveInfo driveInfo in driveInfos)
@@ -92,7 +92,7 @@ namespace Moni
                         DriveUD.Items.Add(j + " " + name);
                         j++;
                     }
-                }
+                }*/
 
                 //設定読み込み
                 SaveData.ReadSaveDatas();
@@ -116,7 +116,7 @@ namespace Moni
                     ErrorLog.ErrorOutput("リソース取得エラー", msg, true);
                     this.Close();
                 }
-                DescBox.Text += "コンピュータ情報" + LB;
+                /*DescBox.Text += "コンピュータ情報" + LB;
                 using (ManagementClass mc = new ManagementClass("Win32_OperatingSystem"))
                 {
                     mc.Get();
@@ -180,7 +180,8 @@ namespace Moni
                         double avaPer = ((double)valueManager.num - driveInfo.AvailableFreeSpace) / valueManager.num * 100.0;
                         DescBox.Text += driveInfo.Name + ": " + valueManager.data.ToString("F0") + valueManager.HeadToString() + "B " + avaPer.ToString("F1") + "%使用中(" + driveInfo.DriveFormat + ")" + LB;
                     }
-                }
+                }*/
+                SetDesc();
                 NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
                 long[,] net = new long[nis.Length, 2];
                 speedBef = new long[2];
@@ -844,6 +845,88 @@ namespace Moni
             return;
         }
 
+        private void SetDesc()
+        {
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            int j = 0;
+
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                if (driveInfo.DriveType == DriveType.Fixed)
+                {
+                    string name = driveInfo.Name;
+                    name = name.Trim('\\');
+                    DriveUD.Items.Add(j + " " + name);
+                    j++;
+                }
+            }
+            DescBox.Text = "コンピュータ情報" + LB;
+            using (ManagementClass mc = new ManagementClass("Win32_OperatingSystem"))
+            {
+                mc.Get();
+                mc.Scope.Options.EnablePrivileges = true;
+                float memorySize;
+                using (ManagementObjectCollection moc = mc.GetInstances())
+                {
+                    string memStr;
+                    foreach (ManagementObject mo in moc)
+                    {
+                        memStr = mo["TotalVisibleMemorySize"] + LB;
+                        memorySize = float.Parse(memStr);
+                        DescBox.Text += mo["Caption"] + LB;
+                        mo.Dispose();
+                        actTotalMem = new ValueManager((long)(memorySize * 1000.0f));
+                        DescBox.Text += "物理メモリ数: " + actTotalMem.data.ToString("F2") + actTotalMem.HeadToString() + "B" + LB;
+                    }
+                }
+            }
+            using (ManagementClass mc = new ManagementClass("Win32_Processor"))
+            {
+                mc.Get();
+                mc.Scope.Options.EnablePrivileges = true;
+                using (ManagementObjectCollection moc = mc.GetInstances())
+                {
+                    foreach (ManagementObject mo in moc)
+                    {
+                        DescBox.Text += mo["Name"] + LB;
+                        mo.Dispose();
+                    }
+                }
+            }
+
+            if (this.nvidiaSmiFile != null)
+            {
+                try
+                {
+                    string result = GetGpuData(@"--query-gpu=name --format=csv,noheader,nounits");
+                    DescBox.Text += result;
+                    this.gpuOk = true;
+                }
+                catch (Exception)
+                {
+                    SearchGpuFile();
+                    if (nvidiaSmiFile != null)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+            else
+            {
+                DescBox.Text += "GPUのデータが参照できません" + LB;
+            }
+            DescBox.Text += LB + "ドライブ情報" + LB;
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                if (driveInfo.DriveType == DriveType.Fixed)
+                {
+                    ValueManager valueManager = new ValueManager(driveInfo.TotalSize);
+                    double avaPer = ((double)valueManager.num - driveInfo.AvailableFreeSpace) / valueManager.num * 100.0;
+                    DescBox.Text += driveInfo.Name + ": " + valueManager.data.ToString("F0") + valueManager.HeadToString() + "B " + avaPer.ToString("F1") + "%使用中(" + driveInfo.DriveFormat + ")" + LB;
+                }
+            }
+        }
+
         private void showChartLabel_Click(object sender, EventArgs e)
         {
             AnalyticsLabel.Text = "更新を待ってください";
@@ -972,7 +1055,7 @@ namespace Moni
         private void resourceUpdateTimer_Tick(object sender, EventArgs e)
         {
             if (!ready) return;
-
+            SetDesc();
         }
     }
 }
