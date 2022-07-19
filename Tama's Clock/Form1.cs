@@ -40,7 +40,7 @@ namespace Moni
         public Clock()
         {
             LoadIcon._form = this;
-            LoadingProcess lp = new LoadingProcess();
+            _ = new LoadingProcess();
             try
             {
                 InitializeComponent();
@@ -900,14 +900,14 @@ namespace Moni
                 {
                     string result = GetGpuData(@"--query-gpu=name --format=csv,noheader,nounits");
                     DescBox.Text += result;
-                    this.gpuOk = true;
+                    gpuOk = true;
                 }
                 catch (Exception)
                 {
                     SearchGpuFile();
                     if (nvidiaSmiFile != null)
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }

@@ -38,7 +38,7 @@ namespace Moni
         {
             using (StreamWriter sw = new StreamWriter(fileName))
             {
-                sw.WriteLine("Dont delete this file");
+                sw.WriteLine("Don't delete this file");
             }
         }
 

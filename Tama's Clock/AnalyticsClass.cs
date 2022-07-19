@@ -149,7 +149,7 @@ namespace Moni
                 analysisTask = Task.Run(() =>
                 {
                     isBusy = true;
-                    LoadingProcess lp = new LoadingProcess();
+                    _ = new LoadingProcess();
                     stopwatch = new Stopwatch();
                     processTime = new Stopwatch();
 
