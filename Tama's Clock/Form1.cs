@@ -36,8 +36,6 @@ namespace Moni
         private List<PerformanceCounter> pcList = new List<PerformanceCounter>();
         private List<ComputerWarnings> cwList = new List<ComputerWarnings>();
         private int day;
-        private Timer GCCalcTimer;
-        private int GCCalcCnt;
 
         public Clock()
         {
@@ -219,12 +217,7 @@ namespace Moni
                 }*/
                 this._ready = true;
 
-                GCCalcTimer = new Timer();
-                GCCalcTimer.Interval = 100;
-                GCCalcTimer.Tick += GCCalc;
-                GCCalcCnt = 0;
                 GC.Collect();
-                GCCalcTimer.Enabled = true;
                 Splash.Close();
 
             }
@@ -251,23 +244,6 @@ namespace Moni
             return result;
         }
 
-        private void GCCalc(object sender, EventArgs e)
-        {
-            GCCalcCnt++;
-            double per = (double)Process.GetCurrentProcess().PeakWorkingSet64 / actTotalMem.num;
-            if (per >= 0.01)
-            {
-                GCTimer.Interval = GCCalcCnt * 100;
-                GCTimer.Enabled = true;
-                GCCalcTimer.Enabled = false;
-            }
-            else if(GCCalcCnt >= 50)
-            {
-                GCTimer.Interval = 5000;
-                GCTimer.Enabled = true;
-                GCCalcTimer.Enabled = false;
-            }
-        }
 
         private void SearchGpuFile()
         {

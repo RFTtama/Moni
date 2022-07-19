@@ -1184,7 +1184,6 @@ namespace Moni
             // 
             // GCTimer
             // 
-            this.GCTimer.Interval = 10;
             this.GCTimer.Tick += new System.EventHandler(this.GCTimer_Tick);
             // 
             // Clock
