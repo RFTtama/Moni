@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rft_k\\Music\\tc\\Tama's Clock\\Moni.csproj": {}
+    "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\Moni.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rft_k\\Music\\tc\\Tama's Clock\\Moni.csproj": {
+    "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\Moni.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rft_k\\Music\\tc\\Tama's Clock\\Moni.csproj",
+        "projectUniqueName": "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\Moni.csproj",
         "projectName": "Moni",
-        "projectPath": "C:\\Users\\rft_k\\Music\\tc\\Tama's Clock\\Moni.csproj",
+        "projectPath": "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\Moni.csproj",
         "packagesPath": "C:\\Users\\rft_k\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rft_k\\Music\\tc\\Tama's Clock\\obj\\",
+        "outputPath": "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

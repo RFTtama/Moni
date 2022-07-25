@@ -221,7 +221,7 @@ namespace Moni
         /// </summary>
         public static void ReadSaveDatas()
         {
-            _ = new LoadingProcess();
+            LoadingProcess loading = new LoadingProcess();
             try
             {
                 using (StreamReader sr = new StreamReader(filePath))
@@ -308,7 +308,7 @@ namespace Moni
         /// </summary>
         public static void DataSave()
         {
-            _ = new LoadingProcess();
+            LoadingProcess loading = new LoadingProcess();
             try
             {
                 using (StreamWriter sw = new StreamWriter(filePath))

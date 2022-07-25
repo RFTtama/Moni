@@ -40,7 +40,7 @@ namespace Moni
         public Clock()
         {
             LoadIcon._form = this;
-            _ = new LoadingProcess();
+            LoadingProcess loading = new LoadingProcess();
             try
             {
                 InitializeComponent();
@@ -925,6 +925,7 @@ namespace Moni
                     DescBox.Text += driveInfo.Name + ": " + valueManager.data.ToString("F0") + valueManager.HeadToString() + "B " + avaPer.ToString("F1") + "%使用中(" + driveInfo.DriveFormat + ")" + LB;
                 }
             }
+            DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
         }
 
         private void showChartLabel_Click(object sender, EventArgs e)
