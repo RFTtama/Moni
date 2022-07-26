@@ -219,6 +219,7 @@ namespace Moni
                 this._ready = true;
 
                 GC.Collect();
+                GCTimer.Enabled = true;
                 Splash.Close();
 
             }
