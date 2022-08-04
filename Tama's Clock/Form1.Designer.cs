@@ -388,6 +388,7 @@ namespace Moni
             this.DataSizeLabel.Size = new System.Drawing.Size(56, 12);
             this.DataSizeLabel.TabIndex = 77;
             this.DataSizeLabel.Text = "データ数: ?";
+            this.toolTip1.SetToolTip(this.DataSizeLabel, "ログのデータ数です");
             // 
             // SaveDayUD
             // 
@@ -486,6 +487,7 @@ namespace Moni
             this.SummaryOverall.Size = new System.Drawing.Size(39, 12);
             this.SummaryOverall.TabIndex = 67;
             this.SummaryOverall.Text = "疲れ: ?";
+            this.toolTip1.SetToolTip(this.SummaryOverall, "アクティブ率とビジー率の総合評価です\r\nこの数値が高いほどコンピュータへの負荷が\r\n高い状態が長く続いていることを示します");
             // 
             // SummaryBusy
             // 
@@ -495,6 +497,7 @@ namespace Moni
             this.SummaryBusy.Size = new System.Drawing.Size(56, 12);
             this.SummaryBusy.TabIndex = 66;
             this.SummaryBusy.Text = "ビジー率: ?";
+            this.toolTip1.SetToolTip(this.SummaryBusy, "コンピュータの起動中に\r\nビジー状態だった割合を表示します");
             // 
             // SummaryActive
             // 
@@ -504,6 +507,7 @@ namespace Moni
             this.SummaryActive.Size = new System.Drawing.Size(70, 12);
             this.SummaryActive.TabIndex = 65;
             this.SummaryActive.Text = "アクティブ率: ?";
+            this.toolTip1.SetToolTip(this.SummaryActive, "決められた期間中に\r\nどれだけコンピュータが動作していたかを示します");
             // 
             // SummaryDay
             // 
