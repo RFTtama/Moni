@@ -61,14 +61,6 @@ namespace Moni
             this.SummaryActive = new System.Windows.Forms.Label();
             this.SummaryDay = new System.Windows.Forms.Label();
             this.Summary = new System.Windows.Forms.Label();
-            this.AnalyticsPanel = new System.Windows.Forms.Panel();
-            this.DisposeButton = new System.Windows.Forms.Button();
-            this.AnalyticsSelectButton = new System.Windows.Forms.Button();
-            this.AnalyticsUpDown = new System.Windows.Forms.DomainUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.showChartLabel = new System.Windows.Forms.LinkLabel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.akire = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.AnalyticsLabel = new System.Windows.Forms.Label();
             this.LogUpdateLabel = new System.Windows.Forms.Label();
@@ -142,8 +134,6 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivePic)).BeginInit();
-            this.AnalyticsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.akire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedPic2)).BeginInit();
@@ -224,11 +214,6 @@ namespace Moni
             this.HelpPanel.Controls.Add(this.SummaryActive);
             this.HelpPanel.Controls.Add(this.SummaryDay);
             this.HelpPanel.Controls.Add(this.Summary);
-            this.HelpPanel.Controls.Add(this.AnalyticsPanel);
-            this.HelpPanel.Controls.Add(this.label9);
-            this.HelpPanel.Controls.Add(this.showChartLabel);
-            this.HelpPanel.Controls.Add(this.label7);
-            this.HelpPanel.Controls.Add(this.akire);
             this.HelpPanel.Controls.Add(this.label8);
             this.HelpPanel.Controls.Add(this.AnalyticsLabel);
             this.HelpPanel.Controls.Add(this.LogUpdateLabel);
@@ -398,7 +383,7 @@ namespace Moni
             // DataSizeLabel
             // 
             this.DataSizeLabel.AutoSize = true;
-            this.DataSizeLabel.Location = new System.Drawing.Point(4, 853);
+            this.DataSizeLabel.Location = new System.Drawing.Point(4, 653);
             this.DataSizeLabel.Name = "DataSizeLabel";
             this.DataSizeLabel.Size = new System.Drawing.Size(56, 12);
             this.DataSizeLabel.TabIndex = 77;
@@ -414,7 +399,7 @@ namespace Moni
             this.SaveDayUD.Items.Add("300日");
             this.SaveDayUD.Items.Add("365日");
             this.SaveDayUD.Items.Add("無期限");
-            this.SaveDayUD.Location = new System.Drawing.Point(119, 726);
+            this.SaveDayUD.Location = new System.Drawing.Point(119, 526);
             this.SaveDayUD.Name = "SaveDayUD";
             this.SaveDayUD.ReadOnly = true;
             this.SaveDayUD.Size = new System.Drawing.Size(59, 19);
@@ -427,7 +412,7 @@ namespace Moni
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(113, 711);
+            this.label10.Location = new System.Drawing.Point(113, 511);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 12);
             this.label10.TabIndex = 74;
@@ -436,7 +421,7 @@ namespace Moni
             // OverallRed
             // 
             this.OverallRed.Image = global::Moni.Properties.Resources.red;
-            this.OverallRed.Location = new System.Drawing.Point(6, 831);
+            this.OverallRed.Location = new System.Drawing.Point(6, 631);
             this.OverallRed.Name = "OverallRed";
             this.OverallRed.Size = new System.Drawing.Size(132, 10);
             this.OverallRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -446,7 +431,7 @@ namespace Moni
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Moni.Properties.Resources.blue;
-            this.pictureBox5.Location = new System.Drawing.Point(6, 831);
+            this.pictureBox5.Location = new System.Drawing.Point(6, 631);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(132, 10);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -456,7 +441,7 @@ namespace Moni
             // BusyRed
             // 
             this.BusyRed.Image = global::Moni.Properties.Resources.red;
-            this.BusyRed.Location = new System.Drawing.Point(7, 796);
+            this.BusyRed.Location = new System.Drawing.Point(7, 596);
             this.BusyRed.Name = "BusyRed";
             this.BusyRed.Size = new System.Drawing.Size(132, 10);
             this.BusyRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -466,7 +451,7 @@ namespace Moni
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Moni.Properties.Resources.blue;
-            this.pictureBox4.Location = new System.Drawing.Point(7, 796);
+            this.pictureBox4.Location = new System.Drawing.Point(7, 596);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(132, 10);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -476,7 +461,7 @@ namespace Moni
             // ActiveRed
             // 
             this.ActiveRed.Image = global::Moni.Properties.Resources.red;
-            this.ActiveRed.Location = new System.Drawing.Point(7, 764);
+            this.ActiveRed.Location = new System.Drawing.Point(7, 564);
             this.ActiveRed.Name = "ActiveRed";
             this.ActiveRed.Size = new System.Drawing.Size(132, 10);
             this.ActiveRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -486,7 +471,7 @@ namespace Moni
             // ActivePic
             // 
             this.ActivePic.Image = global::Moni.Properties.Resources.blue;
-            this.ActivePic.Location = new System.Drawing.Point(7, 764);
+            this.ActivePic.Location = new System.Drawing.Point(7, 564);
             this.ActivePic.Name = "ActivePic";
             this.ActivePic.Size = new System.Drawing.Size(132, 10);
             this.ActivePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -496,7 +481,7 @@ namespace Moni
             // SummaryOverall
             // 
             this.SummaryOverall.AutoSize = true;
-            this.SummaryOverall.Location = new System.Drawing.Point(5, 815);
+            this.SummaryOverall.Location = new System.Drawing.Point(5, 615);
             this.SummaryOverall.Name = "SummaryOverall";
             this.SummaryOverall.Size = new System.Drawing.Size(39, 12);
             this.SummaryOverall.TabIndex = 67;
@@ -505,7 +490,7 @@ namespace Moni
             // SummaryBusy
             // 
             this.SummaryBusy.AutoSize = true;
-            this.SummaryBusy.Location = new System.Drawing.Point(4, 781);
+            this.SummaryBusy.Location = new System.Drawing.Point(4, 581);
             this.SummaryBusy.Name = "SummaryBusy";
             this.SummaryBusy.Size = new System.Drawing.Size(56, 12);
             this.SummaryBusy.TabIndex = 66;
@@ -514,7 +499,7 @@ namespace Moni
             // SummaryActive
             // 
             this.SummaryActive.AutoSize = true;
-            this.SummaryActive.Location = new System.Drawing.Point(5, 749);
+            this.SummaryActive.Location = new System.Drawing.Point(5, 549);
             this.SummaryActive.Name = "SummaryActive";
             this.SummaryActive.Size = new System.Drawing.Size(70, 12);
             this.SummaryActive.TabIndex = 65;
@@ -523,7 +508,7 @@ namespace Moni
             // SummaryDay
             // 
             this.SummaryDay.AutoSize = true;
-            this.SummaryDay.Location = new System.Drawing.Point(5, 727);
+            this.SummaryDay.Location = new System.Drawing.Point(5, 527);
             this.SummaryDay.Name = "SummaryDay";
             this.SummaryDay.Size = new System.Drawing.Size(62, 12);
             this.SummaryDay.TabIndex = 64;
@@ -533,100 +518,11 @@ namespace Moni
             // 
             this.Summary.AutoSize = true;
             this.Summary.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Summary.Location = new System.Drawing.Point(4, 711);
+            this.Summary.Location = new System.Drawing.Point(4, 511);
             this.Summary.Name = "Summary";
             this.Summary.Size = new System.Drawing.Size(45, 12);
             this.Summary.TabIndex = 63;
             this.Summary.Text = "サマリー";
-            // 
-            // AnalyticsPanel
-            // 
-            this.AnalyticsPanel.Controls.Add(this.DisposeButton);
-            this.AnalyticsPanel.Controls.Add(this.AnalyticsSelectButton);
-            this.AnalyticsPanel.Controls.Add(this.AnalyticsUpDown);
-            this.AnalyticsPanel.Location = new System.Drawing.Point(1, 500);
-            this.AnalyticsPanel.Name = "AnalyticsPanel";
-            this.AnalyticsPanel.Size = new System.Drawing.Size(200, 204);
-            this.AnalyticsPanel.TabIndex = 56;
-            this.AnalyticsPanel.Visible = false;
-            // 
-            // DisposeButton
-            // 
-            this.DisposeButton.Location = new System.Drawing.Point(148, 2);
-            this.DisposeButton.Name = "DisposeButton";
-            this.DisposeButton.Size = new System.Drawing.Size(40, 23);
-            this.DisposeButton.TabIndex = 58;
-            this.DisposeButton.Text = "破棄";
-            this.toolTip1.SetToolTip(this.DisposeButton, "データを破棄します");
-            this.DisposeButton.UseVisualStyleBackColor = true;
-            this.DisposeButton.Click += new System.EventHandler(this.DisposeButton_Click);
-            // 
-            // AnalyticsSelectButton
-            // 
-            this.AnalyticsSelectButton.Location = new System.Drawing.Point(105, 2);
-            this.AnalyticsSelectButton.Name = "AnalyticsSelectButton";
-            this.AnalyticsSelectButton.Size = new System.Drawing.Size(40, 23);
-            this.AnalyticsSelectButton.TabIndex = 50;
-            this.AnalyticsSelectButton.Text = "選択";
-            this.toolTip1.SetToolTip(this.AnalyticsSelectButton, "選択したデータを表示します");
-            this.AnalyticsSelectButton.UseVisualStyleBackColor = true;
-            this.AnalyticsSelectButton.Click += new System.EventHandler(this.AnalysisSelectButton_Click);
-            // 
-            // AnalyticsUpDown
-            // 
-            this.AnalyticsUpDown.Items.Add("ネット受信速度");
-            this.AnalyticsUpDown.Items.Add("ネット送信速度");
-            this.AnalyticsUpDown.Items.Add("CPU使用率");
-            this.AnalyticsUpDown.Items.Add("使用可能メモリ");
-            this.AnalyticsUpDown.Items.Add("GPU使用率");
-            this.AnalyticsUpDown.Items.Add("ディスク使用率");
-            this.AnalyticsUpDown.Location = new System.Drawing.Point(1, 4);
-            this.AnalyticsUpDown.Name = "AnalyticsUpDown";
-            this.AnalyticsUpDown.ReadOnly = true;
-            this.AnalyticsUpDown.Size = new System.Drawing.Size(100, 19);
-            this.AnalyticsUpDown.TabIndex = 49;
-            this.AnalyticsUpDown.Text = "None";
-            this.toolTip1.SetToolTip(this.AnalyticsUpDown, "表示するデータです");
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Brown;
-            this.label9.Location = new System.Drawing.Point(37, 644);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(131, 24);
-            this.label9.TabIndex = 62;
-            this.label9.Text = "※より多くのメモリを\r\n使用する可能性があります";
-            // 
-            // showChartLabel
-            // 
-            this.showChartLabel.AutoSize = true;
-            this.showChartLabel.Location = new System.Drawing.Point(60, 620);
-            this.showChartLabel.Name = "showChartLabel";
-            this.showChartLabel.Size = new System.Drawing.Size(75, 12);
-            this.showChartLabel.TabIndex = 61;
-            this.showChartLabel.TabStop = true;
-            this.showChartLabel.Text = "レポートを表示";
-            this.showChartLabel.Click += new System.EventHandler(this.showChartLabel_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 597);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 12);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "状態レポートは非表示です";
-            // 
-            // akire
-            // 
-            this.akire.Image = global::Moni.Properties.Resources.face_akire;
-            this.akire.Location = new System.Drawing.Point(46, 501);
-            this.akire.Name = "akire";
-            this.akire.Size = new System.Drawing.Size(100, 100);
-            this.akire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.akire.TabIndex = 59;
-            this.akire.TabStop = false;
             // 
             // label8
             // 
@@ -1057,7 +953,7 @@ namespace Moni
             // 
             this.vScrollBar1.LargeChange = 50;
             this.vScrollBar1.Location = new System.Drawing.Point(410, 0);
-            this.vScrollBar1.Maximum = 750;
+            this.vScrollBar1.Maximum = 560;
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(10, 169);
             this.vScrollBar1.SmallChange = 30;
@@ -1197,7 +1093,7 @@ namespace Moni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 761);
+            this.ClientSize = new System.Drawing.Size(471, 703);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -1224,8 +1120,6 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivePic)).EndInit();
-            this.AnalyticsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.akire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedPic2)).EndInit();
@@ -1288,16 +1182,8 @@ namespace Moni
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label AnalyticsLabel;
-        private System.Windows.Forms.Button AnalyticsSelectButton;
-        public System.Windows.Forms.DomainUpDown AnalyticsUpDown;
-        private System.Windows.Forms.Panel AnalyticsPanel;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label LogUpdateLabel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox akire;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.LinkLabel showChartLabel;
-        private System.Windows.Forms.Button DisposeButton;
         private System.Windows.Forms.Label Summary;
         private System.Windows.Forms.PictureBox pictureBox4;
         internal System.Windows.Forms.PictureBox ActivePic;

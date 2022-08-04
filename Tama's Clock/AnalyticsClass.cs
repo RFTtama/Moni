@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using ScottPlot;
 
 namespace Moni
 {
@@ -32,52 +31,6 @@ namespace Moni
         public bool isBusy;
 
         /// <summary>
-        /// データが挿入されているか
-        /// </summary>
-        public bool Enabled
-        {
-            get
-            {
-                if (receive.Count <= 0)
-                {
-                    return false;
-                }
-                if (send.Count <= 0)
-                {
-                    return false;
-                }
-                if (cpu.Count <= 0)
-                {
-                    return false;
-                }
-                if (mem.Count <= 0)
-                {
-                    return false;
-                }
-                if (gpu.Count <= 0)
-                {
-                    return false;
-                }
-                if (disk.Count <= 0)
-                {
-                    return false;
-                }
-                return true;
-            }
-        }
-
-        /// <summary>
-        /// データ個数
-        /// </summary>
-        public int Count
-        {
-            get
-            {
-                return receive.Count;
-            }
-        }
-
-        /// <summary>
         /// ビジーパー
         /// </summary>
         private double _overallBusyPer;
@@ -89,11 +42,6 @@ namespace Moni
                 return _overallBusyPer;
             }
         }
-
-        /// <summary>
-        /// チャートを表示するか
-        /// </summary>
-        public bool showChart;
 
         System.Windows.Forms.Label lvl;
 
@@ -118,7 +66,6 @@ namespace Moni
             analyzedStatistics = new List<AnalyzedStatistics>();
             lvl = _form.AnalyticsLabel;
             _overallBusyPer = 0.0;
-            showChart = false;
             isBusy = false;
         }
 
@@ -497,12 +444,6 @@ namespace Moni
                         lvl.Text = "データ変換完了";
                     }
 
-                    if (showChart == true)
-                    {
-                        _form.SetAnalyticComponents(true);
-                        SetSelectedChart();
-                    }
-
                     AnalysisStatistics();
 
                     processTime.Stop();
@@ -626,7 +567,7 @@ namespace Moni
                 else
                 {
                     activeTime++;
-                    if(receive[i] >= 1000000 || send[i] >= 1000000 || cpu[i] >= 75 || mem[i] <= 1000000000 || gpu[i] >= 90.0f || disk[i] >= 100.0f)
+                    if (receive[i] >= 1000000 || send[i] >= 1000000 || cpu[i] >= 75 || mem[i] <= 1000000000 || gpu[i] >= 90.0f || disk[i] >= 100.0f)
                     {
                         busyTime++;
                     }
@@ -670,7 +611,7 @@ namespace Moni
             double busyHours = activeHours * (avgBusyPer / 100.0);
 
             _form.SummaryDay.Text = analyzedStatistics.Count + "日分のログ\n\r";
-            _form.SummaryActive.Text = "アクティブ: " + avgActivePer.ToString("F1") + "% (" + activeHours.ToString("F1") +"時間)\n\r";
+            _form.SummaryActive.Text = "アクティブ: " + avgActivePer.ToString("F1") + "% (" + activeHours.ToString("F1") + "時間)\n\r";
             _form.SummaryBusy.Text = "ビジー: " + avgBusyPer.ToString("F1") + "% (" + busyHours.ToString("F1") + "時間)\n\r";
             _form.SummaryOverall.Text = "疲れ: " + overallBusyPer.ToString("F1") + "%\n\r";
             _form.ActiveRed.Width = (int)(avgActivePer / 100.0f * _form.redPicSize);
@@ -680,61 +621,9 @@ namespace Moni
             lvl.Text = "設定終了";
             lvl.Text = "解析完了";
 
-            if(showChart == false)
-            {
-                Dispose();
-            }
+            Dispose();
         }
 
-        /// <summary>
-        /// 選択したデータをチャートに設定する
-        /// </summary>
-        public void SetSelectedChart()
-        {
-            lvl.Text = "チャート設定中";
-
-            ChartViewer.dateTimes = dts.ToArray();
-
-            switch (_form.AnalyticsUpDown.SelectedIndex)
-            {
-                case 0:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(receive.ToArray()),
-                        "受信速度", "ネット受信速度", "Bps");
-                    break;
-
-                case 1:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(send.ToArray()),
-                        "送信速度", "ネット送信速度", "Bps");
-                    break;
-
-                case 2:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(cpu.ToArray()),
-                        "CPU", "CPU使用率", "%");
-                    break;
-
-                case 3:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(mem.ToArray()),
-                        "メモリ", "メモリ使用量", "Bytes");
-                    break;
-
-                case 4:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(gpu.ToArray()),
-                        "GPU", "GPU使用率", "%");
-                    break;
-
-                case 5:
-                    ChartViewer.ShowChart(ArrayConverters.ConvertArrayToDouble(disk.ToArray()),
-                        "ディスク", "ディスク使用率", "%");
-                    break;
-
-                default:
-                    ErrorLog.ErrorOutput("チャート選択エラー", "未設定のデータ", true);
-                    lvl.Text = "チャート設定失敗";
-                    return;
-            }
-
-            lvl.Text = "チャート設定完了";
-        }
 
         /// <summary>
         /// チャートおよび分析に使用したメモリを解放する

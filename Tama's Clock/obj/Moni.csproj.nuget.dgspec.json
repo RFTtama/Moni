@@ -46,10 +46,6 @@
               "target": "Package",
               "version": "[1.9.0, )"
             },
-            "ScottPlot.WinForms": {
-              "target": "Package",
-              "version": "[4.1.48, )"
-            },
             "System.Buffers": {
               "target": "Package",
               "version": "[4.5.1, )"

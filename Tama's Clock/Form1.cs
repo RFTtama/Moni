@@ -147,7 +147,6 @@ namespace Moni
                 }
 
                 Splash.desc.Text = "Setting other...";
-                AnalyticsUpDown.SelectedIndex = 0;
                 cwList.Add(new ComputerWarnings("NetWorkWarning"));
                 cwList.Add(new ComputerWarnings("CPUWarning"));
                 cwList.Add(new ComputerWarnings("MemoryWarning"));
@@ -729,19 +728,6 @@ namespace Moni
             }
         }
 
-
-        private void AnalysisSelectButton_Click(object sender, EventArgs e)
-        {
-            if (ac.Enabled)
-            {
-                ac.SetSelectedChart();
-            }
-            else
-            {
-                ErrorLog.ErrorOutput("ログ解析エラー", "この動作を行うには更新を待ってください", true);
-            }
-        }
-
         private int logUpdateTime = 240;
         private const int UpdateInterval = 300;
 
@@ -880,25 +866,10 @@ namespace Moni
             DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
         }
 
-        private void showChartLabel_Click(object sender, EventArgs e)
-        {
-            AnalyticsLabel.Text = "更新を待ってください";
-            ac.showChart = true;
-            SetAnalyticComponents(false);
-            AnalyticsPanel.Visible = true;
-        }
-
         public void SetAnalyticComponents(bool boolean)
         {
-            AnalyticsSelectButton.Enabled = boolean;
         }
 
-        private void DisposeButton_Click(object sender, EventArgs e)
-        {
-            ac.showChart = false;
-            AnalyticsPanel.Visible = false;
-            ac.Dispose();
-        }
 
         private void SaveDayUD_SelectedItemChanged(object sender, EventArgs e)
         {
