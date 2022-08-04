@@ -43,8 +43,10 @@ namespace Moni
             LoadingProcess loading = new LoadingProcess();
             try
             {
+                Splash.desc.Text = "Initializing...";
                 InitializeComponent();
 
+                Splash.desc.Text = "Setting Monis shape...";
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
@@ -59,6 +61,7 @@ namespace Moni
                 panel1.Width = 420;
                 panel1.Height = 170;
 
+                Splash.desc.Text = "Searching GPU file...";
                 try
                 {
                     using (StreamReader sr = new StreamReader(gpuFileName))
@@ -71,6 +74,7 @@ namespace Moni
                     SearchGpuFile();
                 }
 
+                Splash.desc.Text = "Setting details...";
                 LogManager.logState = 3;
                 this.redPicSize = RedPic2.Width;
                 System.Reflection.Assembly asm =
@@ -94,9 +98,11 @@ namespace Moni
                     }
                 }*/
 
+                Splash.desc.Text = "Reading setting file...";
                 //設定読み込み
                 SaveData.ReadSaveDatas();
 
+                Splash.desc.Text = "Setting monitor...";
                 List<(string machine, string category, string counter, string instance)> counterList = new List<(string machine, string category, string counter, string instance)>();
 
                 counterList.Add((".", "Processor", "% Processor Time", "_Total"));                                      //cpu                               
@@ -107,6 +113,7 @@ namespace Moni
                 {
                     for (int i = 0; i < counterList.Count; i++)
                     {
+                        Splash.desc.Text = "Setting PC(" + i + "/" + counterList.Count + ")";
                         pcList.Add(new PerformanceCounter(counterList[i].category, counterList[i].counter, counterList[i].instance, counterList[i].machine));
                     }
                 }
@@ -116,72 +123,11 @@ namespace Moni
                     ErrorLog.ErrorOutput("リソース取得エラー", msg, true);
                     this.Close();
                 }
-                /*DescBox.Text += "コンピュータ情報" + LB;
-                using (ManagementClass mc = new ManagementClass("Win32_OperatingSystem"))
-                {
-                    mc.Get();
-                    mc.Scope.Options.EnablePrivileges = true;
-                    float memorySize;
-                    using (ManagementObjectCollection moc = mc.GetInstances())
-                    {
-                        string memStr;
-                        foreach (ManagementObject mo in moc)
-                        {
-                            memStr = mo["TotalVisibleMemorySize"] + LB;
-                            memorySize = float.Parse(memStr);
-                            DescBox.Text += mo["Caption"] + LB;
-                            mo.Dispose();
-                            actTotalMem = new ValueManager((long)(memorySize * 1000.0f));
-                            DescBox.Text += "物理メモリ数: " + actTotalMem.data.ToString("F2") + actTotalMem.HeadToString() + "B" + LB;
-                        }
-                    }
-                }
-                using (ManagementClass mc = new ManagementClass("Win32_Processor"))
-                {
-                    mc.Get();
-                    mc.Scope.Options.EnablePrivileges = true;
-                    using (ManagementObjectCollection moc = mc.GetInstances())
-                    {
-                        foreach (ManagementObject mo in moc)
-                        {
-                            DescBox.Text += mo["Name"] + LB;
-                            mo.Dispose();
-                        }
-                        }
-                }
 
-                if (this.nvidiaSmiFile != null)
-                {
-                    try
-                    {
-                        string result = GetGpuData(@"--query-gpu=name --format=csv,noheader,nounits");
-                        DescBox.Text += result;
-                        this.gpuOk = true;
-                    }
-                    catch (Exception)
-                    {
-                        SearchGpuFile();
-                        if (nvidiaSmiFile != null)
-                        {
-                            this.Close();
-                        }
-                    }
-                }
-                else
-                {
-                    DescBox.Text += "GPUのデータが参照できません" + LB;
-                }
-                DescBox.Text += LB + "ドライブ情報" + LB;
-                foreach (DriveInfo driveInfo in driveInfos)
-                {
-                    if (driveInfo.DriveType == DriveType.Fixed)
-                    {
-                        ValueManager valueManager = new ValueManager(driveInfo.TotalSize);
-                        double avaPer = ((double)valueManager.num - driveInfo.AvailableFreeSpace) / valueManager.num * 100.0;
-                        DescBox.Text += driveInfo.Name + ": " + valueManager.data.ToString("F0") + valueManager.HeadToString() + "B " + avaPer.ToString("F1") + "%使用中(" + driveInfo.DriveFormat + ")" + LB;
-                    }
-                }*/
+                Splash.desc.Text = "Setting PC description...";
                 SetDesc();
+
+                Splash.desc.Text = "Getting network interface...";
                 NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
                 long[,] net = new long[nis.Length, 2];
                 speedBef = new long[2];
@@ -199,6 +145,8 @@ namespace Moni
                         speedBef[1] = net[netInd, 1];
                     }
                 }
+
+                Splash.desc.Text = "Setting other...";
                 AnalyticsUpDown.SelectedIndex = 0;
                 cwList.Add(new ComputerWarnings("NetWorkWarning"));
                 cwList.Add(new ComputerWarnings("CPUWarning"));
@@ -216,6 +164,9 @@ namespace Moni
                 {
                     UpdateLog();
                 }*/
+
+                Splash.desc.Text = "Done!";
+
                 this._ready = true;
 
                 GC.Collect();

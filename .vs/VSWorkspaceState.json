@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Tama's Clock"
   ],
-  "SelectedNode": "\\Tama's Clock.sln",
+  "SelectedNode": "\\Tama's Clock\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

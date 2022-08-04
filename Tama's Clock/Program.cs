@@ -54,24 +54,33 @@ namespace Moni
         }
     }
 
-    static class Splash
+    public static class Splash
     {
         private static Form startForm = new Form();
-        private static System.Timers.Timer timer = new System.Timers.Timer();
-        private static Label newLabel = new Label();
-        private static int splashCnt = 0;
+        public static Label desc = new Label();
 
         public static void ShowSplash()
         {
-            newLabel.Text = "Moni> Developed -by @RFT\r\n\tLaunching...";
+            Label newLabel = new Label();
+            newLabel.Text = "Moni> Developed -by @RFT\r\nLaunching...";
+            desc.Text = "Please wait...";
+
+            desc.Font = new Font("Lucida Console", 12);
+            desc.AutoSize = false;
+            desc.ForeColor = Color.FromArgb(0, 255, 0);
+            desc.TextAlign = ContentAlignment.BottomLeft;
+            desc.Dock = DockStyle.Bottom;
+
             newLabel.Font = new Font("Lucida Console", 12);
             newLabel.AutoSize = false;
             newLabel.ForeColor = Color.FromArgb(0, 255, 0);
             newLabel.TextAlign = ContentAlignment.TopLeft;
             newLabel.Dock = DockStyle.Fill;
-            startForm.Controls.Add(newLabel);
 
-            startForm.Size = new Size(300, 50);
+            startForm.Controls.Add(newLabel);
+            startForm.Controls.Add(desc);
+
+            startForm.Size = new Size(300, 70);
             startForm.BackColor = Color.FromArgb(0, 0, 0);
             startForm.Text = "";
             startForm.StartPosition = FormStartPosition.CenterScreen;
@@ -80,31 +89,12 @@ namespace Moni
             startForm.ShowInTaskbar = false;
             startForm.UseWaitCursor = true;
 
-            timer.Elapsed += splashAnimation;
-            timer.Interval = 500;
             startForm.Show();
-            timer.Enabled = true;
-        }
-
-        private static void splashAnimation(object sender, EventArgs e)
-        {
-            if (splashCnt % 2 == 1)
-            {
-                newLabel.Text = "Moni> Developed -by @RFT\r\n\tLaunching...";
-            }
-            else
-            {
-                newLabel.Text = "Moni> Developed -by @RFT\r\n\tLaunching..";
-            }
-            splashCnt++;
         }
 
         public static void Close()
         {
-            timer.Enabled = false;
-            timer.Close();
             startForm.Close();
-            newLabel.Dispose();
         }
     }
 }
