@@ -121,6 +121,8 @@ namespace Moni
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.ApiTimer = new System.Windows.Forms.Timer(this.components);
+            this.NewsLabel = new System.Windows.Forms.Label();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -892,6 +894,7 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.NewsLabel);
             this.panel1.Controls.Add(this.LoadPic);
             this.panel1.Controls.Add(this.MinimizePic);
             this.panel1.Controls.Add(this.ClosePic);
@@ -1093,6 +1096,21 @@ namespace Moni
             this.resourceUpdateTimer.Interval = 300000;
             this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
             // 
+            // ApiTimer
+            // 
+            this.ApiTimer.Interval = 3600000;
+            this.ApiTimer.Tick += new System.EventHandler(this.ApiTimer_Tick);
+            // 
+            // NewsLabel
+            // 
+            this.NewsLabel.AutoSize = true;
+            this.NewsLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewsLabel.Location = new System.Drawing.Point(3, 139);
+            this.NewsLabel.Name = "NewsLabel";
+            this.NewsLabel.Size = new System.Drawing.Size(0, 13);
+            this.NewsLabel.TabIndex = 36;
+            this.NewsLabel.Visible = false;
+            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1237,6 +1255,8 @@ namespace Moni
         private System.Windows.Forms.Timer GCTimer;
         public System.Windows.Forms.Timer LogTimer;
         private System.Windows.Forms.Timer resourceUpdateTimer;
+        private System.Windows.Forms.Timer ApiTimer;
+        private System.Windows.Forms.Label NewsLabel;
     }
 }
 
