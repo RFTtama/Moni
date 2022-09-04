@@ -226,3 +226,82 @@
    場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
    場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177リモート サーバーがエラーを返しました: (400) 要求が不適切です
 
+2022/09/05 00:46:25 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:46:32 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 14
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/05 00:48:04 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:48:07 [初期化時に不明なエラー]System.UriFormatException: 無効な URI: URI の形式を決定できませんでした。
+   場所 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   場所 System.Net.WebRequest.Create(String requestUriString)
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 13
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177無効な URI: URI の形式を決定できませんでした。
+
+2022/09/05 00:50:05 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:50:11 [初期化時に不明なエラー]System.UriFormatException: 無効な URI: URI の形式を決定できませんでした。
+   場所 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   場所 System.Net.WebRequest.Create(String requestUriString)
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 13
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177無効な URI: URI の形式を決定できませんでした。
+
+2022/09/05 00:55:11 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:55:19 [初期化時に不明なエラー]System.UriFormatException: 無効な URI: URI の形式を決定できませんでした。
+   場所 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   場所 System.Net.WebRequest.Create(String requestUriString)
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 13
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177無効な URI: URI の形式を決定できませんでした。
+
+2022/09/05 00:57:51 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:57:58 [初期化時に不明なエラー]System.UriFormatException: 無効な URI: URI の形式を決定できませんでした。
+   場所 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   場所 System.Net.WebRequest.Create(String requestUriString)
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 13
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177無効な URI: URI の形式を決定できませんでした。
+
+2022/09/05 00:59:54 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 00:59:57 [初期化時に不明なエラー]System.UriFormatException: 無効な URI: URI の形式を決定できませんでした。
+   場所 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   場所 System.Net.WebRequest.Create(String requestUriString)
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 13
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177無効な URI: URI の形式を決定できませんでした。
+
+2022/09/05 01:00:25 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:00:28 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 14
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/05 01:13:47 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:15:49 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:19:52 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:21:16 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:24:51 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:25:40 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:26:25 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:35:03 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/05 01:41:17 [Moni終了エラー]Moniの異常終了を確認しました
+

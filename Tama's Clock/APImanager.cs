@@ -2,19 +2,37 @@
 using System.Net;
 using System.IO;
 using System;
+using System.Net.Http;
 
 namespace Moni
 {
     public class APImanager
-    {   
-        public JObject RequestApi(string requestUrl)
+    {
+        private JObject _jsonData;
+        public JObject jsonData
         {
-            string encodeUrl = Uri.EscapeDataString(requestUrl);
-            WebRequest request = WebRequest.Create(requestUrl);
-            Stream response_stream = request.GetResponse().GetResponseStream();
-            StreamReader reader = new StreamReader(response_stream);
-            JObject response = JObject.Parse(reader.ReadToEnd());
-            return response;
+            get
+            {
+                return _jsonData;
+            }
+        }
+
+        public void ResetJsonData()
+        {
+            _jsonData = null;
+        }
+
+        public async void RequestApi(string requestUrl)
+        {
+            ResetJsonData();
+            //requestUrl = WebUtility.UrlEncode(requestUrl);
+            using(var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("User-Agent", "moni");
+                var res = await client.GetAsync(requestUrl);
+                var response = await res.Content.ReadAsStringAsync();
+                _jsonData = JObject.Parse(response);
+            }
         }
     }
 }

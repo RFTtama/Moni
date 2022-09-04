@@ -97,6 +97,7 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.NewsLabel = new System.Windows.Forms.Label();
             this.LoadPic = new System.Windows.Forms.PictureBox();
             this.MinimizePic = new System.Windows.Forms.PictureBox();
             this.ClosePic = new System.Windows.Forms.PictureBox();
@@ -122,7 +123,9 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.ApiTimer = new System.Windows.Forms.Timer(this.components);
-            this.NewsLabel = new System.Windows.Forms.Label();
+            this.NewsTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.NewsMover = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -174,7 +177,7 @@ namespace Moni
             // 
             this.DateLabel.AutoSize = true;
             this.DateLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateLabel.Location = new System.Drawing.Point(3, 152);
+            this.DateLabel.Location = new System.Drawing.Point(1, 143);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(35, 13);
             this.DateLabel.TabIndex = 2;
@@ -894,15 +897,16 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.panel1.Controls.Add(this.NewsLabel);
+            this.panel1.Controls.Add(this.vScrollBar1);
+            this.panel1.Controls.Add(this.HelpPanel);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.LoadPic);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.NewsLabel);
             this.panel1.Controls.Add(this.MinimizePic);
             this.panel1.Controls.Add(this.ClosePic);
             this.panel1.Controls.Add(this.SecondLabel);
-            this.panel1.Controls.Add(this.LedPanel);
-            this.panel1.Controls.Add(this.vScrollBar1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.HelpPanel);
             this.panel1.Controls.Add(this.DateLabel);
             this.panel1.Controls.Add(this.TimeLabel);
             this.panel1.Controls.Add(this.FacePic);
@@ -911,11 +915,20 @@ namespace Moni
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
             // 
+            // NewsLabel
+            // 
+            this.NewsLabel.AutoSize = true;
+            this.NewsLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewsLabel.Location = new System.Drawing.Point(3, 156);
+            this.NewsLabel.Name = "NewsLabel";
+            this.NewsLabel.Size = new System.Drawing.Size(0, 11);
+            this.NewsLabel.TabIndex = 36;
+            // 
             // LoadPic
             // 
-            this.LoadPic.Location = new System.Drawing.Point(156, 138);
+            this.LoadPic.Location = new System.Drawing.Point(180, 4);
             this.LoadPic.Name = "LoadPic";
-            this.LoadPic.Size = new System.Drawing.Size(30, 30);
+            this.LoadPic.Size = new System.Drawing.Size(20, 20);
             this.LoadPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LoadPic.TabIndex = 35;
             this.LoadPic.TabStop = false;
@@ -1101,15 +1114,23 @@ namespace Moni
             this.ApiTimer.Interval = 3600000;
             this.ApiTimer.Tick += new System.EventHandler(this.ApiTimer_Tick);
             // 
-            // NewsLabel
+            // NewsTimer
             // 
-            this.NewsLabel.AutoSize = true;
-            this.NewsLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.NewsLabel.Location = new System.Drawing.Point(3, 139);
-            this.NewsLabel.Name = "NewsLabel";
-            this.NewsLabel.Size = new System.Drawing.Size(0, 13);
-            this.NewsLabel.TabIndex = 36;
-            this.NewsLabel.Visible = false;
+            this.NewsTimer.Interval = 10000;
+            this.NewsTimer.Tick += new System.EventHandler(this.NewsTimer_Tick);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Location = new System.Drawing.Point(191, 142);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(28, 35);
+            this.panel3.TabIndex = 37;
+            // 
+            // NewsMover
+            // 
+            this.NewsMover.Interval = 1000;
+            this.NewsMover.Tick += new System.EventHandler(this.TextMover_Tick);
             // 
             // Clock
             // 
@@ -1257,6 +1278,9 @@ namespace Moni
         private System.Windows.Forms.Timer resourceUpdateTimer;
         private System.Windows.Forms.Timer ApiTimer;
         private System.Windows.Forms.Label NewsLabel;
+        private System.Windows.Forms.Timer NewsTimer;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Timer NewsMover;
     }
 }
 

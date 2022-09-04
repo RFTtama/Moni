@@ -173,7 +173,8 @@ namespace Moni
                 GC.Collect();
                 GCTimer.Enabled = true;
 
-                //ApiTimer.Enabled = true;
+                ApiTimer.Enabled = true;
+                NewsTimer.Enabled = true;
                 UpdateApi();
 
                 Splash.Close();
@@ -996,13 +997,37 @@ namespace Moni
         private void UpdateApi()
         {
             string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82";
-            JObject request = api.RequestApi(url);
-            if (request == null) return;
-            foreach (JObject article in request["articles"])
+            api.RequestApi(url);
+        }
+
+        private List<string> newsList = new List<string>();
+
+        private void NewsTimer_Tick(object sender, EventArgs e)
+        {
+            if (api.jsonData == null) return;
+            for(int i = 0; i < 20; i++)
             {
-                DescBox.Text += LB + article["title"].ToString();
+                newsList.Add(api.jsonData["articles"][i]["title"].ToString());
+                NewsMover.Enabled = true;
             }
-            DescBox.Text += LB + "Request successed!";
+            currentNews = 0;
+            NewsLabel.Left = 192;
+            NewsLabel.Text = newsList[0];
+            api.ResetJsonData();
+        }
+
+        private int currentNews;
+
+        private void TextMover_Tick(object sender, EventArgs e)
+        {
+            NewsLabel.Left -= 10;
+            if(NewsLabel.Right < 0)
+            {
+                NewsLabel.Left = 192;
+                currentNews++;
+                if(currentNews >= 20)currentNews = 0;
+                NewsLabel.Text = newsList[currentNews];
+            }
         }
     }
 }
