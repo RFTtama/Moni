@@ -178,3 +178,51 @@
 
 2022/08/04 13:56:11 [GPUファイル探索エラー]NVIDIA製のグラフィックカードを搭載していないまたはnvidia-smiがインストールされていない可能性があります
 
+2022/09/04 17:06:18 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 28
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1003
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 178リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/04 17:09:22 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/04 17:09:29 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 28
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1003
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 178リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/04 17:14:01 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/04 17:14:09 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 28
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1003
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 178リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/04 17:18:58 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/04 17:19:06 [初期化時に不明なエラー]System.ArgumentOutOfRangeException: インデックスが範囲を超えています。負でない値で、コレクションのサイズよりも小さくなければなりません。
+パラメーター名:index
+   場所 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   場所 System.Collections.Generic.List`1.get_Item(Int32 index)
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1010
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 178インデックスが範囲を超えています。負でない値で、コレクションのサイズよりも小さくなければなりません。
+パラメーター名:index
+
+2022/09/04 17:22:31 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/04 17:22:39 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 19
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1000
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177リモート サーバーがエラーを返しました: (400) 要求が不適切です
+
+2022/09/04 17:28:35 [Moni終了エラー]Moniの異常終了を確認しました
+
+2022/09/04 17:59:53 [初期化時に不明なエラー]System.Net.WebException: リモート サーバーがエラーを返しました: (400) 要求が不適切です
+   場所 System.Net.HttpWebRequest.GetResponse()
+   場所 Moni.APImanager.RequestApi(String requestUrl) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\APImanager.cs:行 14
+   場所 Moni.Clock.UpdateApi() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 999
+   場所 Moni.Clock..ctor() 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 177リモート サーバーがエラーを返しました: (400) 要求が不適切です
+

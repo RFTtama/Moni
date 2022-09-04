@@ -15,7 +15,7 @@ namespace Moni
     {
         private DifferentManager dm;
         private AnalyticsClass ac;
-        private APImanager api;
+        private APImanager api = new APImanager();
         private MoniTerminator mt = new MoniTerminator();
         private DateTime dt;
         private string nvidiaSmiFile;
@@ -52,7 +52,6 @@ namespace Moni
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
-                api = new APImanager("https://newsapi.org/v2/top-headlines?country=jp&apiKey=", null);
                 SaveDayUD.SelectedIndex = 0;
                 SaveStyleUD.SelectedIndex = 1;
                 dt = DateTime.Now;
@@ -173,6 +172,10 @@ namespace Moni
 
                 GC.Collect();
                 GCTimer.Enabled = true;
+
+                //ApiTimer.Enabled = true;
+                UpdateApi();
+
                 Splash.Close();
 
             }
@@ -985,19 +988,21 @@ namespace Moni
             SetDesc();
         }
 
-        List<string> newsList = new List<string>();
-
         private void ApiTimer_Tick(object sender, EventArgs e)
         {
-            api.apiKey = "a42224ad2a154e85b3f761fc234d2d82";
-            if (api.apiKey == null) return;
-            JObject request = api.RequestApi();
-            if(request == null) return;
-            newsList.Clear();
-            for(int i = 0; i < int.Parse(request["totalResults"].ToString()); i++)
+            UpdateApi();
+        }
+
+        private void UpdateApi()
+        {
+            string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82";
+            JObject request = api.RequestApi(url);
+            if (request == null) return;
+            foreach (JObject article in request["articles"])
             {
-                newsList.Add(request["articles"][i]["title"].ToString());
+                DescBox.Text += LB + article["title"].ToString();
             }
+            DescBox.Text += LB + "Request successed!";
         }
     }
 }
