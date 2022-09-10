@@ -1029,5 +1029,10 @@ namespace Moni
                 NewsLabel.Text = newsList[currentNews];
             }
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://newsapi.org/");
+        }
     }
 }
