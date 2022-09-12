@@ -174,7 +174,7 @@ namespace Moni
             // 
             this.DateLabel.AutoSize = true;
             this.DateLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateLabel.Location = new System.Drawing.Point(1, 143);
+            this.DateLabel.Location = new System.Drawing.Point(1, 154);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(35, 13);
             this.DateLabel.TabIndex = 2;

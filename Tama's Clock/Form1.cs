@@ -446,7 +446,23 @@ namespace Moni
 
                 double usingPercentage = ((double)process.num / actTotalMem.num * 100.0);
 
-                if(!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
+                Process[] processes = Process.GetProcesses();
+
+                string taskStr = string.Empty;
+
+                foreach(Process p in processes)
+                {
+                    taskStr += p.ProcessName + ", " + p.WorkingSet64 + LB;
+                }
+
+                using (StreamWriter sw = new StreamWriter(@".\tcData\taskLog.txt"))
+                {
+                    sw.WriteLine(taskStr);
+                }
+
+                taskStr = string.Empty;
+
+                if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
                     process.HeadToString() + "Bytes) " + usingPercentage.ToString("F1") + "%" +
                     LB + "最大: " + maxProcess.data.ToString("F1") + "(" + maxProcess.HeadToString() + "Bytes)" +
                     LB + "GC周期: " + GCTimer.Interval + "ms");
