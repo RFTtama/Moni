@@ -123,13 +123,6 @@ namespace Moni
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.ApiTimer = new System.Windows.Forms.Timer(this.components);
-            this.NewsTimer = new System.Windows.Forms.Timer(this.components);
-            this.NewsMover = new System.Windows.Forms.Timer(this.components);
-            this.newsBox = new System.Windows.Forms.CheckBox();
-            this.keyText = new System.Windows.Forms.TextBox();
-            this.newsApplyButton = new System.Windows.Forms.Button();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -202,10 +195,6 @@ namespace Moni
             // HelpPanel
             // 
             this.HelpPanel.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.HelpPanel.Controls.Add(this.linkLabel2);
-            this.HelpPanel.Controls.Add(this.newsApplyButton);
-            this.HelpPanel.Controls.Add(this.keyText);
-            this.HelpPanel.Controls.Add(this.newsBox);
             this.HelpPanel.Controls.Add(this.MemUsingPic);
             this.HelpPanel.Controls.Add(this.SaveStyleUD);
             this.HelpPanel.Controls.Add(this.StartupPic);
@@ -1125,60 +1114,6 @@ namespace Moni
             this.resourceUpdateTimer.Interval = 300000;
             this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
             // 
-            // ApiTimer
-            // 
-            this.ApiTimer.Interval = 3600000;
-            this.ApiTimer.Tick += new System.EventHandler(this.ApiTimer_Tick);
-            // 
-            // NewsTimer
-            // 
-            this.NewsTimer.Interval = 10000;
-            this.NewsTimer.Tick += new System.EventHandler(this.NewsTimer_Tick);
-            // 
-            // NewsMover
-            // 
-            this.NewsMover.Interval = 1000;
-            this.NewsMover.Tick += new System.EventHandler(this.TextMover_Tick);
-            // 
-            // newsBox
-            // 
-            this.newsBox.AutoSize = true;
-            this.newsBox.Location = new System.Drawing.Point(11, 141);
-            this.newsBox.Name = "newsBox";
-            this.newsBox.Size = new System.Drawing.Size(93, 16);
-            this.newsBox.TabIndex = 85;
-            this.newsBox.Text = "ニュースを表示";
-            this.newsBox.UseVisualStyleBackColor = true;
-            // 
-            // keyText
-            // 
-            this.keyText.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.keyText.Location = new System.Drawing.Point(11, 164);
-            this.keyText.Name = "keyText";
-            this.keyText.Size = new System.Drawing.Size(81, 19);
-            this.keyText.TabIndex = 86;
-            this.keyText.Text = "APIキーを入力";
-            // 
-            // newsApplyButton
-            // 
-            this.newsApplyButton.Location = new System.Drawing.Point(99, 161);
-            this.newsApplyButton.Name = "newsApplyButton";
-            this.newsApplyButton.Size = new System.Drawing.Size(37, 23);
-            this.newsApplyButton.TabIndex = 87;
-            this.newsApplyButton.Text = "申請";
-            this.newsApplyButton.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(107, 141);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(76, 12);
-            this.linkLabel2.TabIndex = 88;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "APIキーを取得";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1323,15 +1258,8 @@ namespace Moni
         private System.Windows.Forms.Timer GCTimer;
         public System.Windows.Forms.Timer LogTimer;
         private System.Windows.Forms.Timer resourceUpdateTimer;
-        private System.Windows.Forms.Timer ApiTimer;
         private System.Windows.Forms.Label NewsLabel;
-        private System.Windows.Forms.Timer NewsTimer;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Timer NewsMover;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Button newsApplyButton;
-        private System.Windows.Forms.TextBox keyText;
-        private System.Windows.Forms.CheckBox newsBox;
     }
 }
 

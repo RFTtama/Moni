@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using Newtonsoft.Json.Linq;
 
 namespace Moni
 {
@@ -15,7 +14,6 @@ namespace Moni
     {
         private DifferentManager dm;
         private AnalyticsClass ac;
-        private APImanager api = new APImanager();
         private MoniTerminator mt = new MoniTerminator();
         private DateTime dt;
         private string nvidiaSmiFile;
@@ -172,10 +170,6 @@ namespace Moni
 
                 GC.Collect();
                 GCTimer.Enabled = true;
-
-                ApiTimer.Enabled = true;
-                NewsTimer.Enabled = true;
-                UpdateApi();
 
                 Splash.Close();
 
@@ -989,50 +983,5 @@ namespace Moni
             SetDesc();
         }
 
-        private void ApiTimer_Tick(object sender, EventArgs e)
-        {
-            UpdateApi();
-        }
-
-        private void UpdateApi()
-        {
-            string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82";
-            api.RequestApi(url);
-        }
-
-        private List<string> newsList = new List<string>();
-
-        private void NewsTimer_Tick(object sender, EventArgs e)
-        {
-            if (api.jsonData == null) return;
-            for(int i = 0; i < 20; i++)
-            {
-                newsList.Add(api.jsonData["articles"][i]["title"].ToString());
-                NewsMover.Enabled = true;
-            }
-            currentNews = 0;
-            NewsLabel.Left = 192;
-            NewsLabel.Text = newsList[0];
-            api.ResetJsonData();
-        }
-
-        private int currentNews;
-
-        private void TextMover_Tick(object sender, EventArgs e)
-        {
-            NewsLabel.Left -= 10;
-            if(NewsLabel.Right < 0)
-            {
-                NewsLabel.Left = 192;
-                currentNews++;
-                if(currentNews >= 20)currentNews = 0;
-                NewsLabel.Text = newsList[currentNews];
-            }
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://newsapi.org/");
-        }
     }
 }

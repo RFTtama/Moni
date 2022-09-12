@@ -115,7 +115,6 @@
   <ItemGroup>
     <Compile Include="AdditionalClass.cs" />
     <Compile Include="AnalyticsClass.cs" />
-    <Compile Include="APImanager.cs" />
     <Compile Include="ArrayConverters.cs" />
     <Compile Include="ErrorLog.cs" />
     <Compile Include="Form1.cs">
