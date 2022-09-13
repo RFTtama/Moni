@@ -452,23 +452,76 @@ namespace Moni
                 string heavyName = string.Empty;
                 long heavyMem = 0;
 
-                //現在ゲームを起動中であると予想された場合にそのゲームを記録
-                if(cwList[3].errorFlg)
+                foreach (Process p in processes)
                 {
-                    foreach (Process p in processes)
+                    if (p.WorkingSet64 > heavyMem)
                     {
-                        if(p.WorkingSet64 > heavyMem)
-                        {
-                            heavyMem = p.WorkingSet64;
-                            heavyName = p.ProcessName;
-                        }
-                        taskStr += heavyName + ", " + heavyMem + LB;
+                        heavyMem = p.WorkingSet64;
+                        heavyName = p.ProcessName;
                     }
-                    //TODO 重いプロセスの記憶処理
+                    taskStr += heavyName + ", " + heavyMem + LB;
+                }
 
-                    using (StreamWriter sw = new StreamWriter(@".\tcData\taskLog.txt"))
+                string[] files;
+
+                try
+                {
+                    files = System.IO.Directory.GetFiles(
+                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    files = null;
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Directory.CreateDirectory(@".\tcGameLog");
+                    files = System.IO.Directory.GetFiles(
+                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
+                }
+                catch (Exception ex)
+                {
+                    ErrorLog.ErrorOutput("ゲームログ取得失敗", ex.Message, false);
+                    files = null;
+                }
+
+                bool sameGameFlg = false;
+
+                //現在一番メモリを使用しているタスクがゲームログフォルダにあるか確認
+                if (files != null)
+                {
+                    foreach (string file in files)
                     {
-                        sw.WriteLine(taskStr);
+                        string replaceName = file.Replace(".tc", "");
+                        if(replaceName == heavyName)
+                        {
+                            sameGameFlg = true;
+                        }
+                    }
+                }
+
+                //現在ゲームを起動中であると予想された場合にそのゲームを記録
+                if (cwList[3].errorFlg || sameGameFlg)
+                {
+                    //TODO 重いプロセスの記憶処理
+                    try
+                    {
+                        using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc"))
+                        {
+
+                        }
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        Directory.CreateDirectory(@".\tcGameLog");
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
                     }
                 }
 

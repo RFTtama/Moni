@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Moni.exe" size="323032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Moni.exe" size="323544">
       <assemblyIdentity name="Moni" version="1.2.5.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6CDYuV33Nc7INoZWd0uM/PrsaiB4xwXjnXBFoeUMtYk=</dsig:DigestValue>
+        <dsig:DigestValue>Tt8dhjW2kc8sehmpQfbGCDkNtBDorbgjpCVTPSZ7+8w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
