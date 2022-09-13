@@ -1045,5 +1045,24 @@ namespace Moni
             SetDesc();
         }
 
+        private void MinimizePic_MouseEnter(object sender, EventArgs e)
+        {
+            MinimizePic.Image = Properties.Resources.minimum;
+        }
+
+        private void MinimizePic_MouseLeave(object sender, EventArgs e)
+        {
+            MinimizePic.Image = null;
+        }
+
+        private void ClosePic_MouseEnter(object sender, EventArgs e)
+        {
+            ClosePic.Image = Properties.Resources.batu;
+        }
+
+        private void ClosePic_MouseLeave(object sender, EventArgs e)
+        {
+            ClosePic.Image = null;
+        }
     }
 }
