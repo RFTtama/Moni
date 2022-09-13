@@ -503,37 +503,40 @@ namespace Moni
                 }
 
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
-                if (cwList[3].errorFlg || sameGameFlg)
+                if (gpuValue >= 50 || sameGameFlg)//gpuValueの閾値は変更できるようにする
                 {
                     gameTimer.Start();
                     DateLabel.Top = 140;
                     if (!gameRunningFlg)
                     {
-                        GameLabel.Text = heavyName + "をプレイ中(" + gameTimer.ToString() + ")";
-                        GameLabel.Left = 10;
+                        GameLabel.Left = 5;
                         GameLabel.Top = 154;
                         gameRunningFlg = true;
-                        
                     }
-                    //TODO 重いプロセスの記憶処理
-                    try
-                    {
-                        using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc", true))
-                        {
-                            sw.WriteLine(gpuValue);
-                        }
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
 
-                    }
-                    catch (DirectoryNotFoundException)
+                    GameLabel.Text = heavyName + "をプレイ中(" + (gameTimer.ElapsedMilliseconds / 1000) + "秒)";
+
+                    if (SaveData.enableLogSave)
                     {
-                        Directory.CreateDirectory(@".\tcGameLog");
-                    }
-                    catch (Exception ex)
-                    {
-                        ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
+                        try
+                        {
+                            using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc", true))
+                            {
+                                sw.WriteLine(gpuValue);
+                            }
+                        }
+                        catch (UnauthorizedAccessException)
+                        {
+
+                        }
+                        catch (DirectoryNotFoundException)
+                        {
+                            Directory.CreateDirectory(@".\tcGameLog");
+                        }
+                        catch (Exception ex)
+                        {
+                            ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
+                        }
                     }
                 }
                 else
@@ -543,6 +546,7 @@ namespace Moni
                     GameLabel.Text = string.Empty;
                     GameLabel.Top = 230;
                     gameRunningFlg = false;
+                    gameTimer.Reset();
                 }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
