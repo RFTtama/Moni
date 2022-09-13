@@ -26,6 +26,7 @@ namespace Moni
         private long[] speedBef;
         private string netName;
         private bool _ready = false;
+        private bool gameRunningFlg = false;
         public bool ready
         {
             get {
@@ -503,6 +504,15 @@ namespace Moni
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
                 if (cwList[3].errorFlg || sameGameFlg)
                 {
+                    DateLabel.Top = 140;
+                    if (!gameRunningFlg)
+                    {
+                        GameLabel.Text = "ゲームを起動中: " + heavyName;
+                        GameLabel.Left = 191;
+                        GameLabel.Top = 154;
+                        GameNameMover.Enabled = true;
+                        gameRunningFlg = true;
+                    }
                     //TODO 重いプロセスの記憶処理
                     try
                     {
@@ -523,6 +533,13 @@ namespace Moni
                     {
                         ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
                     }
+                }
+                else
+                {
+                    DateLabel.Left = 1;
+                    DateLabel.Top = 154;
+                    GameLabel.Text = string.Empty;
+                    gameRunningFlg = false;
                 }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
@@ -1063,6 +1080,23 @@ namespace Moni
         private void ClosePic_MouseLeave(object sender, EventArgs e)
         {
             ClosePic.Image = null;
+        }
+
+        private void GameNameMover_Tick(object sender, EventArgs e)
+        {
+            if (gameRunningFlg)
+            {
+                GameLabel.Left -= 6;
+                if(GameLabel.Right <= 0)
+                {
+                    GameLabel.Left = 191;
+                }
+            }
+            else
+            {
+                GameLabel.Top = 230;
+                GameNameMover.Enabled = false;
+            }
         }
     }
 }

@@ -123,6 +123,8 @@ namespace Moni
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.MinimizePic = new System.Windows.Forms.PictureBox();
             this.ClosePic = new System.Windows.Forms.PictureBox();
+            this.GameLabel = new System.Windows.Forms.Label();
+            this.GameNameMover = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -894,10 +896,10 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.HelpPanel);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.LoadPic);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.NewsLabel);
@@ -906,6 +908,7 @@ namespace Moni
             this.panel1.Controls.Add(this.SecondLabel);
             this.panel1.Controls.Add(this.DateLabel);
             this.panel1.Controls.Add(this.TimeLabel);
+            this.panel1.Controls.Add(this.GameLabel);
             this.panel1.Controls.Add(this.FacePic);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -1095,7 +1098,6 @@ namespace Moni
             this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.MinimizePic.TabIndex = 34;
             this.MinimizePic.TabStop = false;
-            this.toolTip1.SetToolTip(this.MinimizePic, "Moniを最小化します");
             this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
             this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
             this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
@@ -1109,10 +1111,24 @@ namespace Moni
             this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ClosePic.TabIndex = 33;
             this.ClosePic.TabStop = false;
-            this.toolTip1.SetToolTip(this.ClosePic, "Moniを終了します");
             this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
             this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
             this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
+            // 
+            // GameLabel
+            // 
+            this.GameLabel.AutoSize = true;
+            this.GameLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameLabel.Location = new System.Drawing.Point(112, 237);
+            this.GameLabel.Name = "GameLabel";
+            this.GameLabel.Size = new System.Drawing.Size(23, 12);
+            this.GameLabel.TabIndex = 38;
+            this.GameLabel.Text = "aaa";
+            // 
+            // GameNameMover
+            // 
+            this.GameNameMover.Interval = 500;
+            this.GameNameMover.Tick += new System.EventHandler(this.GameNameMover_Tick);
             // 
             // Clock
             // 
@@ -1260,6 +1276,8 @@ namespace Moni
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox MinimizePic;
         private System.Windows.Forms.PictureBox ClosePic;
+        private System.Windows.Forms.Label GameLabel;
+        private System.Windows.Forms.Timer GameNameMover;
     }
 }
 
