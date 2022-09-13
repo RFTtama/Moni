@@ -1004,7 +1004,16 @@ namespace Moni
 
         private void SaveStyleUD_SelectedItemChanged(object sender, EventArgs e)
         {
-            if(ready)SaveData.DataSave();
+            if (!ready) return;
+            SaveData.DataSave();
+            try
+            {
+                File.Move(@".\tcData\MaxSpeed.dat", @".\tcData\MaxSpeed" + DateTime.Now.ToString() + ".dat");
+            }
+            catch (Exception ex) 
+            {
+                ErrorLog.ErrorOutput("MaxSpeedファイル変更処理中にエラー", ex.Message, false);
+            }
         }
 
 
