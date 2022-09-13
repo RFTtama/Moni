@@ -16,7 +16,6 @@ namespace Moni
         private AnalyticsClass ac;
         private MoniTerminator mt = new MoniTerminator();
         private DateTime dt;
-        private Stopwatch gameTimer = new Stopwatch();
         private string nvidiaSmiFile;
         private const string LB = "\r\n";
         private int tellBef;
@@ -505,7 +504,6 @@ namespace Moni
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
                 if (gpuValue >= 50 || sameGameFlg)//gpuValueの閾値は変更できるようにする
                 {
-                    gameTimer.Start();
                     DateLabel.Top = 140;
                     if (!gameRunningFlg)
                     {
@@ -514,7 +512,7 @@ namespace Moni
                         gameRunningFlg = true;
                     }
 
-                    GameLabel.Text = heavyName + "をプレイ中(" + (gameTimer.ElapsedMilliseconds / 1000) + "秒)";
+                    GameLabel.Text = heavyName + "をプレイ中";
 
                     if (SaveData.enableLogSave)
                     {
@@ -546,7 +544,6 @@ namespace Moni
                     GameLabel.Text = string.Empty;
                     GameLabel.Top = 230;
                     gameRunningFlg = false;
-                    gameTimer.Reset();
                 }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +

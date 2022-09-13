@@ -97,12 +97,15 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LedPanel = new System.Windows.Forms.Panel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.LedPanel = new System.Windows.Forms.Panel();
             this.LoadPic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NewsLabel = new System.Windows.Forms.Label();
+            this.MinimizePic = new System.Windows.Forms.PictureBox();
+            this.ClosePic = new System.Windows.Forms.PictureBox();
+            this.GameLabel = new System.Windows.Forms.Label();
             this.FacePic = new System.Windows.Forms.PictureBox();
             this.FaceMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.顔色変更ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,9 +124,10 @@ namespace Moni
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.MinimizePic = new System.Windows.Forms.PictureBox();
-            this.ClosePic = new System.Windows.Forms.PictureBox();
-            this.GameLabel = new System.Windows.Forms.Label();
+            this.GameDetectBar = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -150,10 +154,11 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
-            this.FaceMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
+            this.FaceMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameDetectBar)).BeginInit();
             this.SuspendLayout();
             // 
             // TimeLabel
@@ -196,6 +201,9 @@ namespace Moni
             // HelpPanel
             // 
             this.HelpPanel.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.HelpPanel.Controls.Add(this.label9);
+            this.HelpPanel.Controls.Add(this.label7);
+            this.HelpPanel.Controls.Add(this.GameDetectBar);
             this.HelpPanel.Controls.Add(this.MemUsingPic);
             this.HelpPanel.Controls.Add(this.SaveStyleUD);
             this.HelpPanel.Controls.Add(this.StartupPic);
@@ -251,6 +259,7 @@ namespace Moni
             this.HelpPanel.Controls.Add(this.BluePic2);
             this.HelpPanel.Controls.Add(this.MemoryLabel);
             this.HelpPanel.Controls.Add(this.PpmsPic);
+            this.HelpPanel.Controls.Add(this.label12);
             this.HelpPanel.Location = new System.Drawing.Point(215, 0);
             this.HelpPanel.Name = "HelpPanel";
             this.HelpPanel.Size = new System.Drawing.Size(204, 889);
@@ -914,6 +923,14 @@ namespace Moni
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
             // 
+            // LedPanel
+            // 
+            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LedPanel.Location = new System.Drawing.Point(191, 155);
+            this.LedPanel.Name = "LedPanel";
+            this.LedPanel.Size = new System.Drawing.Size(10, 10);
+            this.LedPanel.TabIndex = 25;
+            // 
             // vScrollBar1
             // 
             this.vScrollBar1.LargeChange = 50;
@@ -933,14 +950,6 @@ namespace Moni
             this.panel2.Size = new System.Drawing.Size(10, 170);
             this.panel2.TabIndex = 17;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
-            // 
-            // LedPanel
-            // 
-            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LedPanel.Location = new System.Drawing.Point(191, 155);
-            this.LedPanel.Name = "LedPanel";
-            this.LedPanel.Size = new System.Drawing.Size(10, 10);
-            this.LedPanel.TabIndex = 25;
             // 
             // LoadPic
             // 
@@ -967,6 +976,41 @@ namespace Moni
             this.NewsLabel.Name = "NewsLabel";
             this.NewsLabel.Size = new System.Drawing.Size(0, 11);
             this.NewsLabel.TabIndex = 36;
+            // 
+            // MinimizePic
+            // 
+            this.MinimizePic.BackColor = System.Drawing.Color.Transparent;
+            this.MinimizePic.Location = new System.Drawing.Point(180, 48);
+            this.MinimizePic.Name = "MinimizePic";
+            this.MinimizePic.Size = new System.Drawing.Size(20, 20);
+            this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MinimizePic.TabIndex = 34;
+            this.MinimizePic.TabStop = false;
+            this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
+            this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
+            this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
+            // 
+            // ClosePic
+            // 
+            this.ClosePic.BackColor = System.Drawing.Color.Transparent;
+            this.ClosePic.Location = new System.Drawing.Point(180, 26);
+            this.ClosePic.Name = "ClosePic";
+            this.ClosePic.Size = new System.Drawing.Size(20, 20);
+            this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ClosePic.TabIndex = 33;
+            this.ClosePic.TabStop = false;
+            this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
+            this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
+            this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
+            // 
+            // GameLabel
+            // 
+            this.GameLabel.AutoSize = true;
+            this.GameLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameLabel.Location = new System.Drawing.Point(112, 237);
+            this.GameLabel.Name = "GameLabel";
+            this.GameLabel.Size = new System.Drawing.Size(0, 12);
+            this.GameLabel.TabIndex = 38;
             // 
             // FacePic
             // 
@@ -1088,41 +1132,42 @@ namespace Moni
             this.resourceUpdateTimer.Interval = 300000;
             this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
             // 
-            // MinimizePic
+            // GameDetectBar
             // 
-            this.MinimizePic.BackColor = System.Drawing.Color.Transparent;
-            this.MinimizePic.Location = new System.Drawing.Point(180, 48);
-            this.MinimizePic.Name = "MinimizePic";
-            this.MinimizePic.Size = new System.Drawing.Size(20, 20);
-            this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MinimizePic.TabIndex = 34;
-            this.MinimizePic.TabStop = false;
-            this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
-            this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
-            this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
+            this.GameDetectBar.Location = new System.Drawing.Point(28, 156);
+            this.GameDetectBar.Maximum = 100;
+            this.GameDetectBar.Name = "GameDetectBar";
+            this.GameDetectBar.Size = new System.Drawing.Size(104, 45);
+            this.GameDetectBar.TabIndex = 85;
+            this.toolTip1.SetToolTip(this.GameDetectBar, "GPU使用率がこの数値を超えるとそのアプリケーションはゲームとして処理されます\r\nNVIDIA製のGPUが搭載されていない場合この値は動作には関係ありません");
+            this.GameDetectBar.Value = 50;
             // 
-            // ClosePic
+            // label7
             // 
-            this.ClosePic.BackColor = System.Drawing.Color.Transparent;
-            this.ClosePic.Location = new System.Drawing.Point(180, 26);
-            this.ClosePic.Name = "ClosePic";
-            this.ClosePic.Size = new System.Drawing.Size(20, 20);
-            this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ClosePic.TabIndex = 33;
-            this.ClosePic.TabStop = false;
-            this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
-            this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
-            this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 12);
+            this.label7.TabIndex = 86;
+            this.label7.Text = "ゲーム自動検出の範囲";
             // 
-            // GameLabel
+            // label9
             // 
-            this.GameLabel.AutoSize = true;
-            this.GameLabel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GameLabel.Location = new System.Drawing.Point(112, 237);
-            this.GameLabel.Name = "GameLabel";
-            this.GameLabel.Size = new System.Drawing.Size(23, 12);
-            this.GameLabel.TabIndex = 38;
-            this.GameLabel.Text = "aaa";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(129, 160);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 87;
+            this.label9.Text = "100%";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(11, 160);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 12);
+            this.label12.TabIndex = 88;
+            this.label12.Text = "0%";
             // 
             // Clock
             // 
@@ -1169,10 +1214,11 @@ namespace Moni
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
-            this.FaceMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
+            this.FaceMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GameDetectBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1271,6 +1317,10 @@ namespace Moni
         private System.Windows.Forms.PictureBox MinimizePic;
         private System.Windows.Forms.PictureBox ClosePic;
         private System.Windows.Forms.Label GameLabel;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar GameDetectBar;
+        private System.Windows.Forms.Label label12;
     }
 }
 
