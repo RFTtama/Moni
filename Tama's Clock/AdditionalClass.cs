@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Moni
 {
-    public class ComputerWarnings
+    public class Bottleneck
     {
         public string name;
         private int _errorTimes;
@@ -49,14 +49,14 @@ namespace Moni
             }
         }
 
-        public ComputerWarnings()
+        public Bottleneck()
         {
             this.name = null;
             this.errorTimes = 0;
             this.errorFlg = false;
         }
 
-        public ComputerWarnings(string arg)
+        public Bottleneck(string arg)
         {
             this.name = arg;
             this.errorTimes = 0;

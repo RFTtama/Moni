@@ -34,7 +34,7 @@ namespace Moni
         }
         private bool gpuOk;
         private List<PerformanceCounter> pcList = new List<PerformanceCounter>();
-        private List<ComputerWarnings> cwList = new List<ComputerWarnings>();
+        private List<Bottleneck> cwList = new List<Bottleneck>();
         private int day;
 
         public Clock()
@@ -147,11 +147,11 @@ namespace Moni
                 }
 
                 Splash.desc.Text = "Setting other...";
-                cwList.Add(new ComputerWarnings("NetWorkWarning"));
-                cwList.Add(new ComputerWarnings("CPUWarning"));
-                cwList.Add(new ComputerWarnings("MemoryWarning"));
-                cwList.Add(new ComputerWarnings("GPUWarning"));
-                cwList.Add(new ComputerWarnings("DiskWarning"));
+                cwList.Add(new Bottleneck("NetWorkWarning"));
+                cwList.Add(new Bottleneck("CPUWarning"));
+                cwList.Add(new Bottleneck("MemoryWarning"));
+                cwList.Add(new Bottleneck("GPUWarning"));
+                cwList.Add(new Bottleneck("DiskWarning"));
                 if (SaveData.enableLogSave) dm.CheckLogFiles();
                 checkBox1.Checked = SaveData.topMost;
                 checkBox2.Checked = SaveData.dateTimerEnabled;
@@ -449,21 +449,11 @@ namespace Moni
                 Process[] processes = Process.GetProcesses();
 
                 string taskStr = string.Empty;
-
-                int heavyCnt = 0;
-
-                foreach(ComputerWarnings heavyWarn in cwList)
-                {
-                    if (heavyWarn.errorFlg)
-                    {
-                        heavyCnt++;
-                    }
-                }
-
                 string heavyName = string.Empty;
                 long heavyMem = 0;
 
-                if(heavyCnt > 2 || cwList[3].errorFlg)
+                //現在ゲームを起動中であると予想された場合にそのゲームを記録
+                if(cwList[3].errorFlg)
                 {
                     foreach (Process p in processes)
                     {
@@ -702,7 +692,7 @@ namespace Moni
                     }
                     breakingTimer++;
                 }
-                foreach (ComputerWarnings cw in cwList)
+                foreach (Bottleneck cw in cwList)
                 {
                     if (cw.errorFlg)
                     {
@@ -902,11 +892,6 @@ namespace Moni
             }
             DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
         }
-
-        public void SetAnalyticComponents(bool boolean)
-        {
-        }
-
 
         private void SaveDayUD_SelectedItemChanged(object sender, EventArgs e)
         {
