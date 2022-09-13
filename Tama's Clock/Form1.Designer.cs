@@ -103,8 +103,6 @@ namespace Moni
             this.LoadPic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NewsLabel = new System.Windows.Forms.Label();
-            this.MinimizePic = new System.Windows.Forms.PictureBox();
-            this.ClosePic = new System.Windows.Forms.PictureBox();
             this.FacePic = new System.Windows.Forms.PictureBox();
             this.FaceMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.顔色変更ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,8 +147,6 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
             this.FaceMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -901,8 +897,6 @@ namespace Moni
             this.panel1.Controls.Add(this.LoadPic);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.NewsLabel);
-            this.panel1.Controls.Add(this.MinimizePic);
-            this.panel1.Controls.Add(this.ClosePic);
             this.panel1.Controls.Add(this.SecondLabel);
             this.panel1.Controls.Add(this.DateLabel);
             this.panel1.Controls.Add(this.TimeLabel);
@@ -965,34 +959,6 @@ namespace Moni
             this.NewsLabel.Name = "NewsLabel";
             this.NewsLabel.Size = new System.Drawing.Size(0, 11);
             this.NewsLabel.TabIndex = 36;
-            // 
-            // MinimizePic
-            // 
-            this.MinimizePic.BackColor = System.Drawing.Color.Transparent;
-            this.MinimizePic.Location = new System.Drawing.Point(180, 48);
-            this.MinimizePic.Name = "MinimizePic";
-            this.MinimizePic.Size = new System.Drawing.Size(20, 20);
-            this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MinimizePic.TabIndex = 34;
-            this.MinimizePic.TabStop = false;
-            this.toolTip1.SetToolTip(this.MinimizePic, "Moniを最小化します");
-            this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
-            this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
-            this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
-            // 
-            // ClosePic
-            // 
-            this.ClosePic.BackColor = System.Drawing.Color.Transparent;
-            this.ClosePic.Location = new System.Drawing.Point(180, 26);
-            this.ClosePic.Name = "ClosePic";
-            this.ClosePic.Size = new System.Drawing.Size(20, 20);
-            this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ClosePic.TabIndex = 33;
-            this.ClosePic.TabStop = false;
-            this.toolTip1.SetToolTip(this.ClosePic, "Moniを終了します");
-            this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
-            this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
-            this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
             // 
             // FacePic
             // 
@@ -1159,8 +1125,6 @@ namespace Moni
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
             this.FaceMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1223,8 +1187,6 @@ namespace Moni
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Timer NetNameTimer;
         public System.Windows.Forms.TextBox DescBox;
-        private System.Windows.Forms.PictureBox ClosePic;
-        private System.Windows.Forms.PictureBox MinimizePic;
         public System.Windows.Forms.Label DataSizeLabel;
         public System.Windows.Forms.PictureBox PpmsPic;
         public System.Windows.Forms.ToolTip toolTip1;

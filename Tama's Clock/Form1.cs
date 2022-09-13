@@ -981,27 +981,6 @@ namespace Moni
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void MinimizePic_MouseEnter(object sender, EventArgs e)
-        {
-            MinimizePic.Image = Properties.Resources.minimum;
-        }
-
-        private void ClosePic_MouseEnter(object sender, EventArgs e)
-        {
-            ClosePic.Image = Properties.Resources.batu;
-        }
-
-        private void MinimizePic_MouseLeave(object sender, EventArgs e)
-        {
-            MinimizePic.Image = null;
-        }
-
-        private void ClosePic_MouseLeave(object sender, EventArgs e)
-        {
-            ClosePic.Image = null;
-        }
-
-
         private void NetPic_Click(object sender, EventArgs e)
         {
             Process.Start("https://sites.google.com/view/moni-toppage/%E3%83%9B%E3%83%BC%E3%83%A0");
