@@ -403,7 +403,7 @@ namespace Moni
                         GPULabel.Text = "GPU使用率: " + int.Parse(result) + "(%)";
                         RedPic4.Width = (int)(float.Parse(result) / 100.0f * redPicSize);
                     }
-                    if (int.Parse(result) >= 90)
+                    if (int.Parse(result) >= 80)
                     {
                         cwList[3].errorTimes++;
                         GPULabel.ForeColor = Color.Red;
@@ -450,17 +450,37 @@ namespace Moni
 
                 string taskStr = string.Empty;
 
-                foreach(Process p in processes)
+                int heavyCnt = 0;
+
+                foreach(ComputerWarnings heavyWarn in cwList)
                 {
-                    taskStr += p.ProcessName + ", " + p.WorkingSet64 + LB;
+                    if (heavyWarn.errorFlg)
+                    {
+                        heavyCnt++;
+                    }
                 }
 
-                using (StreamWriter sw = new StreamWriter(@".\tcData\taskLog.txt"))
-                {
-                    sw.WriteLine(taskStr);
-                }
+                string heavyName = string.Empty;
+                long heavyMem = 0;
 
-                taskStr = string.Empty;
+                if(heavyCnt > 2 || cwList[3].errorFlg)
+                {
+                    foreach (Process p in processes)
+                    {
+                        if(p.WorkingSet64 > heavyMem)
+                        {
+                            heavyMem = p.WorkingSet64;
+                            heavyName = p.ProcessName;
+                        }
+                        taskStr += heavyName + ", " + heavyMem + LB;
+                    }
+                    //TODO 重いプロセスの記憶処理
+
+                    using (StreamWriter sw = new StreamWriter(@".\tcData\taskLog.txt"))
+                    {
+                        sw.WriteLine(taskStr);
+                    }
+                }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
                     process.HeadToString() + "Bytes) " + usingPercentage.ToString("F1") + "%" +
