@@ -385,25 +385,25 @@ namespace Moni
                     MaxMemLabel.Text = actTotalMem.data.ToString("F2") + actTotalMem.HeadToString() + "B";
                     RedPic3.Width = (int)((actTotalMem.num - actAvaMem) / actTotalMem.num * redPicSize);
                 }
-                string result = string.Empty;
+                int gpuValue = 0;
                 if (gpuOk)
                 {
                     try
                     {
-                        result = GetGpuData(@"--query-gpu=utilization.gpu --format=csv,noheader,nounits");
+                        gpuValue = int.Parse(GetGpuData(@"--query-gpu=utilization.gpu --format=csv,noheader,nounits"));
                     }
                     catch (Exception ex)
                     {
                         ErrorLog.ErrorOutput("GPUデータ取得エラー", ex.Message, true);
-                        result = "0";
+                        gpuValue = 0;
                         gpuOk = false;
                     }
                     if (!slideLeft)
                     {
-                        GPULabel.Text = "GPU使用率: " + int.Parse(result) + "(%)";
-                        RedPic4.Width = (int)(float.Parse(result) / 100.0f * redPicSize);
+                        GPULabel.Text = "GPU使用率: " + gpuValue + "(%)";
+                        RedPic4.Width = (int)((float)gpuValue / 100.0f * redPicSize);
                     }
-                    if (int.Parse(result) >= 80)
+                    if (gpuValue >= 80)
                     {
                         cwList[3].errorTimes++;
                         GPULabel.ForeColor = Color.Red;
@@ -508,7 +508,7 @@ namespace Moni
                     {
                         using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc"))
                         {
-
+                            sw.WriteLine(gpuValue);
                         }
                     }
                     catch (UnauthorizedAccessException)
@@ -536,7 +536,7 @@ namespace Moni
                     if (gpuOk)
                     {
                         LogStr += dt.ToString("HH:mm:ss") + "," + receive.data.ToString("F0") + "," + receive.HeadToString() + "," + sent.data.ToString("F0") + "," + sent.HeadToString() + "," +
-                            cpuUses.ToString("F2") + "," + avaMem.ToString() + "," + ac.HEAD_NORMAL[memHead] + "," + int.Parse(result) + "," +
+                            cpuUses.ToString("F2") + "," + avaMem.ToString() + "," + ac.HEAD_NORMAL[memHead] + "," + gpuValue + "," +
                             busyPer.ToString("F2") + LB;
                         LogManager.SetState(0, "正常");
                     }
