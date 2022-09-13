@@ -124,7 +124,6 @@ namespace Moni
             this.MinimizePic = new System.Windows.Forms.PictureBox();
             this.ClosePic = new System.Windows.Forms.PictureBox();
             this.GameLabel = new System.Windows.Forms.Label();
-            this.GameNameMover = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -1125,11 +1124,6 @@ namespace Moni
             this.GameLabel.TabIndex = 38;
             this.GameLabel.Text = "aaa";
             // 
-            // GameNameMover
-            // 
-            this.GameNameMover.Interval = 500;
-            this.GameNameMover.Tick += new System.EventHandler(this.GameNameMover_Tick);
-            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1277,7 +1271,6 @@ namespace Moni
         private System.Windows.Forms.PictureBox MinimizePic;
         private System.Windows.Forms.PictureBox ClosePic;
         private System.Windows.Forms.Label GameLabel;
-        private System.Windows.Forms.Timer GameNameMover;
     }
 }
 

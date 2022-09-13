@@ -16,6 +16,7 @@ namespace Moni
         private AnalyticsClass ac;
         private MoniTerminator mt = new MoniTerminator();
         private DateTime dt;
+        private Stopwatch gameTimer = new Stopwatch();
         private string nvidiaSmiFile;
         private const string LB = "\r\n";
         private int tellBef;
@@ -404,7 +405,7 @@ namespace Moni
                         GPULabel.Text = "GPU使用率: " + gpuValue + "(%)";
                         RedPic4.Width = (int)((float)gpuValue / 100.0f * redPicSize);
                     }
-                    if (gpuValue >= 80)
+                    if (gpuValue >= 90)
                     {
                         cwList[3].errorTimes++;
                         GPULabel.ForeColor = Color.Red;
@@ -504,19 +505,20 @@ namespace Moni
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
                 if (cwList[3].errorFlg || sameGameFlg)
                 {
+                    gameTimer.Start();
                     DateLabel.Top = 140;
                     if (!gameRunningFlg)
                     {
-                        GameLabel.Text = "ゲームを起動中: " + heavyName;
-                        GameLabel.Left = 191;
+                        GameLabel.Text = heavyName + "をプレイ中(" + gameTimer.ToString() + ")";
+                        GameLabel.Left = 10;
                         GameLabel.Top = 154;
-                        GameNameMover.Enabled = true;
                         gameRunningFlg = true;
+                        
                     }
                     //TODO 重いプロセスの記憶処理
                     try
                     {
-                        using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc"))
+                        using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc", true))
                         {
                             sw.WriteLine(gpuValue);
                         }
@@ -539,6 +541,7 @@ namespace Moni
                     DateLabel.Left = 1;
                     DateLabel.Top = 154;
                     GameLabel.Text = string.Empty;
+                    GameLabel.Top = 230;
                     gameRunningFlg = false;
                 }
 
@@ -1080,23 +1083,6 @@ namespace Moni
         private void ClosePic_MouseLeave(object sender, EventArgs e)
         {
             ClosePic.Image = null;
-        }
-
-        private void GameNameMover_Tick(object sender, EventArgs e)
-        {
-            if (gameRunningFlg)
-            {
-                GameLabel.Left -= 6;
-                if(GameLabel.Right <= 0)
-                {
-                    GameLabel.Left = 191;
-                }
-            }
-            else
-            {
-                GameLabel.Top = 230;
-                GameNameMover.Enabled = false;
-            }
         }
     }
 }
