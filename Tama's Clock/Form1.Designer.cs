@@ -1139,8 +1139,6 @@ namespace Moni
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moni";
-            this.Activated += new System.EventHandler(this.Clock_Activated);
-            this.Deactivate += new System.EventHandler(this.Clock_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();

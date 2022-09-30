@@ -1085,17 +1085,5 @@ namespace Moni
         {
             ClosePic.Image = null;
         }
-
-        private void Clock_Activated(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            panel2.Visible = true;
-        }
-
-        private void Clock_Deactivate(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
-            panel2.Visible = false;
-        }
     }
 }
