@@ -97,8 +97,8 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.LedPanel = new System.Windows.Forms.Panel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.LedPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LoadPic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -914,14 +914,6 @@ namespace Moni
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
             // 
-            // LedPanel
-            // 
-            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LedPanel.Location = new System.Drawing.Point(191, 155);
-            this.LedPanel.Name = "LedPanel";
-            this.LedPanel.Size = new System.Drawing.Size(10, 10);
-            this.LedPanel.TabIndex = 25;
-            // 
             // vScrollBar1
             // 
             this.vScrollBar1.LargeChange = 50;
@@ -932,6 +924,14 @@ namespace Moni
             this.vScrollBar1.SmallChange = 30;
             this.vScrollBar1.TabIndex = 32;
             this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
+            // 
+            // LedPanel
+            // 
+            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LedPanel.Location = new System.Drawing.Point(191, 155);
+            this.LedPanel.Name = "LedPanel";
+            this.LedPanel.Size = new System.Drawing.Size(10, 10);
+            this.LedPanel.TabIndex = 25;
             // 
             // panel2
             // 
@@ -1127,9 +1127,10 @@ namespace Moni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 1061);
+            this.ClientSize = new System.Drawing.Size(471, 781);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -1138,6 +1139,8 @@ namespace Moni
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moni";
+            this.Activated += new System.EventHandler(this.Clock_Activated);
+            this.Deactivate += new System.EventHandler(this.Clock_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();

@@ -65,7 +65,6 @@ C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\bin\x64\Debug\BouncyCastle.Crypto.
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\bin\x64\Debug\System.Buffers.dll
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\bin\x64\Debug\System.ValueTuple.dll
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.csproj.AssemblyReference.cache
-C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.csproj.SuggestedBindingRedirects.cache
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Interop.IWshRuntimeLibrary.dll
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.csproj.ResolveComReference.cache
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.Clock.resources
