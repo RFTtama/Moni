@@ -78,3 +78,4 @@ C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.csproj.CopyComp
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.exe
 C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.pdb
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Debug\Newtonsoft.Json.dll
+C:\Users\rft_k\Source\Repos\Moni\Tama's Clock\obj\x64\Debug\Moni.csproj.SuggestedBindingRedirects.cache

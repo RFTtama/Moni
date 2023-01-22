@@ -1,1 +1,1 @@
-C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_47917a79b8c7fd22\nvidia-smi.exe
+C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_f840d03a202f8a32\nvidia-smi.exe

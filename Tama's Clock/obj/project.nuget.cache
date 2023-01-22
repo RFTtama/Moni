@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wypnUzvJlN8f3rbeO54kqx9WKc96WW9ESb/ZjrOVmHwGg/kUnFsnzVlbQAiDKvceLao7NhYF9YDq+O42fGVGIA==",
+  "dgSpecHash": "KxT3YUwuzoWfDo7YNIj9c2jied8Kcuq5hmOvTaVI6HDAbt+7goMoUUz3c649osqA300HPuanpFPsuziEL1ncUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rft_k\\Source\\Repos\\Moni\\Tama's Clock\\Moni.csproj",
+  "projectFilePath": "C:\\Users\\rft_k\\source\\repos\\Moni\\Tama's Clock\\Moni.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rft_k\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
     "C:\\Users\\rft_k\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.0\\microsoft.netframework.referenceassemblies.net472.1.0.0.nupkg.sha512",
