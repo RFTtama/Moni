@@ -171,7 +171,8 @@ namespace Moni
                     }
 
                     //実行パス
-                    string targetPath = Application.ExecutablePath;
+                    //string targetPath = Application.ExecutablePath;
+                    string targetPath = Path.GetFullPath(@"./MoniInstaller.exe"); 
 
                     //WshShell
                     IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
