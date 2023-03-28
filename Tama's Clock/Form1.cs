@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using Windows.ApplicationModel.UserDataTasks.DataProvider;
 
 namespace Moni
 {
@@ -1177,6 +1176,20 @@ namespace Moni
                     UpdatePanel.Left = -147;
                     UpdateAlert.Enabled = false;
                 }
+            }
+        }
+
+        private void Clock_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                Process proc = new Process();
+
+                proc.StartInfo.FileName = @"MoniInstaller.exe";
+                proc.Start();
+            }catch (Exception ex)
+            {
+                ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
             }
         }
     }

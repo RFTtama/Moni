@@ -926,7 +926,7 @@ namespace Moni
             this.UpdatePanel.BackColor = System.Drawing.Color.PapayaWhip;
             this.UpdatePanel.Controls.Add(this.label7);
             this.UpdatePanel.Controls.Add(this.pictureBox3);
-            this.UpdatePanel.Location = new System.Drawing.Point(-47, 34);
+            this.UpdatePanel.Location = new System.Drawing.Point(-147, 34);
             this.UpdatePanel.Name = "UpdatePanel";
             this.UpdatePanel.Size = new System.Drawing.Size(181, 31);
             this.UpdatePanel.TabIndex = 39;
@@ -937,11 +937,11 @@ namespace Moni
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 10);
+            this.label7.Location = new System.Drawing.Point(12, 4);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 12);
+            this.label7.Size = new System.Drawing.Size(139, 24);
             this.label7.TabIndex = 41;
-            this.label7.Text = "新しいバージョンが利用可能";
+            this.label7.Text = "新しいバージョンが利用可能\r\n再起動で更新";
             this.label7.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
             this.label7.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
             // 
@@ -1188,6 +1188,7 @@ namespace Moni
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moni";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clock_FormClosed);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).EndInit();
