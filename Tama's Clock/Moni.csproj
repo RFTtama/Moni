@@ -161,6 +161,7 @@
   <ItemGroup>
     <Content Include="209ed26c69ba8dbdba7821845f561a03_xxo.ico" />
     <Content Include="icon.ico" />
+    <None Include="Resources\bikkuri.png" />
     <None Include="Resources\net.png" />
     <None Include="Resources\batu.png" />
     <None Include="Resources\load0.png" />
