@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Windows.ApplicationModel.UserDataTasks.DataProvider;
 
 namespace Moni
 {
@@ -46,6 +47,57 @@ namespace Moni
             {
                 Splash.desc.Text = "Initializing...";
                 InitializeComponent();
+
+                try
+                {
+                    Splash.desc.Text = "Updating...";
+                    Process p = new Process();
+
+                    p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+
+                    //シェル機能を使用しない
+                    p.StartInfo.UseShellExecute = false;
+                    //標準出力をリダイレクト
+                    p.StartInfo.RedirectStandardOutput = true;
+                    //コンソールウィンドウを開かない
+                    p.StartInfo.CreateNoWindow = true;
+
+                    //コマンド
+                    p.StartInfo.Arguments = @"/c git clone https://github.com/RFTtama/Moni-released.git MoniInstallCache";
+                    //p.StartInfo.Arguments = @"/c dir c:\ /w";
+
+                    p.Start();
+
+                    string output = p.StandardOutput.ReadToEnd();
+
+                    p.Close();
+
+                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@"./MoniInstallCache/Moni.exe");
+                    string  newVersionStr = fileInfo.FileVersion;
+
+                    FileVersionInfo version = FileVersionInfo.GetVersionInfo(
+                            System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                    string oldVersionStr = version.ToString();
+
+                    if (newVersionStr != oldVersionStr)
+                    {
+                        UpdatePanel.Visible = true;
+                    }
+                    else
+                    {
+                        DirectoryInfo dirInfo = new DirectoryInfo(@"./MoniInstallCache");
+
+                        DirectoryManager.RemoveReadonlyAttribute(dirInfo);
+
+                        dirInfo.Delete(true);
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorLog.ErrorOutput("更新確認エラー", ex + ex.Message, true);
+                }
 
                 Splash.desc.Text = "Setting Monis shape...";
                 LogManager.LogManagerConstructor(this);
@@ -177,7 +229,7 @@ namespace Moni
             }
             catch(Exception ex)
             {
-                ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + "" + ex.Message, true);
+                ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
             }
         }
@@ -1084,6 +1136,48 @@ namespace Moni
         private void ClosePic_MouseLeave(object sender, EventArgs e)
         {
             ClosePic.Image = null;
+        }
+
+        private bool updateSlideRight = true;
+
+        private void UpdatePanel_MouseEnter(object sender, EventArgs e)
+        {
+            updateSlideRight = true;
+            UpdateAlert.Enabled = true;
+        }
+
+        private void UpdatePanel_MouseLeave(object sender, EventArgs e)
+        {
+            updateSlideRight = false;
+            UpdateAlert.Enabled = true;
+        }
+
+        private void UpdateAlert_Tick(object sender, EventArgs e)
+        {
+            if (updateSlideRight)
+            {
+                if(UpdatePanel.Left < 0)
+                {
+                    UpdatePanel.Left += 3;
+                }
+                else
+                {
+                    UpdatePanel.Left = 0;
+                    UpdateAlert.Enabled = false;
+                }
+            }
+            else
+            {
+                if(UpdatePanel.Left > -147)
+                {
+                    UpdatePanel.Left -= 3;
+                }
+                else
+                {
+                    UpdatePanel.Left = -147;
+                    UpdateAlert.Enabled = false;
+                }
+            }
         }
     }
 }

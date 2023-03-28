@@ -101,6 +101,7 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdatePanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MemUsingPic = new System.Windows.Forms.PictureBox();
             this.StartupPic = new System.Windows.Forms.PictureBox();
@@ -126,7 +127,7 @@ namespace Moni
             this.MinimizePic = new System.Windows.Forms.PictureBox();
             this.ClosePic = new System.Windows.Forms.PictureBox();
             this.FacePic = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             this.AlarmPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursUD)).BeginInit();
@@ -872,20 +873,36 @@ namespace Moni
             this.UpdatePanel.BackColor = System.Drawing.Color.PapayaWhip;
             this.UpdatePanel.Controls.Add(this.label7);
             this.UpdatePanel.Controls.Add(this.pictureBox3);
-            this.UpdatePanel.Location = new System.Drawing.Point(0, 364);
+            this.UpdatePanel.Location = new System.Drawing.Point(-147, 34);
             this.UpdatePanel.Name = "UpdatePanel";
-            this.UpdatePanel.Size = new System.Drawing.Size(192, 31);
+            this.UpdatePanel.Size = new System.Drawing.Size(181, 31);
             this.UpdatePanel.TabIndex = 39;
+            this.UpdatePanel.Visible = false;
+            this.UpdatePanel.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.UpdatePanel.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 12);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "新しいバージョンが利用可能";
+            this.label7.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.label7.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Moni.Properties.Resources.bikkuri;
-            this.pictureBox3.Location = new System.Drawing.Point(157, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(145, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(36, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 40;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.pictureBox3.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
             // 
             // MemUsingPic
             // 
@@ -1149,14 +1166,10 @@ namespace Moni
             this.FacePic.TabStop = false;
             this.FacePic.Click += new System.EventHandler(this.FacePic_Click);
             // 
-            // label7
+            // UpdateAlert
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 12);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "新しいバージョンがあります";
+            this.UpdateAlert.Interval = 10;
+            this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
             // Clock
             // 
@@ -1312,6 +1325,7 @@ namespace Moni
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel UpdatePanel;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer UpdateAlert;
     }
 }
 

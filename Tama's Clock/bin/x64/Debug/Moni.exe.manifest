@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Moni" version="1.2.5.2" language="neutral" processorArchitecture="amd64" />
+    <assemblyIdentity name="Moni" version="1.2.6.0" language="neutral" processorArchitecture="amd64" />
     <commandLine file="Moni.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Moni.exe" size="323544">
-      <assemblyIdentity name="Moni" version="1.2.5.2" language="neutral" processorArchitecture="amd64" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Moni.exe" size="327128">
+      <assemblyIdentity name="Moni" version="1.2.6.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5iLeKoiHqCPb940++NXqn0yrch9jKKHB1AD7Q0hstR8=</dsig:DigestValue>
+        <dsig:DigestValue>EJDjuY22LglReQYJjh7NjlhOEckEkYDN0luZIDgnisU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
