@@ -36,17 +36,26 @@ namespace Moni
             this.DateLabel = new System.Windows.Forms.Label();
             this.SecondLabel = new System.Windows.Forms.Label();
             this.HelpPanel = new System.Windows.Forms.Panel();
+            this.MemUsingPic = new System.Windows.Forms.PictureBox();
             this.SaveStyleUD = new System.Windows.Forms.DomainUpDown();
+            this.StartupPic = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.AlarmPanel = new System.Windows.Forms.Panel();
             this.HoursUD = new System.Windows.Forms.NumericUpDown();
             this.MinutesUD = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.NetPic = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.DataSizeLabel = new System.Windows.Forms.Label();
             this.SaveDayUD = new System.Windows.Forms.DomainUpDown();
             this.label10 = new System.Windows.Forms.Label();
+            this.OverallRed = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.BusyRed = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.ActiveRed = new System.Windows.Forms.PictureBox();
+            this.ActivePic = new System.Windows.Forms.PictureBox();
             this.SummaryOverall = new System.Windows.Forms.Label();
             this.SummaryBusy = new System.Windows.Forms.Label();
             this.SummaryActive = new System.Windows.Forms.Label();
@@ -57,32 +66,50 @@ namespace Moni
             this.LogUpdateLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DriveUD = new System.Windows.Forms.DomainUpDown();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Sent = new System.Windows.Forms.Label();
             this.NetName = new System.Windows.Forms.Label();
             this.AlarmBox = new System.Windows.Forms.CheckBox();
+            this.RedPic2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.RedPic5 = new System.Windows.Forms.PictureBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.StateLabel = new System.Windows.Forms.Label();
+            this.BluePic5 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.BusyLabel = new System.Windows.Forms.Label();
             this.DescBox = new System.Windows.Forms.TextBox();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.RedPic4 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.BluePic4 = new System.Windows.Forms.PictureBox();
+            this.RedPic3 = new System.Windows.Forms.PictureBox();
             this.GPULabel = new System.Windows.Forms.Label();
             this.Received = new System.Windows.Forms.Label();
             this.CPULabel = new System.Windows.Forms.Label();
             this.MaxMemLabel = new System.Windows.Forms.Label();
+            this.BluePic3 = new System.Windows.Forms.PictureBox();
+            this.BluePic2 = new System.Windows.Forms.PictureBox();
             this.MemoryLabel = new System.Windows.Forms.Label();
+            this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UpdatePanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.LedPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.LoadPic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NewsLabel = new System.Windows.Forms.Label();
+            this.MinimizePic = new System.Windows.Forms.PictureBox();
+            this.ClosePic = new System.Windows.Forms.PictureBox();
             this.GameLabel = new System.Windows.Forms.Label();
+            this.FacePic = new System.Windows.Forms.PictureBox();
             this.FaceMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.顔色変更ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.メニュー切り替えToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,44 +127,13 @@ namespace Moni
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.UpdatePanel = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.MemUsingPic = new System.Windows.Forms.PictureBox();
-            this.StartupPic = new System.Windows.Forms.PictureBox();
-            this.NetPic = new System.Windows.Forms.PictureBox();
-            this.OverallRed = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.BusyRed = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.ActiveRed = new System.Windows.Forms.PictureBox();
-            this.ActivePic = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.RedPic2 = new System.Windows.Forms.PictureBox();
-            this.RedPic5 = new System.Windows.Forms.PictureBox();
-            this.BluePic5 = new System.Windows.Forms.PictureBox();
-            this.RedPic4 = new System.Windows.Forms.PictureBox();
-            this.BluePic4 = new System.Windows.Forms.PictureBox();
-            this.RedPic3 = new System.Windows.Forms.PictureBox();
-            this.BluePic3 = new System.Windows.Forms.PictureBox();
-            this.BluePic2 = new System.Windows.Forms.PictureBox();
-            this.PpmsPic = new System.Windows.Forms.PictureBox();
-            this.LoadPic = new System.Windows.Forms.PictureBox();
-            this.MinimizePic = new System.Windows.Forms.PictureBox();
-            this.ClosePic = new System.Windows.Forms.PictureBox();
-            this.FacePic = new System.Windows.Forms.PictureBox();
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
             this.AlarmPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesUD)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.FaceMenuStrip.SuspendLayout();
-            this.UpdatePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverallRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -156,10 +152,14 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.BluePic3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BluePic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.UpdatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
+            this.FaceMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TimeLabel
@@ -262,6 +262,16 @@ namespace Moni
             this.HelpPanel.Size = new System.Drawing.Size(204, 889);
             this.HelpPanel.TabIndex = 5;
             // 
+            // MemUsingPic
+            // 
+            this.MemUsingPic.Image = global::Moni.Properties.Resources.face_0;
+            this.MemUsingPic.Location = new System.Drawing.Point(171, 185);
+            this.MemUsingPic.Name = "MemUsingPic";
+            this.MemUsingPic.Size = new System.Drawing.Size(20, 20);
+            this.MemUsingPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MemUsingPic.TabIndex = 84;
+            this.MemUsingPic.TabStop = false;
+            // 
             // SaveStyleUD
             // 
             this.SaveStyleUD.Items.Add("スピード");
@@ -276,6 +286,18 @@ namespace Moni
         "タ\r\n\r\n性能\r\nコンピュータに負荷をかけず診断を終わらせるよう設定します\r\n・ログデータが多いほど診断にかかる時間が増加します\r\n推奨 - 一般的なすべてのコ" +
         "ンピュータ");
             this.SaveStyleUD.SelectedItemChanged += new System.EventHandler(this.SaveStyleUD_SelectedItemChanged);
+            // 
+            // StartupPic
+            // 
+            this.StartupPic.Image = global::Moni.Properties.Resources.windows;
+            this.StartupPic.Location = new System.Drawing.Point(167, 69);
+            this.StartupPic.Name = "StartupPic";
+            this.StartupPic.Size = new System.Drawing.Size(20, 20);
+            this.StartupPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.StartupPic.TabIndex = 83;
+            this.StartupPic.TabStop = false;
+            this.toolTip1.SetToolTip(this.StartupPic, "スタートアップの登録を切り替えます");
+            this.StartupPic.Click += new System.EventHandler(this.スタートアップに指定ToolStripMenuItem_Click);
             // 
             // label11
             // 
@@ -342,6 +364,18 @@ namespace Moni
             this.label5.TabIndex = 38;
             this.label5.Text = "分";
             // 
+            // NetPic
+            // 
+            this.NetPic.Image = global::Moni.Properties.Resources.net;
+            this.NetPic.Location = new System.Drawing.Point(167, 46);
+            this.NetPic.Name = "NetPic";
+            this.NetPic.Size = new System.Drawing.Size(20, 20);
+            this.NetPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.NetPic.TabIndex = 81;
+            this.NetPic.TabStop = false;
+            this.toolTip1.SetToolTip(this.NetPic, "Moniの最新情報を確認します");
+            this.NetPic.Click += new System.EventHandler(this.NetPic_Click);
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -393,6 +427,66 @@ namespace Moni
             this.label10.Size = new System.Drawing.Size(71, 12);
             this.label10.TabIndex = 74;
             this.label10.Text = "ログ保存日数";
+            // 
+            // OverallRed
+            // 
+            this.OverallRed.Image = global::Moni.Properties.Resources.red;
+            this.OverallRed.Location = new System.Drawing.Point(6, 635);
+            this.OverallRed.Name = "OverallRed";
+            this.OverallRed.Size = new System.Drawing.Size(132, 10);
+            this.OverallRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OverallRed.TabIndex = 72;
+            this.OverallRed.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Moni.Properties.Resources.blue;
+            this.pictureBox5.Location = new System.Drawing.Point(6, 635);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(132, 10);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 73;
+            this.pictureBox5.TabStop = false;
+            // 
+            // BusyRed
+            // 
+            this.BusyRed.Image = global::Moni.Properties.Resources.red;
+            this.BusyRed.Location = new System.Drawing.Point(7, 600);
+            this.BusyRed.Name = "BusyRed";
+            this.BusyRed.Size = new System.Drawing.Size(132, 10);
+            this.BusyRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BusyRed.TabIndex = 70;
+            this.BusyRed.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Moni.Properties.Resources.blue;
+            this.pictureBox4.Location = new System.Drawing.Point(7, 600);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(132, 10);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 71;
+            this.pictureBox4.TabStop = false;
+            // 
+            // ActiveRed
+            // 
+            this.ActiveRed.Image = global::Moni.Properties.Resources.red;
+            this.ActiveRed.Location = new System.Drawing.Point(7, 568);
+            this.ActiveRed.Name = "ActiveRed";
+            this.ActiveRed.Size = new System.Drawing.Size(132, 10);
+            this.ActiveRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ActiveRed.TabIndex = 68;
+            this.ActiveRed.TabStop = false;
+            // 
+            // ActivePic
+            // 
+            this.ActivePic.Image = global::Moni.Properties.Resources.blue;
+            this.ActivePic.Location = new System.Drawing.Point(7, 568);
+            this.ActivePic.Name = "ActivePic";
+            this.ActivePic.Size = new System.Drawing.Size(132, 10);
+            this.ActivePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ActivePic.TabIndex = 69;
+            this.ActivePic.TabStop = false;
             // 
             // SummaryOverall
             // 
@@ -494,6 +588,28 @@ namespace Moni
             this.toolTip1.SetToolTip(this.DriveUD, "指定したドライブの情報を表示します");
             this.DriveUD.SelectedItemChanged += new System.EventHandler(this.DriveUD_SelectedItemChanged);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Moni.Properties.Resources.downArrow;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 314);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "下り(受信)の通信速度です");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Moni.Properties.Resources.upArrow;
+            this.pictureBox1.Location = new System.Drawing.Point(99, 314);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "上り(送信)の通信速度です");
+            // 
             // Sent
             // 
             this.Sent.AutoSize = true;
@@ -526,6 +642,17 @@ namespace Moni
             this.AlarmBox.UseVisualStyleBackColor = true;
             this.AlarmBox.CheckedChanged += new System.EventHandler(this.AlarmBox_CheckedChanged);
             // 
+            // RedPic2
+            // 
+            this.RedPic2.Image = global::Moni.Properties.Resources.red;
+            this.RedPic2.Location = new System.Drawing.Point(4, 174);
+            this.RedPic2.Name = "RedPic2";
+            this.RedPic2.Size = new System.Drawing.Size(132, 10);
+            this.RedPic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RedPic2.TabIndex = 11;
+            this.RedPic2.TabStop = false;
+            this.toolTip1.SetToolTip(this.RedPic2, "CPUの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -535,6 +662,17 @@ namespace Moni
             this.label3.Size = new System.Drawing.Size(31, 12);
             this.label3.TabIndex = 33;
             this.label3.Text = "情報";
+            // 
+            // RedPic5
+            // 
+            this.RedPic5.Image = global::Moni.Properties.Resources.red;
+            this.RedPic5.Location = new System.Drawing.Point(4, 277);
+            this.RedPic5.Name = "RedPic5";
+            this.RedPic5.Size = new System.Drawing.Size(132, 10);
+            this.RedPic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RedPic5.TabIndex = 27;
+            this.RedPic5.TabStop = false;
+            this.toolTip1.SetToolTip(this.RedPic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
             // 
             // checkBox3
             // 
@@ -556,6 +694,17 @@ namespace Moni
             this.StateLabel.Size = new System.Drawing.Size(48, 12);
             this.StateLabel.TabIndex = 30;
             this.StateLabel.Text = "情報なし";
+            // 
+            // BluePic5
+            // 
+            this.BluePic5.Image = global::Moni.Properties.Resources.blue;
+            this.BluePic5.Location = new System.Drawing.Point(4, 277);
+            this.BluePic5.Name = "BluePic5";
+            this.BluePic5.Size = new System.Drawing.Size(132, 10);
+            this.BluePic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BluePic5.TabIndex = 28;
+            this.BluePic5.TabStop = false;
+            this.toolTip1.SetToolTip(this.BluePic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
             // 
             // label2
             // 
@@ -618,6 +767,17 @@ namespace Moni
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // RedPic4
+            // 
+            this.RedPic4.Image = global::Moni.Properties.Resources.red;
+            this.RedPic4.Location = new System.Drawing.Point(4, 241);
+            this.RedPic4.Name = "RedPic4";
+            this.RedPic4.Size = new System.Drawing.Size(132, 10);
+            this.RedPic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RedPic4.TabIndex = 23;
+            this.RedPic4.TabStop = false;
+            this.toolTip1.SetToolTip(this.RedPic4, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -627,6 +787,28 @@ namespace Moni
             this.label1.Size = new System.Drawing.Size(31, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "設定";
+            // 
+            // BluePic4
+            // 
+            this.BluePic4.Image = global::Moni.Properties.Resources.blue;
+            this.BluePic4.Location = new System.Drawing.Point(4, 241);
+            this.BluePic4.Name = "BluePic4";
+            this.BluePic4.Size = new System.Drawing.Size(132, 10);
+            this.BluePic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BluePic4.TabIndex = 24;
+            this.BluePic4.TabStop = false;
+            this.toolTip1.SetToolTip(this.BluePic4, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
+            // 
+            // RedPic3
+            // 
+            this.RedPic3.Image = global::Moni.Properties.Resources.red;
+            this.RedPic3.Location = new System.Drawing.Point(4, 207);
+            this.RedPic3.Name = "RedPic3";
+            this.RedPic3.Size = new System.Drawing.Size(132, 10);
+            this.RedPic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RedPic3.TabIndex = 14;
+            this.RedPic3.TabStop = false;
+            this.toolTip1.SetToolTip(this.RedPic3, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
             // 
             // GPULabel
             // 
@@ -668,6 +850,28 @@ namespace Moni
             this.MaxMemLabel.Text = "取得中";
             this.toolTip1.SetToolTip(this.MaxMemLabel, "コンピュータの最大メモリです");
             // 
+            // BluePic3
+            // 
+            this.BluePic3.Image = global::Moni.Properties.Resources.blue;
+            this.BluePic3.Location = new System.Drawing.Point(4, 207);
+            this.BluePic3.Name = "BluePic3";
+            this.BluePic3.Size = new System.Drawing.Size(132, 10);
+            this.BluePic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BluePic3.TabIndex = 15;
+            this.BluePic3.TabStop = false;
+            this.toolTip1.SetToolTip(this.BluePic3, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
+            // 
+            // BluePic2
+            // 
+            this.BluePic2.Image = global::Moni.Properties.Resources.blue;
+            this.BluePic2.Location = new System.Drawing.Point(4, 174);
+            this.BluePic2.Name = "BluePic2";
+            this.BluePic2.Size = new System.Drawing.Size(132, 10);
+            this.BluePic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BluePic2.TabIndex = 12;
+            this.BluePic2.TabStop = false;
+            this.toolTip1.SetToolTip(this.BluePic2, "CPUの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
+            // 
             // MemoryLabel
             // 
             this.MemoryLabel.AutoSize = true;
@@ -677,6 +881,17 @@ namespace Moni
             this.MemoryLabel.TabIndex = 13;
             this.MemoryLabel.Text = "リソース取得中…";
             this.toolTip1.SetToolTip(this.MemoryLabel, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
+            // 
+            // PpmsPic
+            // 
+            this.PpmsPic.Image = global::Moni.Properties.Resources.grade;
+            this.PpmsPic.Location = new System.Drawing.Point(167, 23);
+            this.PpmsPic.Name = "PpmsPic";
+            this.PpmsPic.Size = new System.Drawing.Size(20, 20);
+            this.PpmsPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PpmsPic.TabIndex = 79;
+            this.PpmsPic.TabStop = false;
+            this.toolTip1.SetToolTip(this.PpmsPic, "更新を待ってください");
             // 
             // ResourceTimer
             // 
@@ -706,6 +921,42 @@ namespace Moni
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
             // 
+            // UpdatePanel
+            // 
+            this.UpdatePanel.BackColor = System.Drawing.Color.PapayaWhip;
+            this.UpdatePanel.Controls.Add(this.label7);
+            this.UpdatePanel.Controls.Add(this.pictureBox3);
+            this.UpdatePanel.Location = new System.Drawing.Point(-47, 34);
+            this.UpdatePanel.Name = "UpdatePanel";
+            this.UpdatePanel.Size = new System.Drawing.Size(181, 31);
+            this.UpdatePanel.TabIndex = 39;
+            this.UpdatePanel.Visible = false;
+            this.UpdatePanel.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.UpdatePanel.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 12);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "新しいバージョンが利用可能";
+            this.label7.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.label7.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Moni.Properties.Resources.bikkuri;
+            this.pictureBox3.Location = new System.Drawing.Point(145, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(36, 31);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 40;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.pictureBox3.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
             // vScrollBar1
             // 
             this.vScrollBar1.LargeChange = 50;
@@ -734,6 +985,15 @@ namespace Moni
             this.panel2.TabIndex = 17;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
             // 
+            // LoadPic
+            // 
+            this.LoadPic.Location = new System.Drawing.Point(180, 4);
+            this.LoadPic.Name = "LoadPic";
+            this.LoadPic.Size = new System.Drawing.Size(20, 20);
+            this.LoadPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LoadPic.TabIndex = 35;
+            this.LoadPic.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
@@ -751,6 +1011,32 @@ namespace Moni
             this.NewsLabel.Size = new System.Drawing.Size(0, 11);
             this.NewsLabel.TabIndex = 36;
             // 
+            // MinimizePic
+            // 
+            this.MinimizePic.BackColor = System.Drawing.Color.Transparent;
+            this.MinimizePic.Location = new System.Drawing.Point(180, 48);
+            this.MinimizePic.Name = "MinimizePic";
+            this.MinimizePic.Size = new System.Drawing.Size(20, 20);
+            this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MinimizePic.TabIndex = 34;
+            this.MinimizePic.TabStop = false;
+            this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
+            this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
+            this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
+            // 
+            // ClosePic
+            // 
+            this.ClosePic.BackColor = System.Drawing.Color.Transparent;
+            this.ClosePic.Location = new System.Drawing.Point(180, 26);
+            this.ClosePic.Name = "ClosePic";
+            this.ClosePic.Size = new System.Drawing.Size(20, 20);
+            this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ClosePic.TabIndex = 33;
+            this.ClosePic.TabStop = false;
+            this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
+            this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
+            this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
+            // 
             // GameLabel
             // 
             this.GameLabel.AutoSize = true;
@@ -759,6 +1045,18 @@ namespace Moni
             this.GameLabel.Name = "GameLabel";
             this.GameLabel.Size = new System.Drawing.Size(0, 12);
             this.GameLabel.TabIndex = 38;
+            // 
+            // FacePic
+            // 
+            this.FacePic.ContextMenuStrip = this.FaceMenuStrip;
+            this.FacePic.Image = global::Moni.Properties.Resources.face_1;
+            this.FacePic.Location = new System.Drawing.Point(11, 7);
+            this.FacePic.Name = "FacePic";
+            this.FacePic.Size = new System.Drawing.Size(181, 170);
+            this.FacePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.FacePic.TabIndex = 31;
+            this.FacePic.TabStop = false;
+            this.FacePic.Click += new System.EventHandler(this.FacePic_Click);
             // 
             // FaceMenuStrip
             // 
@@ -868,304 +1166,6 @@ namespace Moni
             this.resourceUpdateTimer.Interval = 300000;
             this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
             // 
-            // UpdatePanel
-            // 
-            this.UpdatePanel.BackColor = System.Drawing.Color.PapayaWhip;
-            this.UpdatePanel.Controls.Add(this.label7);
-            this.UpdatePanel.Controls.Add(this.pictureBox3);
-            this.UpdatePanel.Location = new System.Drawing.Point(-147, 34);
-            this.UpdatePanel.Name = "UpdatePanel";
-            this.UpdatePanel.Size = new System.Drawing.Size(181, 31);
-            this.UpdatePanel.TabIndex = 39;
-            this.UpdatePanel.Visible = false;
-            this.UpdatePanel.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
-            this.UpdatePanel.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 12);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "新しいバージョンが利用可能";
-            this.label7.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
-            this.label7.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Moni.Properties.Resources.bikkuri;
-            this.pictureBox3.Location = new System.Drawing.Point(145, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(36, 31);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 40;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
-            this.pictureBox3.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
-            // 
-            // MemUsingPic
-            // 
-            this.MemUsingPic.Image = global::Moni.Properties.Resources.face_0;
-            this.MemUsingPic.Location = new System.Drawing.Point(171, 185);
-            this.MemUsingPic.Name = "MemUsingPic";
-            this.MemUsingPic.Size = new System.Drawing.Size(20, 20);
-            this.MemUsingPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MemUsingPic.TabIndex = 84;
-            this.MemUsingPic.TabStop = false;
-            // 
-            // StartupPic
-            // 
-            this.StartupPic.Image = global::Moni.Properties.Resources.windows;
-            this.StartupPic.Location = new System.Drawing.Point(167, 69);
-            this.StartupPic.Name = "StartupPic";
-            this.StartupPic.Size = new System.Drawing.Size(20, 20);
-            this.StartupPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.StartupPic.TabIndex = 83;
-            this.StartupPic.TabStop = false;
-            this.toolTip1.SetToolTip(this.StartupPic, "スタートアップの登録を切り替えます");
-            this.StartupPic.Click += new System.EventHandler(this.スタートアップに指定ToolStripMenuItem_Click);
-            // 
-            // NetPic
-            // 
-            this.NetPic.Image = global::Moni.Properties.Resources.net;
-            this.NetPic.Location = new System.Drawing.Point(167, 46);
-            this.NetPic.Name = "NetPic";
-            this.NetPic.Size = new System.Drawing.Size(20, 20);
-            this.NetPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.NetPic.TabIndex = 81;
-            this.NetPic.TabStop = false;
-            this.toolTip1.SetToolTip(this.NetPic, "Moniの最新情報を確認します");
-            this.NetPic.Click += new System.EventHandler(this.NetPic_Click);
-            // 
-            // OverallRed
-            // 
-            this.OverallRed.Image = global::Moni.Properties.Resources.red;
-            this.OverallRed.Location = new System.Drawing.Point(6, 635);
-            this.OverallRed.Name = "OverallRed";
-            this.OverallRed.Size = new System.Drawing.Size(132, 10);
-            this.OverallRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.OverallRed.TabIndex = 72;
-            this.OverallRed.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Moni.Properties.Resources.blue;
-            this.pictureBox5.Location = new System.Drawing.Point(6, 635);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(132, 10);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 73;
-            this.pictureBox5.TabStop = false;
-            // 
-            // BusyRed
-            // 
-            this.BusyRed.Image = global::Moni.Properties.Resources.red;
-            this.BusyRed.Location = new System.Drawing.Point(7, 600);
-            this.BusyRed.Name = "BusyRed";
-            this.BusyRed.Size = new System.Drawing.Size(132, 10);
-            this.BusyRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.BusyRed.TabIndex = 70;
-            this.BusyRed.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Moni.Properties.Resources.blue;
-            this.pictureBox4.Location = new System.Drawing.Point(7, 600);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(132, 10);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 71;
-            this.pictureBox4.TabStop = false;
-            // 
-            // ActiveRed
-            // 
-            this.ActiveRed.Image = global::Moni.Properties.Resources.red;
-            this.ActiveRed.Location = new System.Drawing.Point(7, 568);
-            this.ActiveRed.Name = "ActiveRed";
-            this.ActiveRed.Size = new System.Drawing.Size(132, 10);
-            this.ActiveRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ActiveRed.TabIndex = 68;
-            this.ActiveRed.TabStop = false;
-            // 
-            // ActivePic
-            // 
-            this.ActivePic.Image = global::Moni.Properties.Resources.blue;
-            this.ActivePic.Location = new System.Drawing.Point(7, 568);
-            this.ActivePic.Name = "ActivePic";
-            this.ActivePic.Size = new System.Drawing.Size(132, 10);
-            this.ActivePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ActivePic.TabIndex = 69;
-            this.ActivePic.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Moni.Properties.Resources.downArrow;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 314);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, "下り(受信)の通信速度です");
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Moni.Properties.Resources.upArrow;
-            this.pictureBox1.Location = new System.Drawing.Point(99, 314);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "上り(送信)の通信速度です");
-            // 
-            // RedPic2
-            // 
-            this.RedPic2.Image = global::Moni.Properties.Resources.red;
-            this.RedPic2.Location = new System.Drawing.Point(4, 174);
-            this.RedPic2.Name = "RedPic2";
-            this.RedPic2.Size = new System.Drawing.Size(132, 10);
-            this.RedPic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.RedPic2.TabIndex = 11;
-            this.RedPic2.TabStop = false;
-            this.toolTip1.SetToolTip(this.RedPic2, "CPUの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            // 
-            // RedPic5
-            // 
-            this.RedPic5.Image = global::Moni.Properties.Resources.red;
-            this.RedPic5.Location = new System.Drawing.Point(4, 277);
-            this.RedPic5.Name = "RedPic5";
-            this.RedPic5.Size = new System.Drawing.Size(132, 10);
-            this.RedPic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.RedPic5.TabIndex = 27;
-            this.RedPic5.TabStop = false;
-            this.toolTip1.SetToolTip(this.RedPic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
-            // 
-            // BluePic5
-            // 
-            this.BluePic5.Image = global::Moni.Properties.Resources.blue;
-            this.BluePic5.Location = new System.Drawing.Point(4, 277);
-            this.BluePic5.Name = "BluePic5";
-            this.BluePic5.Size = new System.Drawing.Size(132, 10);
-            this.BluePic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.BluePic5.TabIndex = 28;
-            this.BluePic5.TabStop = false;
-            this.toolTip1.SetToolTip(this.BluePic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
-            // 
-            // RedPic4
-            // 
-            this.RedPic4.Image = global::Moni.Properties.Resources.red;
-            this.RedPic4.Location = new System.Drawing.Point(4, 241);
-            this.RedPic4.Name = "RedPic4";
-            this.RedPic4.Size = new System.Drawing.Size(132, 10);
-            this.RedPic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.RedPic4.TabIndex = 23;
-            this.RedPic4.TabStop = false;
-            this.toolTip1.SetToolTip(this.RedPic4, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
-            // 
-            // BluePic4
-            // 
-            this.BluePic4.Image = global::Moni.Properties.Resources.blue;
-            this.BluePic4.Location = new System.Drawing.Point(4, 241);
-            this.BluePic4.Name = "BluePic4";
-            this.BluePic4.Size = new System.Drawing.Size(132, 10);
-            this.BluePic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.BluePic4.TabIndex = 24;
-            this.BluePic4.TabStop = false;
-            this.toolTip1.SetToolTip(this.BluePic4, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
-            // 
-            // RedPic3
-            // 
-            this.RedPic3.Image = global::Moni.Properties.Resources.red;
-            this.RedPic3.Location = new System.Drawing.Point(4, 207);
-            this.RedPic3.Name = "RedPic3";
-            this.RedPic3.Size = new System.Drawing.Size(132, 10);
-            this.RedPic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.RedPic3.TabIndex = 14;
-            this.RedPic3.TabStop = false;
-            this.toolTip1.SetToolTip(this.RedPic3, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            // 
-            // BluePic3
-            // 
-            this.BluePic3.Image = global::Moni.Properties.Resources.blue;
-            this.BluePic3.Location = new System.Drawing.Point(4, 207);
-            this.BluePic3.Name = "BluePic3";
-            this.BluePic3.Size = new System.Drawing.Size(132, 10);
-            this.BluePic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.BluePic3.TabIndex = 15;
-            this.BluePic3.TabStop = false;
-            this.toolTip1.SetToolTip(this.BluePic3, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            // 
-            // BluePic2
-            // 
-            this.BluePic2.Image = global::Moni.Properties.Resources.blue;
-            this.BluePic2.Location = new System.Drawing.Point(4, 174);
-            this.BluePic2.Name = "BluePic2";
-            this.BluePic2.Size = new System.Drawing.Size(132, 10);
-            this.BluePic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.BluePic2.TabIndex = 12;
-            this.BluePic2.TabStop = false;
-            this.toolTip1.SetToolTip(this.BluePic2, "CPUの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            // 
-            // PpmsPic
-            // 
-            this.PpmsPic.Image = global::Moni.Properties.Resources.grade;
-            this.PpmsPic.Location = new System.Drawing.Point(167, 23);
-            this.PpmsPic.Name = "PpmsPic";
-            this.PpmsPic.Size = new System.Drawing.Size(20, 20);
-            this.PpmsPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PpmsPic.TabIndex = 79;
-            this.PpmsPic.TabStop = false;
-            this.toolTip1.SetToolTip(this.PpmsPic, "更新を待ってください");
-            // 
-            // LoadPic
-            // 
-            this.LoadPic.Location = new System.Drawing.Point(180, 4);
-            this.LoadPic.Name = "LoadPic";
-            this.LoadPic.Size = new System.Drawing.Size(20, 20);
-            this.LoadPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LoadPic.TabIndex = 35;
-            this.LoadPic.TabStop = false;
-            // 
-            // MinimizePic
-            // 
-            this.MinimizePic.BackColor = System.Drawing.Color.Transparent;
-            this.MinimizePic.Location = new System.Drawing.Point(180, 48);
-            this.MinimizePic.Name = "MinimizePic";
-            this.MinimizePic.Size = new System.Drawing.Size(20, 20);
-            this.MinimizePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MinimizePic.TabIndex = 34;
-            this.MinimizePic.TabStop = false;
-            this.MinimizePic.Click += new System.EventHandler(this.MinimizePic_Click);
-            this.MinimizePic.MouseEnter += new System.EventHandler(this.MinimizePic_MouseEnter);
-            this.MinimizePic.MouseLeave += new System.EventHandler(this.MinimizePic_MouseLeave);
-            // 
-            // ClosePic
-            // 
-            this.ClosePic.BackColor = System.Drawing.Color.Transparent;
-            this.ClosePic.Location = new System.Drawing.Point(180, 26);
-            this.ClosePic.Name = "ClosePic";
-            this.ClosePic.Size = new System.Drawing.Size(20, 20);
-            this.ClosePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ClosePic.TabIndex = 33;
-            this.ClosePic.TabStop = false;
-            this.ClosePic.Click += new System.EventHandler(this.ClosePic_Click);
-            this.ClosePic.MouseEnter += new System.EventHandler(this.ClosePic_MouseEnter);
-            this.ClosePic.MouseLeave += new System.EventHandler(this.ClosePic_MouseLeave);
-            // 
-            // FacePic
-            // 
-            this.FacePic.ContextMenuStrip = this.FaceMenuStrip;
-            this.FacePic.Image = global::Moni.Properties.Resources.face_1;
-            this.FacePic.Location = new System.Drawing.Point(11, 7);
-            this.FacePic.Name = "FacePic";
-            this.FacePic.Size = new System.Drawing.Size(181, 170);
-            this.FacePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.FacePic.TabIndex = 31;
-            this.FacePic.TabStop = false;
-            this.FacePic.Click += new System.EventHandler(this.FacePic_Click);
-            // 
             // UpdateAlert
             // 
             this.UpdateAlert.Interval = 10;
@@ -1190,18 +1190,12 @@ namespace Moni
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).EndInit();
             this.AlarmPanel.ResumeLayout(false);
             this.AlarmPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesUD)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.FaceMenuStrip.ResumeLayout(false);
-            this.UpdatePanel.ResumeLayout(false);
-            this.UpdatePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverallRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1220,10 +1214,16 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.BluePic3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BluePic2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.UpdatePanel.ResumeLayout(false);
+            this.UpdatePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
+            this.FaceMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

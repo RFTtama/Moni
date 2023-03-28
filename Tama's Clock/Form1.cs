@@ -63,7 +63,7 @@ namespace Moni
                     p.StartInfo.CreateNoWindow = true;
 
                     //コマンド
-                    p.StartInfo.Arguments = @"/c git clone https://github.com/RFTtama/Moni-released.git MoniInstallCache";
+                    p.StartInfo.Arguments = @"/c git clone https://github.com/RFTtama/Moni-released.git MoniLatest";
                     //p.StartInfo.Arguments = @"/c dir c:\ /w";
 
                     p.Start();
@@ -72,7 +72,7 @@ namespace Moni
 
                     p.Close();
 
-                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@"./MoniInstallCache/Moni.exe");
+                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@"./MoniLatest/Moni.exe");
                     string  newVersionStr = fileInfo.FileVersion;
 
                     FileVersionInfo version = FileVersionInfo.GetVersionInfo(
@@ -86,7 +86,7 @@ namespace Moni
                     }
                     else
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(@"./MoniInstallCache");
+                        DirectoryInfo dirInfo = new DirectoryInfo(@"./MoniLatest");
 
                         DirectoryManager.RemoveReadonlyAttribute(dirInfo);
 
