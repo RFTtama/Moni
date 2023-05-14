@@ -251,6 +251,13 @@ namespace Moni
                                     {
                                         //ファイルにアクセスできるまで繰り返す
                                     }
+                                    //ログの異常
+                                    catch (System.FormatException)
+                                    {
+                                        //ログを修正する
+                                        FixLogDatas();
+                                        return;
+                                    }
                                 }
                             }
                         }
@@ -286,14 +293,14 @@ namespace Moni
                                             string str = sr.ReadLine();
                                             while (str != null)
                                             {
-                                                try
-                                                {
+                                                /*try
+                                                {*/
                                                     str.Replace(" ", "");
                                                     dts.Add(DateTime.Parse(date));
                                                     datas.Add(str);
                                                     str = sr.ReadLine();
                                                     process++;
-                                                }
+                                                /*}
                                                 catch (Exception)
                                                 {
                                                     if(datas[datas.Count - 1] == null)
@@ -301,7 +308,7 @@ namespace Moni
                                                         datas.RemoveAt(datas.Count - 1);
                                                         dts.RemoveAt(dts.Count - 1);
                                                     }
-                                                }
+                                                }*/
                                             }
                                         }
                                         break;
@@ -309,6 +316,13 @@ namespace Moni
                                     catch (UnauthorizedAccessException)
                                     {
                                         //ファイルにアクセスできるまで繰り返す
+                                    }
+                                    //ログの異常
+                                    catch (System.FormatException)
+                                    {
+                                        //ログを修正する
+                                        FixLogDatas();
+                                        return;
                                     }
                                 }
                             }
@@ -657,6 +671,14 @@ namespace Moni
                 }
             }
             return -1;
+        }
+
+        /// <summary>
+        /// ログデータを修正する
+        /// </summary>
+        private void FixLogDatas()
+        {
+
         }
     }
 
