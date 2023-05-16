@@ -47,6 +47,7 @@ namespace Moni
                 Splash.desc.Text = "Initializing...";
                 InitializeComponent();
 
+#if !DEBUG
                 try
                 {
                     Splash.desc.Text = "Updating...";
@@ -72,7 +73,7 @@ namespace Moni
                     p.Close();
 
                     FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@"./MoniLatest/Moni.exe");
-                    string  newVersionStr = fileInfo.FileVersion;
+                    string newVersionStr = fileInfo.FileVersion;
 
                     FileVersionInfo version = FileVersionInfo.GetVersionInfo(
                             System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -97,6 +98,7 @@ namespace Moni
                 {
                     ErrorLog.ErrorOutput("更新確認エラー", ex + ex.Message, true);
                 }
+#endif
 
                 Splash.desc.Text = "Setting Monis shape...";
                 LogManager.LogManagerConstructor(this);
