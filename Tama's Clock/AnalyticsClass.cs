@@ -104,7 +104,7 @@ namespace Moni
 
                     lvl.Text = "初期化中";
 
-                    string[] files;
+                    string[] logFileNames;
 
                     List<string> datas = new List<string>();
                     tryNum = 0;
@@ -124,8 +124,8 @@ namespace Moni
                     try
                     {
                         lvl.Text = "ファイル情報取得中";
-                        //ログフォルダにある全てのファイルを取得する
-                        files = Directory.GetFiles(
+                        //ログフォルダにある全てのファイル名を取得する
+                        logFileNames = Directory.GetFiles(
                                     @".\LogData\", "*.tc", SearchOption.AllDirectories);
                     }
                     catch (Exception ex)
@@ -154,11 +154,11 @@ namespace Moni
                         try
                         {
                             int cnt = 0;
-                            overallTry += files.Length;
-                            foreach (string file in files)
+                            overallTry += logFileNames.Length;
+                            foreach (string fileName in logFileNames)
                             {
                                 lvl.Text = "ログ取得中";
-                                string date = file.Replace("ResourcesLog", "");
+                                string date = fileName.Replace("ResourcesLog", "");
                                 date = date.Replace(".\\LogData\\", "");
                                 date = date.Replace(".tc", "");
                                 date = date.Replace("_", "/");
@@ -170,7 +170,7 @@ namespace Moni
                                     try
                                     {
                                         //ファイルからデータを取得する
-                                        using (StreamReader sr = new StreamReader(file))
+                                        using (StreamReader sr = new StreamReader(fileName))
                                         {
                                             stopwatch.Start();
                                             string str = sr.ReadLine();
@@ -272,11 +272,11 @@ namespace Moni
                     {
                         try
                         {
-                            overallTry += files.Length;
-                            foreach (string file in files)
+                            overallTry += logFileNames.Length;
+                            foreach (string fileName in logFileNames)
                             {
                                 lvl.Text = "ログ取得中";
-                                string date = file.Replace("ResourcesLog", "");
+                                string date = fileName.Replace("ResourcesLog", "");
                                 date = date.Replace(".\\LogData\\", "");
                                 date = date.Replace(".tc", "");
                                 date = date.Replace("_", "/");
@@ -287,7 +287,7 @@ namespace Moni
                                     tryNum++;
                                     try
                                     {
-                                        using (StreamReader sr = new StreamReader(file))
+                                        using (StreamReader sr = new StreamReader(fileName))
                                         {
                                             stopwatch.Start();
                                             string str = sr.ReadLine();
@@ -679,6 +679,8 @@ namespace Moni
         private void FixLogDatas()
         {
             lvl.Text = "ログ修正中";
+
+
         }
     }
 
