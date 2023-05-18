@@ -181,7 +181,7 @@ namespace Moni
                                                 string[] baseTime = null;
                                                 try
                                                 {
-                                                    str.Replace(" ", "");
+                                                    str = str.Replace(" ", "");
                                                     split = str.Split(',');
 
                                                     //時間変換
@@ -255,7 +255,7 @@ namespace Moni
                                     catch (System.FormatException)
                                     {
                                         //ログを修正する
-                                        FixLogDatas();
+                                        FixLogData(fileName);
                                         return;
                                     }
                                 }
@@ -295,7 +295,7 @@ namespace Moni
                                             {
                                                 /*try
                                                 {*/
-                                                    str.Replace(" ", "");
+                                                    str = str.Replace(" ", "");
                                                     dts.Add(DateTime.Parse(date));
                                                     datas.Add(str);
                                                     str = sr.ReadLine();
@@ -321,7 +321,7 @@ namespace Moni
                                     catch (System.FormatException)
                                     {
                                         //ログを修正する
-                                        FixLogDatas();
+                                        FixLogData(fileName);
                                         return;
                                     }
                                 }
@@ -674,12 +674,21 @@ namespace Moni
         }
 
         /// <summary>
-        /// ログデータを修正する
+        /// 問題のあるログファイルを修正する
         /// </summary>
-        private void FixLogDatas()
+        /// <param name="fileName">ログファイル名</param>
+        private void FixLogData(string fileName)
         {
+            //↓読みながら別のファイルに上書きでメモリ節約可
             lvl.Text = "ログ修正中";
+            using(StreamReader stream = new StreamReader(fileName))
+            {
+                string line = stream.ReadLine();
+                while(line != null)
+                {
 
+                }
+            }
 
         }
     }
