@@ -678,7 +678,7 @@ namespace Moni
         /// </summary>
         private void FixLogDatas()
         {
-
+            lvl.Text = "ログ修正中";
         }
     }
 

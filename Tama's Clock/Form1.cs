@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Management;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -48,56 +49,72 @@ namespace Moni
                 InitializeComponent();
 
 #if !DEBUG
+
                 try
                 {
-                    Splash.desc.Text = "Updating...";
-                    Process p = new Process();
+                    /*Moni更新動作*/
 
-                    p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+                    Splash.desc.Text = "Dload";
 
-                    //シェル機能を使用しない
-                    p.StartInfo.UseShellExecute = false;
-                    //標準出力をリダイレクト
-                    p.StartInfo.RedirectStandardOutput = true;
-                    //コンソールウィンドウを開かない
-                    p.StartInfo.CreateNoWindow = true;
+                    //アップデート用ディレクトリ名を設定
+                    string updateDirectoryName = "MoniLatest";
 
-                    //コマンド
-                    p.StartInfo.Arguments = @"/c git clone https://github.com/RFTtama/Moni-released.git MoniLatest";
-                    //p.StartInfo.Arguments = @"/c dir c:\ /w";
+                    //アップデート用ディレクトリが存在していたら削除する
+                    if (Directory.Exists(@".\" + updateDirectoryName))
+                    {
+                        Directory.Delete(@".\" + updateDirectoryName, true);
+                    }
 
-                    p.Start();
+                    //アップデート用ディレクトリを作成
+                    Directory.CreateDirectory(updateDirectoryName);
 
-                    string output = p.StandardOutput.ReadToEnd();
+                    //最新ファイルをダウンロード
+                    using (System.Net.WebClient wc = new System.Net.WebClient())
+                    {
+                        wc.DownloadFile("https://github.com/RFTtama/Moni-released/archive/refs/heads/main.zip", @".\" + updateDirectoryName + @"\main.zip");
+                    }
 
-                    p.Close();
+                    Splash.desc.Text = "Extrct";
 
-                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@"./MoniLatest/Moni.exe");
-                    string newVersionStr = fileInfo.FileVersion;
+                    //ファイルを展開
+                    ZipFile.ExtractToDirectory(@".\" + updateDirectoryName + @"\main.zip", @".\" + updateDirectoryName);
 
+                    //もとのファイルを削除
+                    File.Delete(@".\" + updateDirectoryName + @"\main.zip");
+
+                    //ファイルを移動
+                    File.Move(@".\" + updateDirectoryName + @"\Moni-released-main\Moni.exe", @".\" + updateDirectoryName + @"\Moni.exe");
+
+                    //移動元のディレクトリを削除
+                    Directory.Delete(@".\" + updateDirectoryName + @"\Moni-released-main");
+
+                    //最新ファイルのバージョンを取得
+                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@".\" + updateDirectoryName + @"\Moni.exe");
+
+                    //int型に変換
+                    int newVersionNum = int.Parse(fileInfo.FileVersion.Replace(".", string.Empty));
+
+                    //現行ファイルのバージョンを取得
                     FileVersionInfo version = FileVersionInfo.GetVersionInfo(
                             System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-                    string oldVersionStr = version.ToString();
+                    //int型に変換
+                    int oldVersionNum = int.Parse(version.FileVersion.ToString().Replace(".", string.Empty));
 
-                    if (newVersionStr != oldVersionStr)
+                    if (newVersionNum > oldVersionNum)
                     {
                         UpdatePanel.Visible = true;
                     }
                     else
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(@"./MoniLatest");
-
-                        DirectoryManager.RemoveReadonlyAttribute(dirInfo);
-
-                        dirInfo.Delete(true);
-                        return;
+                        //削除
+                        Directory.Delete(@".\" + updateDirectoryName, true);
                     }
-                }
-                catch (Exception ex)
+                }catch (Exception ex)
                 {
-                    ErrorLog.ErrorOutput("更新確認エラー", ex + ex.Message, true);
+                    ErrorLog.ErrorOutput("更新エラー", ex.Message, true);
                 }
+
 #endif
 
                 Splash.desc.Text = "Setting Monis shape...";
