@@ -48,8 +48,6 @@ namespace Moni
             this.NetPic = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.DataSizeLabel = new System.Windows.Forms.Label();
-            this.SaveDayUD = new System.Windows.Forms.DomainUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.OverallRed = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.BusyRed = new System.Windows.Forms.PictureBox();
@@ -210,8 +208,6 @@ namespace Moni
             this.HelpPanel.Controls.Add(this.NetPic);
             this.HelpPanel.Controls.Add(this.linkLabel1);
             this.HelpPanel.Controls.Add(this.DataSizeLabel);
-            this.HelpPanel.Controls.Add(this.SaveDayUD);
-            this.HelpPanel.Controls.Add(this.label10);
             this.HelpPanel.Controls.Add(this.OverallRed);
             this.HelpPanel.Controls.Add(this.pictureBox5);
             this.HelpPanel.Controls.Add(this.BusyRed);
@@ -398,35 +394,6 @@ namespace Moni
             this.DataSizeLabel.TabIndex = 77;
             this.DataSizeLabel.Text = "データ数: ?";
             this.toolTip1.SetToolTip(this.DataSizeLabel, "ログのデータ数です");
-            // 
-            // SaveDayUD
-            // 
-            this.SaveDayUD.Items.Add("10日");
-            this.SaveDayUD.Items.Add("20日");
-            this.SaveDayUD.Items.Add("30日");
-            this.SaveDayUD.Items.Add("100日");
-            this.SaveDayUD.Items.Add("200日");
-            this.SaveDayUD.Items.Add("300日");
-            this.SaveDayUD.Items.Add("365日");
-            this.SaveDayUD.Items.Add("無期限");
-            this.SaveDayUD.Location = new System.Drawing.Point(119, 530);
-            this.SaveDayUD.Name = "SaveDayUD";
-            this.SaveDayUD.ReadOnly = true;
-            this.SaveDayUD.Size = new System.Drawing.Size(59, 19);
-            this.SaveDayUD.TabIndex = 76;
-            this.SaveDayUD.Text = "保存日数";
-            this.SaveDayUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.SaveDayUD, "ログの保存日数を変更します\r\n保存日数が多いほどメモリとストレージを多く使用する\r\n可能性があります");
-            this.SaveDayUD.SelectedItemChanged += new System.EventHandler(this.SaveDayUD_SelectedItemChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(113, 515);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 12);
-            this.label10.TabIndex = 74;
-            this.label10.Text = "ログ保存日数";
             // 
             // OverallRed
             // 
@@ -1282,7 +1249,6 @@ namespace Moni
         public System.Windows.Forms.PictureBox BusyRed;
         public System.Windows.Forms.PictureBox ActiveRed;
         public System.Windows.Forms.PictureBox OverallRed;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Timer NetNameTimer;
         public System.Windows.Forms.TextBox DescBox;
         public System.Windows.Forms.Label DataSizeLabel;
@@ -1292,7 +1258,6 @@ namespace Moni
         public System.Windows.Forms.Panel LedPanel;
         public System.Windows.Forms.Label StateLabel;
         public System.Windows.Forms.DomainUpDown DriveUD;
-        public System.Windows.Forms.DomainUpDown SaveDayUD;
         public System.Windows.Forms.Label TimeLabel;
         public System.Windows.Forms.Label DateLabel;
         public System.Windows.Forms.Label SecondLabel;

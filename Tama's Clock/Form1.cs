@@ -121,7 +121,6 @@ namespace Moni
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
-                SaveDayUD.SelectedIndex = 0;
                 SaveStyleUD.SelectedIndex = 1;
                 dt = DateTime.Now;
                 day = dt.Day;
@@ -1035,13 +1034,6 @@ namespace Moni
                 }
             }
             DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
-        }
-
-        private void SaveDayUD_SelectedItemChanged(object sender, EventArgs e)
-        {
-            int[] date = new int[] { 10, 20, 30, 100, 200, 300, 365, -1 };
-            SaveData.saveDate = date[SaveDayUD.SelectedIndex];
-            if(ready) SaveData.DataSave();
         }
 
         private void NetName_MouseEnter(object sender, EventArgs e)

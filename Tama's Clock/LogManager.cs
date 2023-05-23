@@ -202,7 +202,7 @@ namespace Moni
         /// <summary>
         /// ログの保存日数
         /// </summary>
-        public static int saveDate = 10;
+        public static int saveDate = 7;
 
         //ふぉむ
         private static Clock f;
@@ -226,6 +226,7 @@ namespace Moni
             {
                 using (StreamReader sr = new StreamReader(filePath))
                 {
+                    //data6 ←空き
                     string dat = sr.ReadLine();
                     string[] dataStr = dat.Split(',');
                     int[] datas = new int[dataStr.Length];
@@ -266,7 +267,6 @@ namespace Moni
                     }
                     faceColor = datas[4];
                     f.DriveUD.SelectedIndex = datas[5];
-                    f.SaveDayUD.SelectedIndex = datas[6];
                     f.SaveStyleUD.SelectedIndex = datas[7];
                 }
             }
@@ -330,7 +330,7 @@ namespace Moni
                     }
                     data += faceColor;
                     data += "," + f.DriveUD.SelectedIndex;
-                    data += "," + f.SaveDayUD.SelectedIndex;
+                    data += "," + "0";
                     data += "," + f.SaveStyleUD.SelectedIndex;
                     sw.WriteLine(data);                 //書き込み開始
                 }

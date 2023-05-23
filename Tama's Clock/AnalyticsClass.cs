@@ -686,7 +686,13 @@ namespace Moni
                 string line = stream.ReadLine();
                 while(line != null)
                 {
+                    try
+                    {
+                        string[] str = line.Split(',');
+                    }catch(FormatException)
+                    {
 
+                    }
                 }
             }
 

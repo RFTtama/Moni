@@ -208,3 +208,11 @@
    場所 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
    場所 Moni.Clock.Clock_FormClosed(Object sender, FormClosedEventArgs e) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1258指定されたファイルが見つかりません。
 
+2023/05/23 18:43:36 [アプリ更新エラー]System.ComponentModel.Win32Exception (0x80004005): 指定されたファイルが見つかりません。
+   場所 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   場所 Moni.Clock.Clock_FormClosed(Object sender, FormClosedEventArgs e) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1200指定されたファイルが見つかりません。
+
+2023/05/23 18:43:53 [アプリ更新エラー]System.ComponentModel.Win32Exception (0x80004005): 指定されたファイルが見つかりません。
+   場所 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   場所 Moni.Clock.Clock_FormClosed(Object sender, FormClosedEventArgs e) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1200指定されたファイルが見つかりません。
+
