@@ -688,11 +688,18 @@ namespace Moni
                 {
                     try
                     {
+                        line = line.Replace(" ", "");
                         string[] str = line.Split(',');
-                    }catch(FormatException)
-                    {
-
                     }
+                    catch(FormatException)
+                    {
+                        //問題の行に当たった際
+                    }
+                    using (StreamWriter writeFile = new StreamWriter(fileName + "_fixing", true))
+                    {
+                        //ここで書き込み
+                    }
+                    line = stream.ReadLine();
                 }
             }
 
