@@ -57,19 +57,11 @@ namespace Moni
     public static class Splash
     {
         private static Form startForm = new Form();
-        public static Label desc = new Label();
 
         public static void ShowSplash()
         {
             Label newLabel = new Label();
-            newLabel.Text = "Moni> Developed -by @RFT\r\nLaunching...";
-            desc.Text = "Please wait...";
-
-            desc.Font = new Font("Lucida Console", 12);
-            desc.AutoSize = false;
-            desc.ForeColor = Color.FromArgb(0, 255, 0);
-            desc.TextAlign = ContentAlignment.BottomLeft;
-            desc.Dock = DockStyle.Bottom;
+            newLabel.Text = "Moni> Developed -by @RFT\r\nLaunching...\r\nPlease wait...";
 
             newLabel.Font = new Font("Lucida Console", 12);
             newLabel.AutoSize = false;
@@ -78,9 +70,8 @@ namespace Moni
             newLabel.Dock = DockStyle.Fill;
 
             startForm.Controls.Add(newLabel);
-            startForm.Controls.Add(desc);
 
-            startForm.Size = new Size(300, 70);
+            startForm.Size = new Size(300, 50);
             startForm.BackColor = Color.FromArgb(0, 0, 0);
             startForm.Text = "";
             startForm.StartPosition = FormStartPosition.CenterScreen;

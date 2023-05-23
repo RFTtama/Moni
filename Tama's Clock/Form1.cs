@@ -45,7 +45,6 @@ namespace Moni
             LoadingProcess loading = new LoadingProcess();
             try
             {
-                Splash.desc.Text = "Initializing...";
                 InitializeComponent();
 
 #if !DEBUG
@@ -53,8 +52,6 @@ namespace Moni
                 try
                 {
                     /*Moni更新動作*/
-
-                    Splash.desc.Text = "Dload";
 
                     //アップデート用ディレクトリ名を設定
                     string updateDirectoryName = "MoniLatest";
@@ -73,8 +70,6 @@ namespace Moni
                     {
                         wc.DownloadFile("https://github.com/RFTtama/Moni-released/archive/refs/heads/main.zip", @".\" + updateDirectoryName + @"\main.zip");
                     }
-
-                    Splash.desc.Text = "Extrct";
 
                     //ファイルを展開
                     ZipFile.ExtractToDirectory(@".\" + updateDirectoryName + @"\main.zip", @".\" + updateDirectoryName);
@@ -117,7 +112,6 @@ namespace Moni
 
 #endif
 
-                Splash.desc.Text = "Setting Monis shape...";
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
@@ -130,8 +124,6 @@ namespace Moni
                 this.Height = 208;
                 panel1.Width = 420;
                 panel1.Height = 170;
-
-                Splash.desc.Text = "Searching GPU file...";
                 try
                 {
                     using (StreamReader sr = new StreamReader(gpuFileName))
@@ -143,8 +135,6 @@ namespace Moni
                 {
                     SearchGpuFile();
                 }
-
-                Splash.desc.Text = "Setting details...";
                 LogManager.logState = 3;
                 this.redPicSize = RedPic2.Width;
                 System.Reflection.Assembly asm =
@@ -154,25 +144,8 @@ namespace Moni
                 this.tellBef = -1;
 
                 DriveUD.Items.Add("ALL");
-                /*DriveInfo[] driveInfos = DriveInfo.GetDrives();
-                int j = 0;
-
-                foreach (DriveInfo driveInfo in driveInfos)
-                {
-                    if (driveInfo.DriveType == DriveType.Fixed)
-                    {
-                        string name = driveInfo.Name;
-                        name = name.Trim('\\');
-                        DriveUD.Items.Add(j + " " + name);
-                        j++;
-                    }
-                }*/
-
-                Splash.desc.Text = "Reading setting file...";
                 //設定読み込み
                 SaveData.ReadSaveDatas();
-
-                Splash.desc.Text = "Setting monitor...";
                 List<(string machine, string category, string counter, string instance)> counterList = new List<(string machine, string category, string counter, string instance)>();
 
                 counterList.Add((".", "Processor", "% Processor Time", "_Total"));                                      //cpu                               
@@ -183,7 +156,6 @@ namespace Moni
                 {
                     for (int i = 0; i < counterList.Count; i++)
                     {
-                        Splash.desc.Text = "Setting PC(" + i + "/" + counterList.Count + ")";
                         pcList.Add(new PerformanceCounter(counterList[i].category, counterList[i].counter, counterList[i].instance, counterList[i].machine));
                     }
                 }
@@ -193,11 +165,7 @@ namespace Moni
                     ErrorLog.ErrorOutput("リソース取得エラー", msg, true);
                     this.Close();
                 }
-
-                Splash.desc.Text = "Setting PC description...";
                 SetDesc();
-
-                Splash.desc.Text = "Getting network interface...";
                 NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
                 long[,] net = new long[nis.Length, 2];
                 speedBef = new long[2];
@@ -215,8 +183,6 @@ namespace Moni
                         speedBef[1] = net[netInd, 1];
                     }
                 }
-
-                Splash.desc.Text = "Setting other...";
                 cwList.Add(new Bottleneck("NetWorkWarning"));
                 cwList.Add(new Bottleneck("CPUWarning"));
                 cwList.Add(new Bottleneck("MemoryWarning"));
@@ -229,12 +195,6 @@ namespace Moni
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
-                /*if (SaveData.enableLogSave == true)
-                {
-                    UpdateLog();
-                }*/
-
-                Splash.desc.Text = "Done!";
 
                 this._ready = true;
 
