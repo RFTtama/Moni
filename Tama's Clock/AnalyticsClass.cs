@@ -684,23 +684,29 @@ namespace Moni
             using(StreamReader stream = new StreamReader(fileName))
             {
                 string line = stream.ReadLine();
-                while(line != null)
+                while (line != null)
                 {
                     try
                     {
                         line = line.Replace(" ", "");
-                        string[] str = line.Split(',');
+                        string[] splitedStr = line.Split(',');
+                        string[] timeStr = splitedStr[0].Split(':');
+                        int[] timeInt = new int[3];
+                        for (int i = 0; i < timeInt.Length; i++)
+                        {
+                            timeInt[i] = int.Parse(timeStr[i]);
+                        }
+                        using (StreamWriter writeFile = new StreamWriter(fileName + "_fixing", true))
+                        {
+                            writeFile.WriteLine(line);
+                        }
                     }
-                    catch(FormatException)
+                    catch (FormatException)
                     {
-                        //問題の行に当たった際
-                    }
-                    using (StreamWriter writeFile = new StreamWriter(fileName + "_fixing", true))
-                    {
-                        //ここで書き込み
                     }
                     line = stream.ReadLine();
                 }
+                File.Replace(fileName + "_fixing", fileName, fileName + DateTime.Now.ToString("yyyy_MM_dd_H_mm_ss") + ".tcold");
             }
 
         }
