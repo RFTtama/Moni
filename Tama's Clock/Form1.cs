@@ -416,13 +416,13 @@ namespace Moni
                     RedPic3.Width = (int)((actTotalMem.num - actAvaMem) / actTotalMem.num * redPicSize);
                 }
                 int gpuValue = 0;
-                string gpuProcesses;
+                //string gpuProcesses;
                 if (gpuOk)
                 {
                     try
                     {
                         gpuValue = int.Parse(GetGpuData(@"--query-gpu=utilization.gpu --format=csv,noheader,nounits"));
-                        gpuProcesses = GetGpuData(@"--query-compute-apps=process_name,used_memory --format=csv,noheader,nounits");
+                        //gpuProcesses = GetGpuData(@"--query-compute-apps=process_name,used_memory --format=csv,noheader,nounits");
                     }
                     catch (Exception ex)
                     {
