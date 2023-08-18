@@ -494,87 +494,10 @@ namespace Moni
                     taskStr += heavyName + ", " + heavyMem + LB;
                 }
 
-                string[] files;
-
-                try
-                {
-                    files = System.IO.Directory.GetFiles(
-                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    files = null;
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    Directory.CreateDirectory(@".\tcGameLog");
-                    files = System.IO.Directory.GetFiles(
-                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
-                }
-                catch (Exception ex)
-                {
-                    ErrorLog.ErrorOutput("ゲームログ取得失敗", ex.Message, false);
-                    files = null;
-                }
-
-                bool sameGameFlg = false;
-
-                //現在一番メモリを使用しているタスクがゲームログフォルダにあるか確認
-                if (files != null)
-                {
-                    foreach (string file in files)
-                    {
-                        string replaceName = file.Replace(".tc", "");
-                        if(replaceName == heavyName)
-                        {
-                            sameGameFlg = true;
-                        }
-                    }
-                }
-
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
-                if (gpuValue >= 50 || sameGameFlg)//gpuValueの閾値は変更できるようにする
+                if (gpuValue >= 50)//gpuValueの閾値は変更できるようにする
                 {
-                    DateLabel.Top = 140;
-                    if (!gameRunningFlg)
-                    {
-                        GameLabel.Left = 5;
-                        GameLabel.Top = 154;
-                        gameRunningFlg = true;
-                    }
-
-                    GameLabel.Text = heavyName + "をプレイ中";
-
-                    if (SaveData.enableLogSave)
-                    {
-                        try
-                        {
-                            using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc", true))
-                            {
-                                sw.WriteLine(gpuValue);
-                            }
-                        }
-                        catch (UnauthorizedAccessException)
-                        {
-
-                        }
-                        catch (DirectoryNotFoundException)
-                        {
-                            Directory.CreateDirectory(@".\tcGameLog");
-                        }
-                        catch (Exception ex)
-                        {
-                            ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
-                        }
-                    }
-                }
-                else
-                {
-                    DateLabel.Left = 1;
-                    DateLabel.Top = 154;
-                    GameLabel.Text = string.Empty;
-                    GameLabel.Top = 230;
-                    gameRunningFlg = false;
+                    GameLabel.Text = heavyName + "を実行中";
                 }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
