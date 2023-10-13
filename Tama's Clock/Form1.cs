@@ -1077,15 +1077,19 @@ namespace Moni
 
         private void Clock_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
+            if (UpdatePanel.Visible == true)
             {
-                Process proc = new Process();
+                try
+                {
+                    Process proc = new Process();
 
-                proc.StartInfo.FileName = @"MoniInstaller.exe";
-                proc.Start();
-            }catch (Exception ex)
-            {
-                ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+                    proc.StartInfo.FileName = @"MoniInstaller.exe";
+                    proc.Start();
+                }
+                catch (Exception ex)
+                {
+                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+                }
             }
         }
     }
