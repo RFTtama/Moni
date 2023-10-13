@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Management;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -44,14 +45,76 @@ namespace Moni
             LoadingProcess loading = new LoadingProcess();
             try
             {
-                Splash.desc.Text = "Initializing...";
                 InitializeComponent();
 
-                Splash.desc.Text = "Setting Monis shape...";
+#if !DEBUG
+
+                try
+                {
+                    /*Moni更新動作*/
+
+                    //アップデート用ディレクトリ名を設定
+                    string updateDirectoryName = "MoniLatest";
+
+                    //アップデート用ディレクトリが存在していたら削除する
+                    if (Directory.Exists(@".\" + updateDirectoryName))
+                    {
+                        Directory.Delete(@".\" + updateDirectoryName, true);
+                    }
+
+                    //アップデート用ディレクトリを作成
+                    Directory.CreateDirectory(updateDirectoryName);
+
+                    //最新ファイルをダウンロード
+                    using (System.Net.WebClient wc = new System.Net.WebClient())
+                    {
+                        wc.DownloadFile("https://github.com/RFTtama/Moni-released/archive/refs/heads/main.zip", @".\" + updateDirectoryName + @"\main.zip");
+                    }
+
+                    //ファイルを展開
+                    ZipFile.ExtractToDirectory(@".\" + updateDirectoryName + @"\main.zip", @".\" + updateDirectoryName);
+
+                    //もとのファイルを削除
+                    File.Delete(@".\" + updateDirectoryName + @"\main.zip");
+
+                    //ファイルを移動
+                    File.Move(@".\" + updateDirectoryName + @"\Moni-released-main\Moni.exe", @".\" + updateDirectoryName + @"\Moni.exe");
+
+                    //移動元のディレクトリを削除
+                    Directory.Delete(@".\" + updateDirectoryName + @"\Moni-released-main");
+
+                    //最新ファイルのバージョンを取得
+                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@".\" + updateDirectoryName + @"\Moni.exe");
+
+                    //int型に変換
+                    int newVersionNum = int.Parse(fileInfo.FileVersion.Replace(".", string.Empty));
+
+                    //現行ファイルのバージョンを取得
+                    FileVersionInfo version = FileVersionInfo.GetVersionInfo(
+                            System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                    //int型に変換
+                    int oldVersionNum = int.Parse(version.FileVersion.ToString().Replace(".", string.Empty));
+
+                    if (newVersionNum > oldVersionNum)
+                    {
+                        UpdatePanel.Visible = true;
+                    }
+                    else
+                    {
+                        //削除
+                        Directory.Delete(@".\" + updateDirectoryName, true);
+                    }
+                }catch (Exception ex)
+                {
+                    ErrorLog.ErrorOutput("更新エラー", ex.Message, true);
+                }
+
+#endif
+
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
-                SaveDayUD.SelectedIndex = 0;
                 SaveStyleUD.SelectedIndex = 1;
                 dt = DateTime.Now;
                 day = dt.Day;
@@ -61,8 +124,6 @@ namespace Moni
                 this.Height = 208;
                 panel1.Width = 420;
                 panel1.Height = 170;
-
-                Splash.desc.Text = "Searching GPU file...";
                 try
                 {
                     using (StreamReader sr = new StreamReader(gpuFileName))
@@ -74,8 +135,6 @@ namespace Moni
                 {
                     SearchGpuFile();
                 }
-
-                Splash.desc.Text = "Setting details...";
                 LogManager.logState = 3;
                 this.redPicSize = RedPic2.Width;
                 System.Reflection.Assembly asm =
@@ -85,25 +144,8 @@ namespace Moni
                 this.tellBef = -1;
 
                 DriveUD.Items.Add("ALL");
-                /*DriveInfo[] driveInfos = DriveInfo.GetDrives();
-                int j = 0;
-
-                foreach (DriveInfo driveInfo in driveInfos)
-                {
-                    if (driveInfo.DriveType == DriveType.Fixed)
-                    {
-                        string name = driveInfo.Name;
-                        name = name.Trim('\\');
-                        DriveUD.Items.Add(j + " " + name);
-                        j++;
-                    }
-                }*/
-
-                Splash.desc.Text = "Reading setting file...";
                 //設定読み込み
                 SaveData.ReadSaveDatas();
-
-                Splash.desc.Text = "Setting monitor...";
                 List<(string machine, string category, string counter, string instance)> counterList = new List<(string machine, string category, string counter, string instance)>();
 
                 counterList.Add((".", "Processor", "% Processor Time", "_Total"));                                      //cpu                               
@@ -114,7 +156,6 @@ namespace Moni
                 {
                     for (int i = 0; i < counterList.Count; i++)
                     {
-                        Splash.desc.Text = "Setting PC(" + i + "/" + counterList.Count + ")";
                         pcList.Add(new PerformanceCounter(counterList[i].category, counterList[i].counter, counterList[i].instance, counterList[i].machine));
                     }
                 }
@@ -124,11 +165,7 @@ namespace Moni
                     ErrorLog.ErrorOutput("リソース取得エラー", msg, true);
                     this.Close();
                 }
-
-                Splash.desc.Text = "Setting PC description...";
                 SetDesc();
-
-                Splash.desc.Text = "Getting network interface...";
                 NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
                 long[,] net = new long[nis.Length, 2];
                 speedBef = new long[2];
@@ -146,8 +183,6 @@ namespace Moni
                         speedBef[1] = net[netInd, 1];
                     }
                 }
-
-                Splash.desc.Text = "Setting other...";
                 cwList.Add(new Bottleneck("NetWorkWarning"));
                 cwList.Add(new Bottleneck("CPUWarning"));
                 cwList.Add(new Bottleneck("MemoryWarning"));
@@ -160,12 +195,6 @@ namespace Moni
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
-                /*if (SaveData.enableLogSave == true)
-                {
-                    UpdateLog();
-                }*/
-
-                Splash.desc.Text = "Done!";
 
                 this._ready = true;
 
@@ -177,7 +206,7 @@ namespace Moni
             }
             catch(Exception ex)
             {
-                ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + "" + ex.Message, true);
+                ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
             }
         }
@@ -387,11 +416,13 @@ namespace Moni
                     RedPic3.Width = (int)((actTotalMem.num - actAvaMem) / actTotalMem.num * redPicSize);
                 }
                 int gpuValue = 0;
+                //string gpuProcesses;
                 if (gpuOk)
                 {
                     try
                     {
                         gpuValue = int.Parse(GetGpuData(@"--query-gpu=utilization.gpu --format=csv,noheader,nounits"));
+                        //gpuProcesses = GetGpuData(@"--query-compute-apps=process_name,used_memory --format=csv,noheader,nounits");
                     }
                     catch (Exception ex)
                     {
@@ -463,87 +494,10 @@ namespace Moni
                     taskStr += heavyName + ", " + heavyMem + LB;
                 }
 
-                string[] files;
-
-                try
-                {
-                    files = System.IO.Directory.GetFiles(
-                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    files = null;
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    Directory.CreateDirectory(@".\tcGameLog");
-                    files = System.IO.Directory.GetFiles(
-                        @".\tcGameLog\", "*.tc", System.IO.SearchOption.AllDirectories);
-                }
-                catch (Exception ex)
-                {
-                    ErrorLog.ErrorOutput("ゲームログ取得失敗", ex.Message, false);
-                    files = null;
-                }
-
-                bool sameGameFlg = false;
-
-                //現在一番メモリを使用しているタスクがゲームログフォルダにあるか確認
-                if (files != null)
-                {
-                    foreach (string file in files)
-                    {
-                        string replaceName = file.Replace(".tc", "");
-                        if(replaceName == heavyName)
-                        {
-                            sameGameFlg = true;
-                        }
-                    }
-                }
-
                 //現在ゲームを起動中であると予想された場合にそのゲームを記録
-                if (gpuValue >= 50 || sameGameFlg)//gpuValueの閾値は変更できるようにする
+                if (gpuValue >= 50)//gpuValueの閾値は変更できるようにする
                 {
-                    DateLabel.Top = 140;
-                    if (!gameRunningFlg)
-                    {
-                        GameLabel.Left = 5;
-                        GameLabel.Top = 154;
-                        gameRunningFlg = true;
-                    }
-
-                    GameLabel.Text = heavyName + "をプレイ中";
-
-                    if (SaveData.enableLogSave)
-                    {
-                        try
-                        {
-                            using (StreamWriter sw = new StreamWriter(@".\tcGameLog\" + heavyName + ".tc", true))
-                            {
-                                sw.WriteLine(gpuValue);
-                            }
-                        }
-                        catch (UnauthorizedAccessException)
-                        {
-
-                        }
-                        catch (DirectoryNotFoundException)
-                        {
-                            Directory.CreateDirectory(@".\tcGameLog");
-                        }
-                        catch (Exception ex)
-                        {
-                            ErrorLog.ErrorOutput("ゲームログ保存失敗", ex.Message, false);
-                        }
-                    }
-                }
-                else
-                {
-                    DateLabel.Left = 1;
-                    DateLabel.Top = 154;
-                    GameLabel.Text = string.Empty;
-                    GameLabel.Top = 230;
-                    gameRunningFlg = false;
+                    GameLabel.Text = heavyName + "を実行中";
                 }
 
                 if (!slideLeft)toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
@@ -967,13 +921,6 @@ namespace Moni
             DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
         }
 
-        private void SaveDayUD_SelectedItemChanged(object sender, EventArgs e)
-        {
-            int[] date = new int[] { 10, 20, 30, 100, 200, 300, 365, -1 };
-            SaveData.saveDate = date[SaveDayUD.SelectedIndex];
-            if(ready) SaveData.DataSave();
-        }
-
         private void NetName_MouseEnter(object sender, EventArgs e)
         {
             NetNameTimer.Enabled = true;
@@ -1084,6 +1031,62 @@ namespace Moni
         private void ClosePic_MouseLeave(object sender, EventArgs e)
         {
             ClosePic.Image = null;
+        }
+
+        private bool updateSlideRight = true;
+
+        private void UpdatePanel_MouseEnter(object sender, EventArgs e)
+        {
+            updateSlideRight = true;
+            UpdateAlert.Enabled = true;
+        }
+
+        private void UpdatePanel_MouseLeave(object sender, EventArgs e)
+        {
+            updateSlideRight = false;
+            UpdateAlert.Enabled = true;
+        }
+
+        private void UpdateAlert_Tick(object sender, EventArgs e)
+        {
+            if (updateSlideRight)
+            {
+                if(UpdatePanel.Left < 0)
+                {
+                    UpdatePanel.Left += 3;
+                }
+                else
+                {
+                    UpdatePanel.Left = 0;
+                    UpdateAlert.Enabled = false;
+                }
+            }
+            else
+            {
+                if(UpdatePanel.Left > -147)
+                {
+                    UpdatePanel.Left -= 3;
+                }
+                else
+                {
+                    UpdatePanel.Left = -147;
+                    UpdateAlert.Enabled = false;
+                }
+            }
+        }
+
+        private void Clock_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                Process proc = new Process();
+
+                proc.StartInfo.FileName = @"MoniInstaller.exe";
+                proc.Start();
+            }catch (Exception ex)
+            {
+                ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+            }
         }
     }
 }

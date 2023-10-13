@@ -104,7 +104,7 @@ namespace Moni
 
                     lvl.Text = "初期化中";
 
-                    string[] files;
+                    string[] logFileNames;
 
                     List<string> datas = new List<string>();
                     tryNum = 0;
@@ -124,8 +124,8 @@ namespace Moni
                     try
                     {
                         lvl.Text = "ファイル情報取得中";
-                        //ログフォルダにある全てのファイルを取得する
-                        files = Directory.GetFiles(
+                        //ログフォルダにある全てのファイル名を取得する
+                        logFileNames = Directory.GetFiles(
                                     @".\LogData\", "*.tc", SearchOption.AllDirectories);
                     }
                     catch (Exception ex)
@@ -154,11 +154,11 @@ namespace Moni
                         try
                         {
                             int cnt = 0;
-                            overallTry += files.Length;
-                            foreach (string file in files)
+                            overallTry += logFileNames.Length;
+                            foreach (string fileName in logFileNames)
                             {
                                 lvl.Text = "ログ取得中";
-                                string date = file.Replace("ResourcesLog", "");
+                                string date = fileName.Replace("ResourcesLog", "");
                                 date = date.Replace(".\\LogData\\", "");
                                 date = date.Replace(".tc", "");
                                 date = date.Replace("_", "/");
@@ -170,7 +170,7 @@ namespace Moni
                                     try
                                     {
                                         //ファイルからデータを取得する
-                                        using (StreamReader sr = new StreamReader(file))
+                                        using (StreamReader sr = new StreamReader(fileName))
                                         {
                                             stopwatch.Start();
                                             string str = sr.ReadLine();
@@ -181,7 +181,7 @@ namespace Moni
                                                 string[] baseTime = null;
                                                 try
                                                 {
-                                                    str.Replace(" ", "");
+                                                    str = str.Replace(" ", "");
                                                     split = str.Split(',');
 
                                                     //時間変換
@@ -251,6 +251,13 @@ namespace Moni
                                     {
                                         //ファイルにアクセスできるまで繰り返す
                                     }
+                                    //ログの異常
+                                    catch (System.FormatException)
+                                    {
+                                        //ログを修正する
+                                        FixLogData(fileName);
+                                        return;
+                                    }
                                 }
                             }
                         }
@@ -265,11 +272,11 @@ namespace Moni
                     {
                         try
                         {
-                            overallTry += files.Length;
-                            foreach (string file in files)
+                            overallTry += logFileNames.Length;
+                            foreach (string fileName in logFileNames)
                             {
                                 lvl.Text = "ログ取得中";
-                                string date = file.Replace("ResourcesLog", "");
+                                string date = fileName.Replace("ResourcesLog", "");
                                 date = date.Replace(".\\LogData\\", "");
                                 date = date.Replace(".tc", "");
                                 date = date.Replace("_", "/");
@@ -280,20 +287,20 @@ namespace Moni
                                     tryNum++;
                                     try
                                     {
-                                        using (StreamReader sr = new StreamReader(file))
+                                        using (StreamReader sr = new StreamReader(fileName))
                                         {
                                             stopwatch.Start();
                                             string str = sr.ReadLine();
                                             while (str != null)
                                             {
-                                                try
-                                                {
-                                                    str.Replace(" ", "");
+                                                /*try
+                                                {*/
+                                                    str = str.Replace(" ", "");
                                                     dts.Add(DateTime.Parse(date));
                                                     datas.Add(str);
                                                     str = sr.ReadLine();
                                                     process++;
-                                                }
+                                                /*}
                                                 catch (Exception)
                                                 {
                                                     if(datas[datas.Count - 1] == null)
@@ -301,7 +308,7 @@ namespace Moni
                                                         datas.RemoveAt(datas.Count - 1);
                                                         dts.RemoveAt(dts.Count - 1);
                                                     }
-                                                }
+                                                }*/
                                             }
                                         }
                                         break;
@@ -309,6 +316,13 @@ namespace Moni
                                     catch (UnauthorizedAccessException)
                                     {
                                         //ファイルにアクセスできるまで繰り返す
+                                    }
+                                    //ログの異常
+                                    catch (System.FormatException)
+                                    {
+                                        //ログを修正する
+                                        FixLogData(fileName);
+                                        return;
                                     }
                                 }
                             }
@@ -657,6 +671,44 @@ namespace Moni
                 }
             }
             return -1;
+        }
+
+        /// <summary>
+        /// 問題のあるログファイルを修正する
+        /// </summary>
+        /// <param name="fileName">ログファイル名</param>
+        private void FixLogData(string fileName)
+        {
+            //↓読みながら別のファイルに上書きでメモリ節約可
+            lvl.Text = "ログ修正中";
+            using(StreamReader stream = new StreamReader(fileName))
+            {
+                string line = stream.ReadLine();
+                while (line != null)
+                {
+                    try
+                    {
+                        line = line.Replace(" ", "");
+                        string[] splitedStr = line.Split(',');
+                        string[] timeStr = splitedStr[0].Split(':');
+                        int[] timeInt = new int[3];
+                        for (int i = 0; i < timeInt.Length; i++)
+                        {
+                            timeInt[i] = int.Parse(timeStr[i]);
+                        }
+                        using (StreamWriter writeFile = new StreamWriter(fileName + "_fixing", true))
+                        {
+                            writeFile.WriteLine(line);
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                    }
+                    line = stream.ReadLine();
+                }
+                File.Replace(fileName + "_fixing", fileName, fileName + DateTime.Now.ToString("yyyy_MM_dd_H_mm_ss") + ".tcold");
+            }
+
         }
     }
 

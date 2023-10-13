@@ -48,8 +48,6 @@ namespace Moni
             this.NetPic = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.DataSizeLabel = new System.Windows.Forms.Label();
-            this.SaveDayUD = new System.Windows.Forms.DomainUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.OverallRed = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.BusyRed = new System.Windows.Forms.PictureBox();
@@ -97,6 +95,9 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UpdatePanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.LedPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -124,6 +125,7 @@ namespace Moni
             this.NetNameTimer = new System.Windows.Forms.Timer(this.components);
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -149,6 +151,8 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.BluePic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).BeginInit();
             this.panel1.SuspendLayout();
+            this.UpdatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
@@ -204,8 +208,6 @@ namespace Moni
             this.HelpPanel.Controls.Add(this.NetPic);
             this.HelpPanel.Controls.Add(this.linkLabel1);
             this.HelpPanel.Controls.Add(this.DataSizeLabel);
-            this.HelpPanel.Controls.Add(this.SaveDayUD);
-            this.HelpPanel.Controls.Add(this.label10);
             this.HelpPanel.Controls.Add(this.OverallRed);
             this.HelpPanel.Controls.Add(this.pictureBox5);
             this.HelpPanel.Controls.Add(this.BusyRed);
@@ -392,35 +394,6 @@ namespace Moni
             this.DataSizeLabel.TabIndex = 77;
             this.DataSizeLabel.Text = "データ数: ?";
             this.toolTip1.SetToolTip(this.DataSizeLabel, "ログのデータ数です");
-            // 
-            // SaveDayUD
-            // 
-            this.SaveDayUD.Items.Add("10日");
-            this.SaveDayUD.Items.Add("20日");
-            this.SaveDayUD.Items.Add("30日");
-            this.SaveDayUD.Items.Add("100日");
-            this.SaveDayUD.Items.Add("200日");
-            this.SaveDayUD.Items.Add("300日");
-            this.SaveDayUD.Items.Add("365日");
-            this.SaveDayUD.Items.Add("無期限");
-            this.SaveDayUD.Location = new System.Drawing.Point(119, 530);
-            this.SaveDayUD.Name = "SaveDayUD";
-            this.SaveDayUD.ReadOnly = true;
-            this.SaveDayUD.Size = new System.Drawing.Size(59, 19);
-            this.SaveDayUD.TabIndex = 76;
-            this.SaveDayUD.Text = "保存日数";
-            this.SaveDayUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.SaveDayUD, "ログの保存日数を変更します\r\n保存日数が多いほどメモリとストレージを多く使用する\r\n可能性があります");
-            this.SaveDayUD.SelectedItemChanged += new System.EventHandler(this.SaveDayUD_SelectedItemChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(113, 515);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 12);
-            this.label10.TabIndex = 74;
-            this.label10.Text = "ログ保存日数";
             // 
             // OverallRed
             // 
@@ -895,6 +868,7 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.HelpPanel);
@@ -913,6 +887,42 @@ namespace Moni
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
+            // 
+            // UpdatePanel
+            // 
+            this.UpdatePanel.BackColor = System.Drawing.Color.PapayaWhip;
+            this.UpdatePanel.Controls.Add(this.label7);
+            this.UpdatePanel.Controls.Add(this.pictureBox3);
+            this.UpdatePanel.Location = new System.Drawing.Point(-147, 34);
+            this.UpdatePanel.Name = "UpdatePanel";
+            this.UpdatePanel.Size = new System.Drawing.Size(181, 31);
+            this.UpdatePanel.TabIndex = 39;
+            this.UpdatePanel.Visible = false;
+            this.UpdatePanel.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.UpdatePanel.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 24);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "新しいバージョンが利用可能\r\n再起動で更新";
+            this.label7.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.label7.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Moni.Properties.Resources.bikkuri;
+            this.pictureBox3.Location = new System.Drawing.Point(145, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(36, 31);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 40;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
+            this.pictureBox3.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
             // 
             // vScrollBar1
             // 
@@ -1123,6 +1133,11 @@ namespace Moni
             this.resourceUpdateTimer.Interval = 300000;
             this.resourceUpdateTimer.Tick += new System.EventHandler(this.resourceUpdateTimer_Tick);
             // 
+            // UpdateAlert
+            // 
+            this.UpdateAlert.Interval = 10;
+            this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
+            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1140,6 +1155,7 @@ namespace Moni
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moni";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clock_FormClosed);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).EndInit();
@@ -1168,6 +1184,9 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.UpdatePanel.ResumeLayout(false);
+            this.UpdatePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
@@ -1230,7 +1249,6 @@ namespace Moni
         public System.Windows.Forms.PictureBox BusyRed;
         public System.Windows.Forms.PictureBox ActiveRed;
         public System.Windows.Forms.PictureBox OverallRed;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Timer NetNameTimer;
         public System.Windows.Forms.TextBox DescBox;
         public System.Windows.Forms.Label DataSizeLabel;
@@ -1240,7 +1258,6 @@ namespace Moni
         public System.Windows.Forms.Panel LedPanel;
         public System.Windows.Forms.Label StateLabel;
         public System.Windows.Forms.DomainUpDown DriveUD;
-        public System.Windows.Forms.DomainUpDown SaveDayUD;
         public System.Windows.Forms.Label TimeLabel;
         public System.Windows.Forms.Label DateLabel;
         public System.Windows.Forms.Label SecondLabel;
@@ -1271,6 +1288,10 @@ namespace Moni
         private System.Windows.Forms.PictureBox MinimizePic;
         private System.Windows.Forms.PictureBox ClosePic;
         private System.Windows.Forms.Label GameLabel;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel UpdatePanel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer UpdateAlert;
     }
 }
 
