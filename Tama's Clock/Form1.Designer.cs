@@ -1156,6 +1156,7 @@ namespace Moni
             this.Text = "Moni";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clock_FormClosed);
+            this.Move += new System.EventHandler(this.Clock_Move);
             this.HelpPanel.ResumeLayout(false);
             this.HelpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).EndInit();

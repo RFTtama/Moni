@@ -27,7 +27,6 @@ namespace Moni
         private long[] speedBef;
         private string netName;
         private bool _ready = false;
-        private bool gameRunningFlg = false;
         public bool ready
         {
             get {
@@ -38,6 +37,7 @@ namespace Moni
         private List<PerformanceCounter> pcList = new List<PerformanceCounter>();
         private List<Bottleneck> cwList = new List<Bottleneck>();
         private int day;
+        private DateTime bootTime = DateTime.Now;
 
         public Clock()
         {
@@ -625,7 +625,11 @@ namespace Moni
             try
             {
                 Random rand = new Random();
-                if (cwList[1].errorFlg)
+                if (((DateTime.Now - windowMovingTime).TotalSeconds < 1) && ((DateTime.Now - bootTime).TotalSeconds > 3))
+                {
+                    FacePic.Image = Properties.Resources.face_scary;
+                }
+                else if (cwList[1].errorFlg)
                 {
                     if (faceTimer % 2 == 0)
                     {
@@ -1091,6 +1095,14 @@ namespace Moni
                     ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
                 }
             }
+        }
+
+        DateTime windowMovingTime;
+
+        private void Clock_Move(object sender, EventArgs e)
+        {
+            //Control c = (Control)sender;
+            windowMovingTime = DateTime.Now;
         }
     }
 }

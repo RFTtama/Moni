@@ -263,6 +263,16 @@ namespace Moni.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap face_scary {
+            get {
+                object obj = ResourceManager.GetObject("face_scary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap face_sleep {
             get {
                 object obj = ResourceManager.GetObject("face_sleep", resourceCulture);
