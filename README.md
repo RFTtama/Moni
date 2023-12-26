@@ -7,6 +7,9 @@
 
 メジャーアップデートは自動アップデートとReleaseを通して配布されます
 
+# Project
+本プロジェクトはVisual Studioにて開発されています 言語: C#
+
 # Contact Us
 不具合があった場合はGithubページのissuesからお気軽にお問い合わせください
 
