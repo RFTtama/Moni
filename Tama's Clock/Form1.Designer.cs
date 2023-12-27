@@ -36,6 +36,7 @@ namespace Moni
             this.DateLabel = new System.Windows.Forms.Label();
             this.SecondLabel = new System.Windows.Forms.Label();
             this.HelpPanel = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.MemUsingPic = new System.Windows.Forms.PictureBox();
             this.SaveStyleUD = new System.Windows.Forms.DomainUpDown();
             this.StartupPic = new System.Windows.Forms.PictureBox();
@@ -126,7 +127,6 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -259,6 +259,17 @@ namespace Moni
             this.HelpPanel.Name = "HelpPanel";
             this.HelpPanel.Size = new System.Drawing.Size(204, 889);
             this.HelpPanel.TabIndex = 5;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(11, 93);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(114, 16);
+            this.checkBox4.TabIndex = 85;
+            this.checkBox4.Text = "非アクティブ時透過";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // MemUsingPic
             // 
@@ -1140,16 +1151,6 @@ namespace Moni
             this.UpdateAlert.Interval = 10;
             this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(11, 93);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 16);
-            this.checkBox4.TabIndex = 85;
-            this.checkBox4.Text = "非アクティブ時透過";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1166,6 +1167,8 @@ namespace Moni
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moni";
+            this.Activated += new System.EventHandler(this.Clock_Activated);
+            this.Deactivate += new System.EventHandler(this.Clock_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clock_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clock_FormClosed);
             this.Move += new System.EventHandler(this.Clock_Move);

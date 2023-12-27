@@ -192,6 +192,7 @@ namespace Moni
                 checkBox1.Checked = SaveData.topMost;
                 checkBox2.Checked = SaveData.dateTimerEnabled;
                 checkBox3.Checked = SaveData.tellClock;
+                checkBox4.Checked = SaveData.transparent;
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
@@ -326,6 +327,12 @@ namespace Moni
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             SaveData.tellClock = checkBox3.Checked;
+            SaveData.DataSave();
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveData.transparent = checkBox4.Checked;
             SaveData.DataSave();
         }
 
@@ -1103,6 +1110,26 @@ namespace Moni
         {
             //Control c = (Control)sender;
             windowMovingTime = DateTime.Now;
+        }
+
+        private void Clock_Activated(object sender, EventArgs e)
+        {
+            this.Opacity = 1.0f;
+        }
+
+        private void Clock_Deactivate(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SaveData.transparent && this != null)
+                {
+                    this.Opacity = 0.5f;
+                }
+            }catch (System.ComponentModel.Win32Exception)
+            {
+                //アプリ終了した際に発生する
+                //多分消えたアプリに値を設定できない?
+            }
         }
     }
 }
