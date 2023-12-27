@@ -141,7 +141,7 @@ namespace Moni
         private static bool _topMost = false;
 
         /// <summary>
-        /// トップもスト
+        /// トップモスト
         /// </summary>
         public static bool topMost
         {
@@ -154,6 +154,22 @@ namespace Moni
                 _topMost = value;
                 f.TopMost = _topMost;
 
+            }
+        }
+        private static bool _transparent = false;
+
+        /// <summary>
+        /// 透明化にするか
+        /// </summary>
+        public static bool transparent
+        {
+            get
+            {
+                return _transparent;
+            }
+            set
+            {
+                _transparent = value;
             }
         }
         private static bool _dateTimerEnabled = false;
@@ -226,7 +242,6 @@ namespace Moni
             {
                 using (StreamReader sr = new StreamReader(filePath))
                 {
-                    //data6 ←空き
                     string dat = sr.ReadLine();
                     string[] dataStr = dat.Split(',');
                     int[] datas = new int[dataStr.Length];
@@ -267,6 +282,12 @@ namespace Moni
                     }
                     faceColor = datas[4];
                     f.DriveUD.SelectedIndex = datas[5];
+                    if (datas[6] == 1)
+                    {
+                        transparent = true;
+                    }else { 
+                        transparent = false; 
+                    }
                     f.SaveStyleUD.SelectedIndex = datas[7];
                 }
             }
@@ -330,7 +351,14 @@ namespace Moni
                     }
                     data += faceColor;
                     data += "," + f.DriveUD.SelectedIndex;
-                    data += "," + "0";
+                    if (transparent)
+                    {
+                        data += "," + "1";
+                    }
+                    else
+                    {
+                        data += "," + "0";
+                    }
                     data += "," + f.SaveStyleUD.SelectedIndex;
                     sw.WriteLine(data);                 //書き込み開始
                 }
