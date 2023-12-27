@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Drawing;
+using Microsoft.Win32;
 using System.Management;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -112,6 +113,7 @@ namespace Moni
 
 #endif
 
+                SystemEvents.SessionEnding += new SessionEndingEventHandler(Detect_EndWindows);
                 LogManager.LogManagerConstructor(this);
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
@@ -308,6 +310,16 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("時間同期処理で不明なエラー", ex + "" + ex.Message, false);
             }
+        }
+
+        /// <summary>
+        /// シャットダウンを検知してフォームを閉じる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Detect_EndWindows(object sender, SessionEndingEventArgs e)
+        {
+            this.Dispose();
         }
 
         private const int moveLength = 4;
