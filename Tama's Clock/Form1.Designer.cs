@@ -930,7 +930,7 @@ namespace Moni
             // 
             this.vScrollBar1.LargeChange = 50;
             this.vScrollBar1.Location = new System.Drawing.Point(410, 0);
-            this.vScrollBar1.Maximum = 570;
+            this.vScrollBar1.Maximum = 590;
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(10, 169);
             this.vScrollBar1.SmallChange = 30;
