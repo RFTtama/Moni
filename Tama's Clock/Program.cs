@@ -16,8 +16,12 @@ namespace Moni
         [STAThread]
         static void Main()
         {
-
+# if !DEBUG
             Mutex mutex = new Mutex(false, "MoniResourcesMonitor");
+# endif
+# if DEBUG
+            Mutex mutex = new Mutex(false, "MoniResourcesMonitorDebug");
+# endif
 
             bool hasHandle = false;
 
