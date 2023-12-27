@@ -319,7 +319,7 @@ namespace Moni
         /// <param name="e"></param>
         private void Detect_EndWindows(object sender, SessionEndingEventArgs e)
         {
-            Close();
+            this.Dispose();
         }
 
         private const int moveLength = 4;
