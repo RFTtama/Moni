@@ -8,7 +8,15 @@
 メジャーアップデートは自動アップデートとReleaseを通して配布されます
 
 # Project
-本プロジェクトはVisual Studioにて開発されています 言語: C#
+本プロジェクトはVisual Studioにて開発されています<br>
+言語: C#<br>
+出力の種類: Windowsアプリケーション<br>
+フレームワーク: .NET Framework 4.7.2<br>
+<figure>
+  <img src="https://github.com/RFTtama/Moni/assets/70085361/597adaa4-2431-4872-898a-f7e2558ae43a" width="300"><br>
+  <figcaption>本プロジェクトの内部構造をわかりやすく表現した画像</figcaption>
+</figure><br><br>
+難読性には自信があります
 
 # Contact Us
 不具合があった場合はGithubページのissuesからお気軽にお問い合わせください
