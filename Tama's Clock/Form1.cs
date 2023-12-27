@@ -319,14 +319,7 @@ namespace Moni
         /// <param name="e"></param>
         private void Detect_EndWindows(object sender, SessionEndingEventArgs e)
         {
-            if (e.Reason == SessionEndReasons.Logoff)
-            {
-                Close();
-            }
-            else if (e.Reason == SessionEndReasons.SystemShutdown)
-            {
-                Close();
-            }
+            Close();
         }
 
         private const int moveLength = 4;
