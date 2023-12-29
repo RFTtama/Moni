@@ -1157,7 +1157,7 @@ namespace Moni
             // 
             this.LatestErrorLabel.AutoSize = true;
             this.LatestErrorLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.LatestErrorLabel.Location = new System.Drawing.Point(4, 698);
+            this.LatestErrorLabel.Location = new System.Drawing.Point(4, 693);
             this.LatestErrorLabel.Name = "LatestErrorLabel";
             this.LatestErrorLabel.Size = new System.Drawing.Size(117, 12);
             this.LatestErrorLabel.TabIndex = 86;
