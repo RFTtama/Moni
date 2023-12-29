@@ -480,25 +480,6 @@ namespace Moni
                     uint totalNumber;
                     uint maxSpeed = 0;
 
-                    //csvに書き出し
-
-                    try
-                    {
-                        using(StreamWriter sw = new StreamWriter("./tcData/allResourceLogs.csv", false))
-                        {
-                            sw.WriteLine("date time,cpu usage(%),mem usage(bytes),gpu usage(%),disk usage(%),network upload speed(Bps),network download speed(Bps)");
-                            for (int i = 0; i < dts.Count; i++)
-                            {
-                                sw.WriteLine(dts[i].ToString("G") + "," + cpu[i].ToString() + "," + mem[i].ToString() + "," + 
-                                    gpu[i].ToString() + "," + disk[i].ToString() + "," + send[i].ToString() + "," + receive[i].ToString());
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ErrorLog.ErrorOutput("csv書き出しエラー", ex.Message, true);
-                    }
-
                     try
                     {
                         using (StreamReader sr = new StreamReader(MaxSpeedFile))
@@ -587,6 +568,25 @@ namespace Moni
             lvl.Text = "詳細情報解析中";
 
             stopwatch.Start();
+
+            //csvに書き出し
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("./tcData/allResourceLogs.csv", false))
+                {
+                    sw.WriteLine("date time,cpu usage(%),mem usage(bytes),gpu usage(%),disk usage(%),network upload speed(Bps),network download speed(Bps)");
+                    for (int i = 0; i < dts.Count; i++)
+                    {
+                        sw.WriteLine(dts[i].ToString("G") + "," + cpu[i].ToString() + "," + mem[i].ToString() + "," +
+                            gpu[i].ToString() + "," + disk[i].ToString() + "," + send[i].ToString() + "," + receive[i].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.ErrorOutput("csv書き出しエラー", ex.Message, true);
+            }
 
             for (int i = 0; i < dts.Count; i++)
             {
