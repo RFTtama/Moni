@@ -115,6 +115,7 @@ namespace Moni
 
                 SystemEvents.SessionEnding += new SessionEndingEventHandler(Detect_EndWindows);
                 LogManager.LogManagerConstructor(this);
+                ErrorLog.mainForm = this;
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
                 SaveStyleUD.SelectedIndex = 1;
