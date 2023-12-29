@@ -522,7 +522,7 @@ namespace Moni
                     long avgSpeed = totalSpeed / totalNumber;
                     float fos = ((float)tryNum / overallTry) * 100.0f;
 
-                    _form.toolTip1.SetToolTip(_form.PpmsPic, "最大: " + maxSpeed + " PPMS" +
+                    _form.toolTip1.SetToolTip(_form.PpmsPic, "直近: " + processSpeed + " PPMS\r\n最大: " + maxSpeed + " PPMS" +
                         "\r\n平均: " + avgSpeed + " PPMS (" + totalNumber.ToString() + "回の解析)" +
                         "\r\n\r\nこの数値は1msで処理したプロセスの最大数を示し、" +
                         "\r\nコンピュータの処理能力を表しています" +
