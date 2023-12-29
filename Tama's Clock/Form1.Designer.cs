@@ -127,6 +127,7 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
+            this.LatestErrorLabel = new System.Windows.Forms.Label();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -201,6 +202,7 @@ namespace Moni
             // HelpPanel
             // 
             this.HelpPanel.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.HelpPanel.Controls.Add(this.LatestErrorLabel);
             this.HelpPanel.Controls.Add(this.checkBox4);
             this.HelpPanel.Controls.Add(this.MemUsingPic);
             this.HelpPanel.Controls.Add(this.SaveStyleUD);
@@ -1151,6 +1153,17 @@ namespace Moni
             this.UpdateAlert.Interval = 10;
             this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
+            // LatestErrorLabel
+            // 
+            this.LatestErrorLabel.AutoSize = true;
+            this.LatestErrorLabel.ForeColor = System.Drawing.Color.Firebrick;
+            this.LatestErrorLabel.Location = new System.Drawing.Point(4, 698);
+            this.LatestErrorLabel.Name = "LatestErrorLabel";
+            this.LatestErrorLabel.Size = new System.Drawing.Size(117, 12);
+            this.LatestErrorLabel.TabIndex = 86;
+            this.LatestErrorLabel.Text = "Moniは万全の状態です";
+            this.toolTip1.SetToolTip(this.LatestErrorLabel, "直近の不具合を表示します");
+            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1309,6 +1322,7 @@ namespace Moni
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer UpdateAlert;
         private System.Windows.Forms.CheckBox checkBox4;
+        public System.Windows.Forms.Label LatestErrorLabel;
     }
 }
 
