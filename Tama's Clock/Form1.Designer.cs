@@ -36,6 +36,7 @@ namespace Moni
             this.DateLabel = new System.Windows.Forms.Label();
             this.SecondLabel = new System.Windows.Forms.Label();
             this.HelpPanel = new System.Windows.Forms.Panel();
+            this.LatestErrorLabel = new System.Windows.Forms.Label();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.MemUsingPic = new System.Windows.Forms.PictureBox();
             this.SaveStyleUD = new System.Windows.Forms.DomainUpDown();
@@ -46,7 +47,6 @@ namespace Moni
             this.MinutesUD = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.NetPic = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.DataSizeLabel = new System.Windows.Forms.Label();
             this.OverallRed = new System.Windows.Forms.PictureBox();
@@ -127,14 +127,12 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
-            this.LatestErrorLabel = new System.Windows.Forms.Label();
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
             this.AlarmPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NetPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverallRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BusyRed)).BeginInit();
@@ -209,7 +207,6 @@ namespace Moni
             this.HelpPanel.Controls.Add(this.StartupPic);
             this.HelpPanel.Controls.Add(this.label11);
             this.HelpPanel.Controls.Add(this.AlarmPanel);
-            this.HelpPanel.Controls.Add(this.NetPic);
             this.HelpPanel.Controls.Add(this.linkLabel1);
             this.HelpPanel.Controls.Add(this.DataSizeLabel);
             this.HelpPanel.Controls.Add(this.OverallRed);
@@ -262,6 +259,17 @@ namespace Moni
             this.HelpPanel.Size = new System.Drawing.Size(204, 889);
             this.HelpPanel.TabIndex = 5;
             // 
+            // LatestErrorLabel
+            // 
+            this.LatestErrorLabel.AutoSize = true;
+            this.LatestErrorLabel.ForeColor = System.Drawing.Color.Firebrick;
+            this.LatestErrorLabel.Location = new System.Drawing.Point(4, 693);
+            this.LatestErrorLabel.Name = "LatestErrorLabel";
+            this.LatestErrorLabel.Size = new System.Drawing.Size(117, 12);
+            this.LatestErrorLabel.TabIndex = 86;
+            this.LatestErrorLabel.Text = "Moniは万全の状態です";
+            this.toolTip1.SetToolTip(this.LatestErrorLabel, "直近の不具合を表示します");
+            // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
@@ -301,7 +309,7 @@ namespace Moni
             // StartupPic
             // 
             this.StartupPic.Image = global::Moni.Properties.Resources.windows;
-            this.StartupPic.Location = new System.Drawing.Point(167, 69);
+            this.StartupPic.Location = new System.Drawing.Point(167, 49);
             this.StartupPic.Name = "StartupPic";
             this.StartupPic.Size = new System.Drawing.Size(20, 20);
             this.StartupPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -374,18 +382,6 @@ namespace Moni
             this.label5.Size = new System.Drawing.Size(17, 12);
             this.label5.TabIndex = 38;
             this.label5.Text = "分";
-            // 
-            // NetPic
-            // 
-            this.NetPic.Image = global::Moni.Properties.Resources.net;
-            this.NetPic.Location = new System.Drawing.Point(167, 46);
-            this.NetPic.Name = "NetPic";
-            this.NetPic.Size = new System.Drawing.Size(20, 20);
-            this.NetPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.NetPic.TabIndex = 81;
-            this.NetPic.TabStop = false;
-            this.toolTip1.SetToolTip(this.NetPic, "Moniの最新情報を確認します");
-            this.NetPic.Click += new System.EventHandler(this.NetPic_Click);
             // 
             // linkLabel1
             // 
@@ -1153,17 +1149,6 @@ namespace Moni
             this.UpdateAlert.Interval = 10;
             this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
-            // LatestErrorLabel
-            // 
-            this.LatestErrorLabel.AutoSize = true;
-            this.LatestErrorLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.LatestErrorLabel.Location = new System.Drawing.Point(4, 693);
-            this.LatestErrorLabel.Name = "LatestErrorLabel";
-            this.LatestErrorLabel.Size = new System.Drawing.Size(117, 12);
-            this.LatestErrorLabel.TabIndex = 86;
-            this.LatestErrorLabel.Text = "Moniは万全の状態です";
-            this.toolTip1.SetToolTip(this.LatestErrorLabel, "直近の不具合を表示します");
-            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1193,7 +1178,6 @@ namespace Moni
             this.AlarmPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NetPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverallRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BusyRed)).EndInit();
@@ -1293,7 +1277,6 @@ namespace Moni
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.PictureBox NetPic;
         private System.Windows.Forms.Panel AlarmPanel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ContextMenuStrip FaceMenuStrip;
