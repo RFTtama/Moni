@@ -9,12 +9,18 @@ namespace Moni
         public static Clock mainForm = null;
         public static void ErrorOutput(string name, string msg, bool show)
         {
-            using (StreamWriter sw = new StreamWriter(@".\tcData\errorLog.txt", true))
+            try
             {
-                sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss [") + name +"]" + msg + "\r\n");
+                using (StreamWriter sw = new StreamWriter(@".\tcData\errorLog.txt", true))
+                {
+                    sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss [") + name + "]" + msg + "\r\n");
+                }
+                if (show) MessageBox.Show(msg, name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (mainForm != null) mainForm.LatestErrorLabel.Text = name;
+            }catch (Exception)
+            {
+                //無視
             }
-            if(show)MessageBox.Show(msg, name, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            mainForm.LatestErrorLabel.Text = name;
         }
     }
 }

@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Newtonsoft.Json.Linq;
 
 namespace Moni
 {
@@ -17,6 +18,7 @@ namespace Moni
         private DifferentManager dm;
         private AnalyticsClass ac;
         private MoniTerminator mt = new MoniTerminator();
+        private APImanager api = new APImanager();
         private DateTime dt;
         private string nvidiaSmiFile;
         private const string LB = "\r\n";
@@ -24,6 +26,7 @@ namespace Moni
         public int redPicSize;
         private ValueManager actTotalMem;
         private readonly string gpuFileName = @".\tcData\fileName.txt";
+        private readonly string apiFileName = @".\tcData\apiKey.txt";
         private int netInd = 0;
         private long[] speedBef;
         private string netName;
@@ -196,6 +199,7 @@ namespace Moni
                 checkBox2.Checked = SaveData.dateTimerEnabled;
                 checkBox3.Checked = SaveData.tellClock;
                 checkBox4.Checked = SaveData.transparent;
+                checkBox5.Checked = SaveData.apiEnabled;
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
@@ -205,6 +209,8 @@ namespace Moni
                 GC.Collect();
                 GCTimer.Enabled = true;
 
+                UpdateApi();
+
                 Splash.Close();
 
             }
@@ -212,6 +218,35 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
+            }
+        }
+
+        private void UpdateApi()
+        {
+            try
+            {
+                string apiKey = null;
+                try
+                {
+                    using (StreamReader sr = new StreamReader(apiFileName))
+                    {
+                        apiKey = sr.ReadLine();
+                    }
+                }catch (FileNotFoundException)
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
+
+                }
+                if (apiKey == null || apiKey == "")
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
+                    return;
+                }
+                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82" + apiKey;
+                api.RequestApi(url);
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("API更新エラー", ex.Message, true);
             }
         }
 
@@ -346,6 +381,12 @@ namespace Moni
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             SaveData.transparent = checkBox4.Checked;
+            SaveData.DataSave();
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveData.apiEnabled = checkBox5.Checked;
             SaveData.DataSave();
         }
 
@@ -982,11 +1023,11 @@ namespace Moni
         {
             if (AlarmBox.Checked)
             {
-                AlarmPanel.Visible = true;
+                AlarmPanel.Enabled = true;
             }
             else
             {
-                AlarmPanel.Visible = false;
+                AlarmPanel.Enabled = false;
             }
         }
 
@@ -1112,7 +1153,7 @@ namespace Moni
                 }
                 catch (Exception ex)
                 {
-                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, true);
                 }
             }
         }
@@ -1142,6 +1183,28 @@ namespace Moni
             {
                 //アプリ終了した際に発生する
                 //多分消えたアプリに値を設定できない?
+            }
+        }
+
+        private void applyButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string apiText = apiTextBox.Text;
+                if (apiText != null && apiText != "")
+                {
+                    using (StreamWriter sw = new StreamWriter(apiFileName, false))
+                    {
+                        sw.WriteLine(apiText);
+                    }
+                }
+                else
+                {
+                    ErrorLog.ErrorOutput("APIキーエラー", "APIキーが無効です", true);
+                }
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
             }
         }
     }
