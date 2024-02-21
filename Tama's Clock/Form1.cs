@@ -1206,6 +1206,7 @@ namespace Moni
                 {
                     ErrorLog.ErrorOutput("APIキーエラー", "APIキーが無効です", true);
                 }
+
             }catch(Exception ex)
             {
                 ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
@@ -1220,6 +1221,11 @@ namespace Moni
         {
             if (api.jsonData != null)
             {
+                if (api.jsonData["status"].ToString() == "error")
+                {
+                    ErrorLog.ErrorOutput(api.jsonData["code"].ToString(), api.jsonData["message"].ToString(), true);
+                    return;
+                }
                 for (int i = 0; i < 20; i++)
                 {
                     newsList.Add(api.jsonData["articles"][i]["title"].ToString());
