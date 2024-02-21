@@ -1242,6 +1242,7 @@ namespace Moni
                 }
                 NewsMover.Enabled = true;
                 currentNews = 0;
+                apiLabel.Left = 215;
                 apiLabel.Text = newsList[0];
                 api.ResetJsonData();
             }
@@ -1254,10 +1255,10 @@ namespace Moni
 
         private void NewsMover_Tick(object sender, EventArgs e)
         {
-            NewsLabel.Left += 10;
-            if(NewsLabel.Left > 210) 
+            apiLabel.Left -= 10;
+            if(apiLabel.Right <= 2) 
             {
-                NewsLabel.Left = 2;
+                apiLabel.Left = 215;
                 currentNews++;
                 if (currentNews >= 20) currentNews = 0;
                 apiLabel.Text = newsList[currentNews];

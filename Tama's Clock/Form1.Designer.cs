@@ -161,6 +161,7 @@ namespace Moni
             this.UpdatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
@@ -928,17 +929,16 @@ namespace Moni
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.LedPanel);
-            this.panel1.Controls.Add(this.apiLabel);
-            this.panel1.Controls.Add(this.UpdatePanel);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.SecondLabel);
             this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.HelpPanel);
+            this.panel1.Controls.Add(this.apiLabel);
+            this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.LoadPic);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.NewsLabel);
             this.panel1.Controls.Add(this.MinimizePic);
             this.panel1.Controls.Add(this.ClosePic);
-            this.panel1.Controls.Add(this.SecondLabel);
             this.panel1.Controls.Add(this.DateLabel);
             this.panel1.Controls.Add(this.TimeLabel);
             this.panel1.Controls.Add(this.GameLabel);
@@ -999,7 +999,7 @@ namespace Moni
             // 
             this.vScrollBar1.LargeChange = 50;
             this.vScrollBar1.Location = new System.Drawing.Point(410, 0);
-            this.vScrollBar1.Maximum = 590;
+            this.vScrollBar1.Maximum = 660;
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(10, 169);
             this.vScrollBar1.SmallChange = 30;
@@ -1009,7 +1009,7 @@ namespace Moni
             // LedPanel
             // 
             this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LedPanel.Location = new System.Drawing.Point(191, 155);
+            this.LedPanel.Location = new System.Drawing.Point(0, 13);
             this.LedPanel.Name = "LedPanel";
             this.LedPanel.Size = new System.Drawing.Size(10, 10);
             this.LedPanel.TabIndex = 25;
@@ -1035,6 +1035,7 @@ namespace Moni
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.LedPanel);
             this.panel3.Location = new System.Drawing.Point(191, 142);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(28, 35);
@@ -1271,6 +1272,7 @@ namespace Moni
             this.UpdatePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
