@@ -100,15 +100,15 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.LedPanel = new System.Windows.Forms.Panel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.apiLabel = new System.Windows.Forms.Label();
             this.UpdatePanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.LedPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.LoadPic = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.NewsLabel = new System.Windows.Forms.Label();
             this.MinimizePic = new System.Windows.Forms.PictureBox();
             this.ClosePic = new System.Windows.Forms.PictureBox();
@@ -158,10 +158,10 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.BluePic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.UpdatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).BeginInit();
@@ -929,10 +929,10 @@ namespace Moni
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.HelpPanel);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.SecondLabel);
             this.panel1.Controls.Add(this.vScrollBar1);
-            this.panel1.Controls.Add(this.HelpPanel);
             this.panel1.Controls.Add(this.apiLabel);
             this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.LoadPic);
@@ -947,6 +947,43 @@ namespace Moni
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel2.Location = new System.Drawing.Point(206, -1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 170);
+            this.panel2.TabIndex = 17;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.LedPanel);
+            this.panel3.Location = new System.Drawing.Point(191, 142);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(28, 35);
+            this.panel3.TabIndex = 37;
+            // 
+            // LedPanel
+            // 
+            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LedPanel.Location = new System.Drawing.Point(0, 13);
+            this.LedPanel.Name = "LedPanel";
+            this.LedPanel.Size = new System.Drawing.Size(10, 10);
+            this.LedPanel.TabIndex = 25;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.LargeChange = 50;
+            this.vScrollBar1.Location = new System.Drawing.Point(410, 0);
+            this.vScrollBar1.Maximum = 660;
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(10, 169);
+            this.vScrollBar1.SmallChange = 30;
+            this.vScrollBar1.TabIndex = 32;
+            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
             // apiLabel
             // 
@@ -995,34 +1032,6 @@ namespace Moni
             this.pictureBox3.MouseEnter += new System.EventHandler(this.UpdatePanel_MouseEnter);
             this.pictureBox3.MouseLeave += new System.EventHandler(this.UpdatePanel_MouseLeave);
             // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.LargeChange = 50;
-            this.vScrollBar1.Location = new System.Drawing.Point(410, 0);
-            this.vScrollBar1.Maximum = 660;
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(10, 169);
-            this.vScrollBar1.SmallChange = 30;
-            this.vScrollBar1.TabIndex = 32;
-            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
-            // 
-            // LedPanel
-            // 
-            this.LedPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LedPanel.Location = new System.Drawing.Point(0, 13);
-            this.LedPanel.Name = "LedPanel";
-            this.LedPanel.Size = new System.Drawing.Size(10, 10);
-            this.LedPanel.TabIndex = 25;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel2.Location = new System.Drawing.Point(206, -1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 170);
-            this.panel2.TabIndex = 17;
-            this.panel2.Click += new System.EventHandler(this.panel2_Click);
-            // 
             // LoadPic
             // 
             this.LoadPic.Location = new System.Drawing.Point(180, 4);
@@ -1031,15 +1040,6 @@ namespace Moni
             this.LoadPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LoadPic.TabIndex = 35;
             this.LoadPic.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.LedPanel);
-            this.panel3.Location = new System.Drawing.Point(191, 142);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(28, 35);
-            this.panel3.TabIndex = 37;
             // 
             // NewsLabel
             // 
@@ -1268,11 +1268,11 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)(this.PpmsPic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.UpdatePanel.ResumeLayout(false);
             this.UpdatePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadPic)).EndInit();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MinimizePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacePic)).EndInit();
