@@ -211,7 +211,7 @@ namespace Moni
                 GC.Collect();
                 GCTimer.Enabled = true;
 
-                UpdateApi();
+                if(checkBox5.Checked)UpdateApi();
 
                 Splash.Close();
 
