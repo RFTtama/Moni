@@ -399,6 +399,7 @@ namespace Moni
         private void chandeApiSettings()
         {
             SaveData.apiEnabled = checkBox5.Checked;
+            if(!checkBox5.Checked)NewsMover.Enabled = checkBox5.Checked;
             SaveData.DataSave();
         }
 
@@ -1238,10 +1239,9 @@ namespace Moni
                 for (int i = 0; i < 20; i++)
                 {
                     newsList.Add(api.jsonData["articles"][i]["title"].ToString());
-                    NewsMover.Enabled = true;
                 }
+                NewsMover.Enabled = true;
                 currentNews = 0;
-                apiLabel.Left = 192;
                 apiLabel.Text = newsList[0];
                 api.ResetJsonData();
             }
@@ -1254,10 +1254,14 @@ namespace Moni
 
         private void NewsMover_Tick(object sender, EventArgs e)
         {
-            NewsLabel.Left = 192;
-            currentNews++;
-            if (currentNews >= 20) currentNews = 0;
-            apiLabel.Text = newsList[currentNews];
+            NewsLabel.Left += 10;
+            if(NewsLabel.Left > 210) 
+            {
+                NewsLabel.Left = 2;
+                currentNews++;
+                if (currentNews >= 20) currentNews = 0;
+                apiLabel.Text = newsList[currentNews];
+            }
         }
     }
 }

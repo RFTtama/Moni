@@ -100,6 +100,7 @@ namespace Moni
             this.PpmsPic = new System.Windows.Forms.PictureBox();
             this.ResourceTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.apiLabel = new System.Windows.Forms.Label();
             this.UpdatePanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -131,7 +132,6 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
-            this.apiLabel = new System.Windows.Forms.Label();
             this.apiTimer = new System.Windows.Forms.Timer(this.components);
             this.NewsMover = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
@@ -927,12 +927,12 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.apiLabel);
             this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.vScrollBar1);
-            this.panel1.Controls.Add(this.LedPanel);
             this.panel1.Controls.Add(this.HelpPanel);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.LoadPic);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.NewsLabel);
@@ -947,6 +947,17 @@ namespace Moni
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 892);
             this.panel1.TabIndex = 7;
+            // 
+            // apiLabel
+            // 
+            this.apiLabel.AutoSize = true;
+            this.apiLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.apiLabel.Location = new System.Drawing.Point(2, 155);
+            this.apiLabel.Name = "apiLabel";
+            this.apiLabel.Size = new System.Drawing.Size(35, 13);
+            this.apiLabel.TabIndex = 40;
+            this.apiLabel.Text = "0000";
+            this.apiLabel.Visible = false;
             // 
             // UpdatePanel
             // 
@@ -1198,17 +1209,6 @@ namespace Moni
             this.UpdateAlert.Interval = 10;
             this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
-            // apiLabel
-            // 
-            this.apiLabel.AutoSize = true;
-            this.apiLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.apiLabel.Location = new System.Drawing.Point(2, 155);
-            this.apiLabel.Name = "apiLabel";
-            this.apiLabel.Size = new System.Drawing.Size(35, 13);
-            this.apiLabel.TabIndex = 40;
-            this.apiLabel.Text = "0000";
-            this.apiLabel.Visible = false;
-            // 
             // apiTimer
             // 
             this.apiTimer.Interval = 60000;
@@ -1216,6 +1216,7 @@ namespace Moni
             // 
             // NewsMover
             // 
+            this.NewsMover.Interval = 1000;
             this.NewsMover.Tick += new System.EventHandler(this.NewsMover_Tick);
             // 
             // Clock
