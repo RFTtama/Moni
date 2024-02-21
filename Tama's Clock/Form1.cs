@@ -248,7 +248,7 @@ namespace Moni
                     return;
                 }
                 apiTextBox.Text = apiKey;
-                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82" + apiKey;
+                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=" + apiKey;
                 api.RequestApi(url);
             }catch(Exception ex)
             {
