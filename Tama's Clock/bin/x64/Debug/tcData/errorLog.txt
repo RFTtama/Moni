@@ -28,3 +28,7 @@
 
 2024/02/21 20:33:37 [Moni終了エラー]Moniの異常終了を確認しました
 
+2024/02/21 20:35:44 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:36:46 [apiKeyInvalid]Your API key is invalid or incorrect. Check your key, or go to https://newsapi.org to create a free API key.
+

@@ -237,12 +237,14 @@ namespace Moni
                 }catch (FileNotFoundException)
                 {
                     ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
+                    chandeApiSettings();
                     return;
 
                 }
                 if (apiKey == null || apiKey == "")
                 {
                     ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
+                    chandeApiSettings();
                     return;
                 }
                 apiTextBox.Text = apiKey;
@@ -251,6 +253,7 @@ namespace Moni
             }catch(Exception ex)
             {
                 ErrorLog.ErrorOutput("API更新エラー", ex.Message, true);
+                chandeApiSettings();
             }
         }
 
@@ -389,6 +392,11 @@ namespace Moni
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            chandeApiSettings();
+        }
+
+        private void chandeApiSettings()
         {
             SaveData.apiEnabled = checkBox5.Checked;
             SaveData.DataSave();
@@ -1224,6 +1232,7 @@ namespace Moni
                 if (api.jsonData["status"].ToString() == "error")
                 {
                     ErrorLog.ErrorOutput(api.jsonData["code"].ToString(), api.jsonData["message"].ToString(), true);
+
                     return;
                 }
                 for (int i = 0; i < 20; i++)
