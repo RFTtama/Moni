@@ -131,6 +131,9 @@ namespace Moni
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.resourceUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateAlert = new System.Windows.Forms.Timer(this.components);
+            this.apiLabel = new System.Windows.Forms.Label();
+            this.apiTimer = new System.Windows.Forms.Timer(this.components);
+            this.NewsMover = new System.Windows.Forms.Timer(this.components);
             this.HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemUsingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupPic)).BeginInit();
@@ -183,7 +186,7 @@ namespace Moni
             // 
             this.DateLabel.AutoSize = true;
             this.DateLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateLabel.Location = new System.Drawing.Point(1, 154);
+            this.DateLabel.Location = new System.Drawing.Point(2, 140);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(35, 13);
             this.DateLabel.TabIndex = 2;
@@ -924,6 +927,7 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.apiLabel);
             this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.LedPanel);
@@ -1194,6 +1198,26 @@ namespace Moni
             this.UpdateAlert.Interval = 10;
             this.UpdateAlert.Tick += new System.EventHandler(this.UpdateAlert_Tick);
             // 
+            // apiLabel
+            // 
+            this.apiLabel.AutoSize = true;
+            this.apiLabel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.apiLabel.Location = new System.Drawing.Point(2, 155);
+            this.apiLabel.Name = "apiLabel";
+            this.apiLabel.Size = new System.Drawing.Size(35, 13);
+            this.apiLabel.TabIndex = 40;
+            this.apiLabel.Text = "0000";
+            this.apiLabel.Visible = false;
+            // 
+            // apiTimer
+            // 
+            this.apiTimer.Interval = 60000;
+            this.apiTimer.Tick += new System.EventHandler(this.apiTimer_Tick);
+            // 
+            // NewsMover
+            // 
+            this.NewsMover.Tick += new System.EventHandler(this.NewsMover_Tick);
+            // 
             // Clock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1355,6 +1379,9 @@ namespace Moni
         private System.Windows.Forms.TextBox apiTextBox;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Button applyButton;
+        public System.Windows.Forms.Label apiLabel;
+        public System.Windows.Forms.Timer apiTimer;
+        private System.Windows.Forms.Timer NewsMover;
     }
 }
 

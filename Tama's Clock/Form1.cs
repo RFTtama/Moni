@@ -204,6 +204,8 @@ namespace Moni
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
 
+                apiLabel.Text = "ニュースを取得中…";
+
                 this._ready = true;
 
                 GC.Collect();
@@ -235,6 +237,7 @@ namespace Moni
                 }catch (FileNotFoundException)
                 {
                     ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
+                    return;
 
                 }
                 if (apiKey == null || apiKey == "")
@@ -242,6 +245,7 @@ namespace Moni
                     ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
                     return;
                 }
+                apiTextBox.Text = apiKey;
                 string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=a42224ad2a154e85b3f761fc234d2d82" + apiKey;
                 api.RequestApi(url);
             }catch(Exception ex)
@@ -1206,6 +1210,39 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
             }
+        }
+
+        private int apiUpdateNum = 0;
+        private List<string> newsList = new List<string>();
+        private int currentNews = 0;
+
+        private void apiTimer_Tick(object sender, EventArgs e)
+        {
+            if (api.jsonData != null)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    newsList.Add(api.jsonData["articles"][i]["title"].ToString());
+                    NewsMover.Enabled = true;
+                }
+                currentNews = 0;
+                apiLabel.Left = 192;
+                apiLabel.Text = newsList[0];
+                api.ResetJsonData();
+            }
+            apiUpdateNum++;
+            if (apiUpdateNum % 60 == 0)
+            {
+                UpdateApi();
+            }
+        }
+
+        private void NewsMover_Tick(object sender, EventArgs e)
+        {
+            NewsLabel.Left = 192;
+            currentNews++;
+            if (currentNews >= 20) currentNews = 0;
+            apiLabel.Text = newsList[currentNews];
         }
     }
 }

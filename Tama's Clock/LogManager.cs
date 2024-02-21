@@ -229,6 +229,8 @@ namespace Moni
             set
             {
                 _apiEnabled = value;
+                f.apiTimer.Enabled = apiEnabled;
+                f.apiLabel.Visible = apiEnabled;
             }
         }
 
