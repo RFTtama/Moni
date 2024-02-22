@@ -928,11 +928,11 @@ namespace Moni
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.HelpPanel);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.SecondLabel);
-            this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.apiLabel);
             this.panel1.Controls.Add(this.UpdatePanel);
             this.panel1.Controls.Add(this.LoadPic);
