@@ -3,12 +3,6 @@ C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Moni.exe.manifest
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Moni.application
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Moni.exe
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Moni.pdb
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Microsoft.Toolkit.Uwp.Notifications.dll
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Microsoft.Toolkit.Uwp.Notifications.pdb
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\Newtonsoft.Json.dll
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\BouncyCastle.Crypto.dll
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\System.Buffers.dll
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\bin\x64\Release\System.ValueTuple.dll
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.csproj.AssemblyReference.cache
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.csproj.SuggestedBindingRedirects.cache
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Interop.IWshRuntimeLibrary.dll
@@ -20,7 +14,7 @@ C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.csproj.CoreCo
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.TrustInfo.xml
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.exe.manifest
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.application
-C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.csproj.CopyComplete
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.exe
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.pdb
 C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.exe.config
+C:\Users\rft_k\source\repos\Moni\Tama's Clock\obj\x64\Release\Moni.csproj.Fody.CopyLocal.cache

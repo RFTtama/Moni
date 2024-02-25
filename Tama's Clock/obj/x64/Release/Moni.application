@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Moni.exe.manifest" size="9061">
+    <dependentAssembly dependencyType="install" codebase="Moni.exe.manifest" size="5597">
       <assemblyIdentity name="Moni.exe" version="1.0.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Urizw5vRD7LcaSdsGsgqn8SytW2ZV4XB2EWImbmlK7Q=</dsig:DigestValue>
+        <dsig:DigestValue>9zIpkmryk+f8DkdmqqR+5DYtZh/sGG74DcDn2FAQzPU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
