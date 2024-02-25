@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Drawing;
+using Microsoft.Win32;
 using System.Management;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -8,6 +9,7 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Newtonsoft.Json.Linq;
 
 namespace Moni
 {
@@ -16,6 +18,7 @@ namespace Moni
         private DifferentManager dm;
         private AnalyticsClass ac;
         private MoniTerminator mt = new MoniTerminator();
+        private APImanager api = new APImanager();
         private DateTime dt;
         private string nvidiaSmiFile;
         private const string LB = "\r\n";
@@ -23,11 +26,11 @@ namespace Moni
         public int redPicSize;
         private ValueManager actTotalMem;
         private readonly string gpuFileName = @".\tcData\fileName.txt";
+        private readonly string apiFileName = @".\tcData\apiKey.txt";
         private int netInd = 0;
         private long[] speedBef;
         private string netName;
         private bool _ready = false;
-        private bool gameRunningFlg = false;
         public bool ready
         {
             get {
@@ -38,6 +41,7 @@ namespace Moni
         private List<PerformanceCounter> pcList = new List<PerformanceCounter>();
         private List<Bottleneck> cwList = new List<Bottleneck>();
         private int day;
+        private DateTime bootTime = DateTime.Now;
 
         public Clock()
         {
@@ -112,7 +116,9 @@ namespace Moni
 
 #endif
 
+                SystemEvents.SessionEnding += new SessionEndingEventHandler(Detect_EndWindows);
                 LogManager.LogManagerConstructor(this);
+                ErrorLog.mainForm = this;
                 dm = new DifferentManager(this);
                 ac = new AnalyticsClass(this);
                 SaveStyleUD.SelectedIndex = 1;
@@ -192,14 +198,20 @@ namespace Moni
                 checkBox1.Checked = SaveData.topMost;
                 checkBox2.Checked = SaveData.dateTimerEnabled;
                 checkBox3.Checked = SaveData.tellClock;
+                checkBox4.Checked = SaveData.transparent;
+                checkBox5.Checked = SaveData.apiEnabled;
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
+
+                apiLabel.Text = "ニュースを取得中…";
 
                 this._ready = true;
 
                 GC.Collect();
                 GCTimer.Enabled = true;
+
+                if(checkBox5.Checked)UpdateApi();
 
                 Splash.Close();
 
@@ -208,6 +220,40 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
+            }
+        }
+
+        private void UpdateApi()
+        {
+            try
+            {
+                string apiKey = null;
+                try
+                {
+                    using (StreamReader sr = new StreamReader(apiFileName))
+                    {
+                        apiKey = sr.ReadLine();
+                    }
+                }catch (FileNotFoundException)
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
+                    chandeApiSettings();
+                    return;
+
+                }
+                if (apiKey == null || apiKey == "")
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
+                    chandeApiSettings();
+                    return;
+                }
+                apiTextBox.Text = apiKey;
+                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=" + apiKey;
+                api.RequestApi(url);
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("API更新エラー", ex.Message, true);
+                chandeApiSettings();
             }
         }
 
@@ -309,6 +355,16 @@ namespace Moni
             }
         }
 
+        /// <summary>
+        /// シャットダウンを検知してフォームを閉じる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Detect_EndWindows(object sender, SessionEndingEventArgs e)
+        {
+            this.Dispose();
+        }
+
         private const int moveLength = 4;
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -326,6 +382,24 @@ namespace Moni
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             SaveData.tellClock = checkBox3.Checked;
+            SaveData.DataSave();
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveData.transparent = checkBox4.Checked;
+            SaveData.DataSave();
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            chandeApiSettings();
+        }
+
+        private void chandeApiSettings()
+        {
+            SaveData.apiEnabled = checkBox5.Checked;
+            if(!checkBox5.Checked)NewsMover.Enabled = checkBox5.Checked;
             SaveData.DataSave();
         }
 
@@ -625,7 +699,11 @@ namespace Moni
             try
             {
                 Random rand = new Random();
-                if (cwList[1].errorFlg)
+                if (((DateTime.Now - windowMovingTime).TotalSeconds < 1) && ((DateTime.Now - bootTime).TotalSeconds > 3))
+                {
+                    FacePic.Image = Properties.Resources.face_scary;
+                }
+                else if (cwList[1].errorFlg)
                 {
                     if (faceTimer % 2 == 0)
                     {
@@ -958,11 +1036,11 @@ namespace Moni
         {
             if (AlarmBox.Checked)
             {
-                AlarmPanel.Visible = true;
+                AlarmPanel.Enabled = true;
             }
             else
             {
-                AlarmPanel.Visible = false;
+                AlarmPanel.Enabled = false;
             }
         }
 
@@ -1088,8 +1166,102 @@ namespace Moni
                 }
                 catch (Exception ex)
                 {
-                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, true);
                 }
+            }
+        }
+
+        DateTime windowMovingTime;
+
+        private void Clock_Move(object sender, EventArgs e)
+        {
+            //Control c = (Control)sender;
+            windowMovingTime = DateTime.Now;
+        }
+
+        private void Clock_Activated(object sender, EventArgs e)
+        {
+            this.Opacity = 1.0f;
+        }
+
+        private void Clock_Deactivate(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SaveData.transparent && this != null)
+                {
+                    this.Opacity = 0.5f;
+                }
+            }catch (System.ComponentModel.Win32Exception)
+            {
+                //アプリ終了した際に発生する
+                //多分消えたアプリに値を設定できない?
+            }
+        }
+
+        private void applyButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string apiText = apiTextBox.Text;
+                if (apiText != null && apiText != "")
+                {
+                    using (StreamWriter sw = new StreamWriter(apiFileName, false))
+                    {
+                        sw.WriteLine(apiText);
+                    }
+                }
+                else
+                {
+                    ErrorLog.ErrorOutput("APIキーエラー", "APIキーが無効です", true);
+                }
+
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
+            }
+        }
+
+        private int apiUpdateNum = 0;
+        private List<string> newsList = new List<string>();
+        private int currentNews = 0;
+
+        private void apiTimer_Tick(object sender, EventArgs e)
+        {
+            if (api.jsonData != null)
+            {
+                if (api.jsonData["status"].ToString() == "error")
+                {
+                    ErrorLog.ErrorOutput(api.jsonData["code"].ToString(), api.jsonData["message"].ToString(), true);
+
+                    return;
+                }
+                for (int i = 0; i < 20; i++)
+                {
+                    newsList.Add(api.jsonData["articles"][i]["title"].ToString());
+                }
+                NewsMover.Enabled = true;
+                currentNews = 0;
+                apiLabel.Left = 215;
+                apiLabel.Text = newsList[0];
+                api.ResetJsonData();
+            }
+            apiUpdateNum++;
+            if (apiUpdateNum % 60 == 0)
+            {
+                UpdateApi();
+            }
+        }
+
+        private void NewsMover_Tick(object sender, EventArgs e)
+        {
+            apiLabel.Left -= 10;
+            if(apiLabel.Right <= 2) 
+            {
+                apiLabel.Left = 215;
+                currentNews++;
+                if (currentNews >= 20) currentNews = 0;
+                apiLabel.Text = newsList[currentNews];
             }
         }
     }

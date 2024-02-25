@@ -1,8 +1,42 @@
-2023/08/18 18:29:03 [アプリ更新エラー]System.ComponentModel.Win32Exception (0x80004005): 指定されたファイルが見つかりません。
-   場所 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
-   場所 Moni.Clock.Clock_FormClosed(Object sender, FormClosedEventArgs e) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1085指定されたファイルが見つかりません。
+2024/02/21 15:58:29 [Moni終了エラー]Moniの異常終了を確認しました
 
-2023/08/18 18:29:59 [アプリ更新エラー]System.ComponentModel.Win32Exception (0x80004005): 指定されたファイルが見つかりません。
-   場所 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
-   場所 Moni.Clock.Clock_FormClosed(Object sender, FormClosedEventArgs e) 場所 C:\Users\rft_k\source\repos\Moni\Tama's Clock\Form1.cs:行 1085指定されたファイルが見つかりません。
+2024/02/21 15:58:41 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 15:58:47 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 15:59:24 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 16:00:41 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 16:01:33 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 16:03:34 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 16:13:59 [無効なAPIキー]APIキーが無効です
+
+2024/02/21 16:14:05 [APIキーエラー]APIキーがnullです
+
+2024/02/21 16:14:06 [APIキーエラー]APIキーがnullです
+
+2024/02/21 16:30:33 [無効なAPIキー]APIキーが無効です
+
+2024/02/21 16:39:31 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:28:30 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:30:32 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:33:37 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:35:44 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:36:46 [apiKeyInvalid]Your API key is invalid or incorrect. Check your key, or go to https://newsapi.org to create a free API key.
+
+2024/02/21 20:46:41 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:48:52 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:54:06 [Moni終了エラー]Moniの異常終了を確認しました
+
+2024/02/21 20:57:40 [Moni終了エラー]Moniの異常終了を確認しました
 

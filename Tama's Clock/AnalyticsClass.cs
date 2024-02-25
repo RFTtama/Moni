@@ -522,7 +522,7 @@ namespace Moni
                     long avgSpeed = totalSpeed / totalNumber;
                     float fos = ((float)tryNum / overallTry) * 100.0f;
 
-                    _form.toolTip1.SetToolTip(_form.PpmsPic, "最大: " + maxSpeed + " PPMS" +
+                    _form.toolTip1.SetToolTip(_form.PpmsPic, "直近: " + processSpeed + " PPMS\r\n最大: " + maxSpeed + " PPMS" +
                         "\r\n平均: " + avgSpeed + " PPMS (" + totalNumber.ToString() + "回の解析)" +
                         "\r\n\r\nこの数値は1msで処理したプロセスの最大数を示し、" +
                         "\r\nコンピュータの処理能力を表しています" +
@@ -568,6 +568,25 @@ namespace Moni
             lvl.Text = "詳細情報解析中";
 
             stopwatch.Start();
+
+            //csvに書き出し
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("./tcData/allResourceLogs.csv", false))
+                {
+                    sw.WriteLine("date time,cpu usage(%),mem usage(bytes),gpu usage(%),disk usage(%),network upload speed(Bps),network download speed(Bps)");
+                    for (int i = 0; i < dts.Count; i++)
+                    {
+                        sw.WriteLine(dts[i].ToString("G") + "," + cpu[i].ToString() + "," + mem[i].ToString() + "," +
+                            gpu[i].ToString() + "," + disk[i].ToString() + "," + send[i].ToString() + "," + receive[i].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.ErrorOutput("csv書き出しエラー", ex.Message, true);
+            }
 
             for (int i = 0; i < dts.Count; i++)
             {

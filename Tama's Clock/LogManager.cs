@@ -141,7 +141,7 @@ namespace Moni
         private static bool _topMost = false;
 
         /// <summary>
-        /// トップもスト
+        /// トップモスト
         /// </summary>
         public static bool topMost
         {
@@ -154,6 +154,22 @@ namespace Moni
                 _topMost = value;
                 f.TopMost = _topMost;
 
+            }
+        }
+        private static bool _transparent = false;
+
+        /// <summary>
+        /// 透明化にするか
+        /// </summary>
+        public static bool transparent
+        {
+            get
+            {
+                return _transparent;
+            }
+            set
+            {
+                _transparent = value;
             }
         }
         private static bool _dateTimerEnabled = false;
@@ -199,6 +215,25 @@ namespace Moni
             }
         }
 
+        private static bool _apiEnabled = false;
+
+        /// <summary>
+        /// api機能の有効化
+        /// </summary>
+        public static bool apiEnabled
+        {
+            get
+            {
+                return _apiEnabled; 
+            }
+            set
+            {
+                _apiEnabled = value;
+                f.apiTimer.Enabled = apiEnabled;
+                f.apiLabel.Visible = apiEnabled;
+            }
+        }
+
         /// <summary>
         /// ログの保存日数
         /// </summary>
@@ -226,7 +261,6 @@ namespace Moni
             {
                 using (StreamReader sr = new StreamReader(filePath))
                 {
-                    //data6 ←空き
                     string dat = sr.ReadLine();
                     string[] dataStr = dat.Split(',');
                     int[] datas = new int[dataStr.Length];
@@ -267,12 +301,26 @@ namespace Moni
                     }
                     faceColor = datas[4];
                     f.DriveUD.SelectedIndex = datas[5];
+                    if (datas[6] == 1)
+                    {
+                        transparent = true;
+                    }else { 
+                        transparent = false; 
+                    }
                     f.SaveStyleUD.SelectedIndex = datas[7];
+                    if (datas[8] == 1)
+                    {
+                        apiEnabled = true;
+                    }
+                    else
+                    {
+                        apiEnabled = false;
+                    }
                 }
             }
             catch (System.IndexOutOfRangeException)
             {
-                MessageBox.Show("セーブデータを更新します", "更新", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("設定を更新します", "更新", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
                     DataSave();
@@ -330,8 +378,23 @@ namespace Moni
                     }
                     data += faceColor;
                     data += "," + f.DriveUD.SelectedIndex;
-                    data += "," + "0";
+                    if (transparent)
+                    {
+                        data += "," + "1";
+                    }
+                    else
+                    {
+                        data += "," + "0";
+                    }
                     data += "," + f.SaveStyleUD.SelectedIndex;
+                    if (apiEnabled)
+                    {
+                        data += "," + "1";
+                    }
+                    else
+                    {
+                        data += "," + "0";
+                    }
                     sw.WriteLine(data);                 //書き込み開始
                 }
             }
