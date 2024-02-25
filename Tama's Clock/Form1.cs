@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Newtonsoft.Json.Linq;
 
 namespace Moni
 {
@@ -17,6 +18,7 @@ namespace Moni
         private DifferentManager dm;
         private AnalyticsClass ac;
         private MoniTerminator mt = new MoniTerminator();
+        private APImanager api = new APImanager();
         private DateTime dt;
         private string nvidiaSmiFile;
         private const string LB = "\r\n";
@@ -24,6 +26,7 @@ namespace Moni
         public int redPicSize;
         private ValueManager actTotalMem;
         private readonly string gpuFileName = @".\tcData\fileName.txt";
+        private readonly string apiFileName = @".\tcData\apiKey.txt";
         private int netInd = 0;
         private long[] speedBef;
         private string netName;
@@ -196,14 +199,19 @@ namespace Moni
                 checkBox2.Checked = SaveData.dateTimerEnabled;
                 checkBox3.Checked = SaveData.tellClock;
                 checkBox4.Checked = SaveData.transparent;
+                checkBox5.Checked = SaveData.apiEnabled;
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
+
+                apiLabel.Text = "ニュースを取得中…";
 
                 this._ready = true;
 
                 GC.Collect();
                 GCTimer.Enabled = true;
+
+                if(checkBox5.Checked)UpdateApi();
 
                 Splash.Close();
 
@@ -212,6 +220,40 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
+            }
+        }
+
+        private void UpdateApi()
+        {
+            try
+            {
+                string apiKey = null;
+                try
+                {
+                    using (StreamReader sr = new StreamReader(apiFileName))
+                    {
+                        apiKey = sr.ReadLine();
+                    }
+                }catch (FileNotFoundException)
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
+                    chandeApiSettings();
+                    return;
+
+                }
+                if (apiKey == null || apiKey == "")
+                {
+                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
+                    chandeApiSettings();
+                    return;
+                }
+                apiTextBox.Text = apiKey;
+                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=" + apiKey;
+                api.RequestApi(url);
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("API更新エラー", ex.Message, true);
+                chandeApiSettings();
             }
         }
 
@@ -346,6 +388,18 @@ namespace Moni
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             SaveData.transparent = checkBox4.Checked;
+            SaveData.DataSave();
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            chandeApiSettings();
+        }
+
+        private void chandeApiSettings()
+        {
+            SaveData.apiEnabled = checkBox5.Checked;
+            if(!checkBox5.Checked)NewsMover.Enabled = checkBox5.Checked;
             SaveData.DataSave();
         }
 
@@ -982,11 +1036,11 @@ namespace Moni
         {
             if (AlarmBox.Checked)
             {
-                AlarmPanel.Visible = true;
+                AlarmPanel.Enabled = true;
             }
             else
             {
-                AlarmPanel.Visible = false;
+                AlarmPanel.Enabled = false;
             }
         }
 
@@ -1112,7 +1166,7 @@ namespace Moni
                 }
                 catch (Exception ex)
                 {
-                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, false);
+                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, true);
                 }
             }
         }
@@ -1142,6 +1196,72 @@ namespace Moni
             {
                 //アプリ終了した際に発生する
                 //多分消えたアプリに値を設定できない?
+            }
+        }
+
+        private void applyButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string apiText = apiTextBox.Text;
+                if (apiText != null && apiText != "")
+                {
+                    using (StreamWriter sw = new StreamWriter(apiFileName, false))
+                    {
+                        sw.WriteLine(apiText);
+                    }
+                }
+                else
+                {
+                    ErrorLog.ErrorOutput("APIキーエラー", "APIキーが無効です", true);
+                }
+
+            }catch(Exception ex)
+            {
+                ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
+            }
+        }
+
+        private int apiUpdateNum = 0;
+        private List<string> newsList = new List<string>();
+        private int currentNews = 0;
+
+        private void apiTimer_Tick(object sender, EventArgs e)
+        {
+            if (api.jsonData != null)
+            {
+                if (api.jsonData["status"].ToString() == "error")
+                {
+                    ErrorLog.ErrorOutput(api.jsonData["code"].ToString(), api.jsonData["message"].ToString(), true);
+
+                    return;
+                }
+                for (int i = 0; i < 20; i++)
+                {
+                    newsList.Add(api.jsonData["articles"][i]["title"].ToString());
+                }
+                NewsMover.Enabled = true;
+                currentNews = 0;
+                apiLabel.Left = 215;
+                apiLabel.Text = newsList[0];
+                api.ResetJsonData();
+            }
+            apiUpdateNum++;
+            if (apiUpdateNum % 60 == 0)
+            {
+                UpdateApi();
+            }
+        }
+
+        private void NewsMover_Tick(object sender, EventArgs e)
+        {
+            apiLabel.Left -= 10;
+            if(apiLabel.Right <= 2) 
+            {
+                apiLabel.Left = 215;
+                currentNews++;
+                if (currentNews >= 20) currentNews = 0;
+                apiLabel.Text = newsList[currentNews];
             }
         }
     }

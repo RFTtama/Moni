@@ -215,6 +215,25 @@ namespace Moni
             }
         }
 
+        private static bool _apiEnabled = false;
+
+        /// <summary>
+        /// api機能の有効化
+        /// </summary>
+        public static bool apiEnabled
+        {
+            get
+            {
+                return _apiEnabled; 
+            }
+            set
+            {
+                _apiEnabled = value;
+                f.apiTimer.Enabled = apiEnabled;
+                f.apiLabel.Visible = apiEnabled;
+            }
+        }
+
         /// <summary>
         /// ログの保存日数
         /// </summary>
@@ -289,11 +308,19 @@ namespace Moni
                         transparent = false; 
                     }
                     f.SaveStyleUD.SelectedIndex = datas[7];
+                    if (datas[8] == 1)
+                    {
+                        apiEnabled = true;
+                    }
+                    else
+                    {
+                        apiEnabled = false;
+                    }
                 }
             }
             catch (System.IndexOutOfRangeException)
             {
-                MessageBox.Show("セーブデータを更新します", "更新", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("設定を更新します", "更新", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
                     DataSave();
@@ -360,6 +387,14 @@ namespace Moni
                         data += "," + "0";
                     }
                     data += "," + f.SaveStyleUD.SelectedIndex;
+                    if (apiEnabled)
+                    {
+                        data += "," + "1";
+                    }
+                    else
+                    {
+                        data += "," + "0";
+                    }
                     sw.WriteLine(data);                 //書き込み開始
                 }
             }
