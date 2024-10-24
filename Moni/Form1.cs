@@ -1,22 +1,12 @@
-using System;
-using System.IO;
-using System.Drawing;
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Windows.Forms;
-using System.IO.Compression;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Moni
 {
     public partial class Clock : Form
     {
-        private DifferentManager dm;
-        private AnalyticsClass ac;
+        private readonly string[] HEAD_NORMAL = new string[] { "", "k", "M", "G", "T", "P" };
         private MoniTerminator mt = new MoniTerminator();
         private DateTime dt;
         private string nvidiaSmiFile;
@@ -25,7 +15,6 @@ namespace Moni
         public int redPicSize;
         private ValueManager actTotalMem;
         private readonly string gpuFileName = @".\tcData\fileName.txt";
-        private readonly string apiFileName = @".\tcData\apiKey.txt";
         private int netInd = 0;
         private long[] speedBef;
         private string netName;
@@ -39,7 +28,7 @@ namespace Moni
         }
         private bool gpuOk;
         private List<PerformanceCounter> pcList = new List<PerformanceCounter>();
-        private List<Bottleneck> cwList = new List<Bottleneck>();
+        private List<BottleNeckClass> cwList = new List<BottleNeckClass>();
         private int day;
         private DateTime bootTime = DateTime.Now;
 
@@ -51,77 +40,7 @@ namespace Moni
             {
                 InitializeComponent();
 
-#if !DEBUG
-
-                try
-                {
-                    /*Moni更新動作*/
-
-                    //アップデート用ディレクトリ名を設定
-                    string updateDirectoryName = "MoniLatest";
-
-                    //アップデート用ディレクトリが存在していたら削除する
-                    if (Directory.Exists(@".\" + updateDirectoryName))
-                    {
-                        Directory.Delete(@".\" + updateDirectoryName, true);
-                    }
-
-                    //アップデート用ディレクトリを作成
-                    Directory.CreateDirectory(updateDirectoryName);
-
-                    //最新ファイルをダウンロード
-                    using (System.Net.WebClient wc = new System.Net.WebClient())
-                    {
-                        wc.DownloadFile("https://github.com/RFTtama/Moni-released/archive/refs/heads/main.zip", @".\" + updateDirectoryName + @"\main.zip");
-                    }
-
-                    //ファイルを展開
-                    ZipFile.ExtractToDirectory(@".\" + updateDirectoryName + @"\main.zip", @".\" + updateDirectoryName);
-
-                    //もとのファイルを削除
-                    File.Delete(@".\" + updateDirectoryName + @"\main.zip");
-
-                    //ファイルを移動
-                    File.Move(@".\" + updateDirectoryName + @"\Moni-released-main\Moni.exe", @".\" + updateDirectoryName + @"\Moni.exe");
-
-                    //移動元のディレクトリを削除
-                    Directory.Delete(@".\" + updateDirectoryName + @"\Moni-released-main");
-
-                    //最新ファイルのバージョンを取得
-                    FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(@".\" + updateDirectoryName + @"\Moni.exe");
-
-                    //int型に変換
-                    int newVersionNum = int.Parse(fileInfo.FileVersion.Replace(".", string.Empty));
-
-                    //現行ファイルのバージョンを取得
-                    FileVersionInfo version = FileVersionInfo.GetVersionInfo(
-                            System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-                    //int型に変換
-                    int oldVersionNum = int.Parse(version.FileVersion.ToString().Replace(".", string.Empty));
-
-                    if (newVersionNum > oldVersionNum)
-                    {
-                        UpdatePanel.Visible = true;
-                    }
-                    else
-                    {
-                        //削除
-                        Directory.Delete(@".\" + updateDirectoryName, true);
-                    }
-                }catch (Exception ex)
-                {
-                    ErrorLog.ErrorOutput("更新エラー", ex.Message, true);
-                }
-
-#endif
-
                 SystemEvents.SessionEnding += new SessionEndingEventHandler(Detect_EndWindows);
-                LogManager.LogManagerConstructor(this);
-                ErrorLog.mainForm = this;
-                dm = new DifferentManager(this);
-                ac = new AnalyticsClass(this);
-                SaveStyleUD.SelectedIndex = 1;
                 dt = DateTime.Now;
                 day = dt.Day;
                 HoursUD.Value = int.Parse(dt.ToString("HH"));
@@ -141,7 +60,6 @@ namespace Moni
                 {
                     SearchGpuFile();
                 }
-                LogManager.logState = 3;
                 this.redPicSize = RedPic2.Width;
                 System.Reflection.Assembly asm =
                     System.Reflection.Assembly.GetExecutingAssembly();
@@ -150,8 +68,6 @@ namespace Moni
                 this.tellBef = -1;
 
                 DriveUD.Items.Add("ALL");
-                //設定読み込み
-                SaveData.ReadSaveDatas();
                 List<(string machine, string category, string counter, string instance)> counterList = new List<(string machine, string category, string counter, string instance)>();
 
                 counterList.Add((".", "Processor", "% Processor Time", "_Total"));                                      //cpu                               
@@ -171,7 +87,6 @@ namespace Moni
                     ErrorLog.ErrorOutput("リソース取得エラー", msg, true);
                     this.Close();
                 }
-                SetDesc();
                 NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
                 long[,] net = new long[nis.Length, 2];
                 speedBef = new long[2];
@@ -189,29 +104,16 @@ namespace Moni
                         speedBef[1] = net[netInd, 1];
                     }
                 }
-                cwList.Add(new Bottleneck("NetWorkWarning"));
-                cwList.Add(new Bottleneck("CPUWarning"));
-                cwList.Add(new Bottleneck("MemoryWarning"));
-                cwList.Add(new Bottleneck("GPUWarning"));
-                cwList.Add(new Bottleneck("DiskWarning"));
-                if (SaveData.enableLogSave) dm.CheckLogFiles();
-                checkBox1.Checked = SaveData.topMost;
-                checkBox2.Checked = SaveData.dateTimerEnabled;
-                checkBox3.Checked = SaveData.tellClock;
-                checkBox4.Checked = SaveData.transparent;
-                checkBox5.Checked = SaveData.apiEnabled;
+                cwList.Add(new BottleNeckClass("NetWorkWarning"));
+                cwList.Add(new BottleNeckClass("CPUWarning"));
+                cwList.Add(new BottleNeckClass("MemoryWarning"));
+                cwList.Add(new BottleNeckClass("GPUWarning"));
+                cwList.Add(new BottleNeckClass("DiskWarning"));
                 ResourceTimer.Enabled = true;
                 FaceTimer.Enabled = true;
                 DateTimer.Enabled = true;
 
-                apiLabel.Text = "ニュースを取得中…";
-
                 this._ready = true;
-
-                GC.Collect();
-                GCTimer.Enabled = true;
-
-                if (checkBox5.Checked) UpdateApi();
 
                 Splash.Close();
 
@@ -220,41 +122,6 @@ namespace Moni
             {
                 ErrorLog.ErrorOutput("初期化時に不明なエラー", ex + ex.Message, true);
                 this.Close();
-            }
-        }
-
-        private void UpdateApi()
-        {
-            try
-            {
-                string apiKey = null;
-                try
-                {
-                    using (StreamReader sr = new StreamReader(apiFileName))
-                    {
-                        apiKey = sr.ReadLine();
-                    }
-                }
-                catch (FileNotFoundException)
-                {
-                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが設定されていません", true);
-                    chandeApiSettings();
-                    return;
-
-                }
-                if (apiKey == null || apiKey == "")
-                {
-                    ErrorLog.ErrorOutput("無効なAPIキー", "APIキーが無効です", true);
-                    chandeApiSettings();
-                    return;
-                }
-                apiTextBox.Text = apiKey;
-                string url = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=" + apiKey;
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.ErrorOutput("API更新エラー", ex.Message, true);
-                chandeApiSettings();
             }
         }
 
@@ -314,17 +181,13 @@ namespace Moni
             try
             {
                 this.dt = DateTime.Now;
-                if (this.day != dt.Day && SaveData.enableLogSave)
-                {
-                    dm.CheckLogFiles();
-                }
                 this.day = dt.Day;
                 this.DateLabel.Text = dt.ToString("yyyy/MM/dd");
                 this.SecondLabel.Text = dt.ToString("ss");
                 this.TimeLabel.Text = dt.ToString("HH:mm");
                 int min = int.Parse(dt.ToString("mm"));
                 int hour = int.Parse(dt.ToString("HH"));
-                if (min == 0 && SaveData.tellClock && this.tellBef != hour && checkBox3.Enabled == true)
+                if (min == 0 && this.tellBef != hour && checkBox3.Enabled == true)
                 {
                     Task task = Task.Run(() =>
                     {
@@ -370,41 +233,24 @@ namespace Moni
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            SaveData.topMost = checkBox1.Checked;
-            SaveData.DataSave();
+
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            SaveData.dateTimerEnabled = checkBox2.Checked;
-            SaveData.DataSave();
+
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            SaveData.tellClock = checkBox3.Checked;
-            SaveData.DataSave();
+
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            SaveData.transparent = checkBox4.Checked;
-            SaveData.DataSave();
+;
         }
 
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
-        {
-            chandeApiSettings();
-        }
-
-        private void chandeApiSettings()
-        {
-            SaveData.apiEnabled = checkBox5.Checked;
-            if (!checkBox5.Checked) NewsMover.Enabled = checkBox5.Checked;
-            SaveData.DataSave();
-        }
-
-        private string LogStr = string.Empty;
         private void ResourceTimer_Tick(object sender, EventArgs e)
         {
 
@@ -486,7 +332,7 @@ namespace Moni
                 }
                 if (!slideLeft)
                 {
-                    MemoryLabel.Text = "使用可能メモリ: " + avaMem.ToString("F2") + "(" + ac.HEAD_NORMAL[memHead] + "B)";
+                    MemoryLabel.Text = "使用可能メモリ: " + avaMem.ToString("F2") + "(" + HEAD_NORMAL[memHead] + "B)";
                     MaxMemLabel.Text = actTotalMem.data.ToString("F2") + actTotalMem.HeadToString() + "B";
                     RedPic3.Width = (int)((actTotalMem.num - actAvaMem) / actTotalMem.num * redPicSize);
                 }
@@ -577,52 +423,7 @@ namespace Moni
 
                 if (!slideLeft) toolTip1.SetToolTip(MemUsingPic, "Moniメモリ使用量: " + process.data.ToString("F1") + "(" +
                     process.HeadToString() + "Bytes) " + usingPercentage.ToString("F1") + "%" +
-                    LB + "最大: " + maxProcess.data.ToString("F1") + "(" + maxProcess.HeadToString() + "Bytes)" +
-                    LB + "GC周期: " + GCTimer.Interval + "ms");
-
-
-                if (SaveData.enableLogSave)
-                {
-                    if (gpuOk)
-                    {
-                        LogStr += dt.ToString("HH:mm:ss") + "," + receive.data.ToString("F0") + "," + receive.HeadToString() + "," + sent.data.ToString("F0") + "," + sent.HeadToString() + "," +
-                            cpuUses.ToString("F2") + "," + avaMem.ToString() + "," + ac.HEAD_NORMAL[memHead] + "," + gpuValue + "," +
-                            busyPer.ToString("F2") + LB;
-                        LogManager.SetState(0, "正常");
-                    }
-                    else
-                    {
-                        LogStr += dt.ToString("HH:mm:ss") + "," + receive.data.ToString("F0") + "," + receive.HeadToString() + "," + sent.data.ToString("F0") + "," + sent.HeadToString() + "," +
-                            cpuUses.ToString("F2") + "," + avaMem.ToString() + "," + ac.HEAD_NORMAL[memHead] + "," + 0 + "," +
-                            busyPer.ToString("F2") + LB;
-                        LogManager.SetState(1, "異常あり");
-                    }
-                    try
-                    {
-                        using (StreamWriter sw = new StreamWriter(@".\LogData\" + dt.ToString("yyyy_MM_dd") + "ResourcesLog.tc", true))
-                        {
-                            sw.Write(LogStr);
-                        }
-                        LogStr = string.Empty;
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-
-                    }
-                    catch (DirectoryNotFoundException)
-                    {
-                        LogManager.SetState(1, "ディレクトリ生成中");
-                        Directory.CreateDirectory(@".\LogData");
-                    }
-                    catch (Exception ex)
-                    {
-                        ErrorLog.ErrorOutput("リソース保存失敗", ex.Message, false);
-                    }
-                }
-                else
-                {
-                    LogManager.SetState(3, "停止中");
-                }
+                    LB + "最大: " + maxProcess.data.ToString("F1") + "(" + maxProcess.HeadToString() + "Bytes)" );
             }
             catch (Exception ex)
             {
@@ -674,20 +475,6 @@ namespace Moni
             AlarmTimer.Enabled = false;
             DateTimer.Enabled = false;
             mt.IsSafe();
-            if (AnalyticsClass.analysisTask != null)
-            {
-                await AnalyticsClass.analysisTask;
-            }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            SaveData.enableLogSave = !SaveData.enableLogSave;
-            if (SaveData.enableLogSave == false)
-            {
-                LogUpdateLabel.Text = "停止";
-            }
-            SaveData.DataSave();
         }
 
         private int faceTimer = 0;
@@ -761,7 +548,7 @@ namespace Moni
                 }
                 else
                 {
-                    if (breakingTimer > 6000 && dm.CheckNight())
+                    if (breakingTimer > 6000 && CheckNight())
                     {
                         if (faceTimer % 40 < 20)
                         {
@@ -778,7 +565,7 @@ namespace Moni
                         {
                             mabataki = defMabataki;
                             FacePic.Image = Properties.Resources.face_2;
-                            if (dm.CheckNight())
+                            if (CheckNight())
                             {
                                 defMabataki = 40;
                             }
@@ -788,10 +575,6 @@ namespace Moni
                             }
                             mabataki += rand.Next(-10, 11);
                         }
-                        else if (ac.overallBusyPer >= 70.0)
-                        {
-                            FacePic.Image = Properties.Resources.face_sleepy;
-                        }
                         else
                         {
                             FacePic.Image = Properties.Resources.face_0;
@@ -799,7 +582,7 @@ namespace Moni
                     }
                     breakingTimer++;
                 }
-                foreach (Bottleneck cw in cwList)
+                foreach (BottleNeckClass cw in cwList)
                 {
                     if (cw.errorFlg)
                     {
@@ -853,7 +636,6 @@ namespace Moni
                 try
                 {
                     pcList[2] = new PerformanceCounter("PhysicalDisk", "% Disk Time", driveName, ".");
-                    SaveData.DataSave();
 
                 }
                 catch (Exception ex)
@@ -861,147 +643,6 @@ namespace Moni
                     ErrorLog.ErrorOutput("ドライブ選択エラー", ex.Message, true);
                 }
             }
-        }
-
-        private int logUpdateTime = 240;
-        private const int UpdateInterval = 300;
-
-        private void LogTimer_Tick(object sender, EventArgs e)
-        {
-            if (!ready) return;
-            logUpdateTime++;
-            if (logUpdateTime > UpdateInterval && !ac.isBusy)
-            {
-                logUpdateTime = 0;
-                UpdateLog();
-            }
-            if (!slideLeft)
-            {
-                if (UpdateInterval - logUpdateTime >= 60)
-                {
-                    LogUpdateLabel.Text = "更新:" + (int)((UpdateInterval - logUpdateTime) / 60 + 1) + "m";
-                }
-                else
-                {
-                    LogUpdateLabel.Text = "更新:" + (UpdateInterval - logUpdateTime);
-                }
-            }
-        }
-
-        /// <summary>
-        /// ログの解析を開始する
-        /// </summary>
-        private void UpdateLog()
-        {
-            try
-            {
-                try
-                {
-                    string[] files = Directory.GetFiles(
-                                @".\LogData\", "*.tc", SearchOption.AllDirectories);
-                    if (files.Length == 0)
-                    {
-                        AnalyticsLabel.Text = "ログの保存が未許可";
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    AnalyticsLabel.Text = "ログの取得失敗";
-                    return;
-                }
-                ac.AnalysisLogFiles();
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.ErrorOutput("ログ解析エラー", ex.Message, true);
-            }
-            return;
-        }
-
-        private void SetDesc()
-        {
-            DriveInfo[] driveInfos = DriveInfo.GetDrives();
-            int j = 0;
-
-            foreach (DriveInfo driveInfo in driveInfos)
-            {
-                if (driveInfo.DriveType == DriveType.Fixed)
-                {
-                    string name = driveInfo.Name;
-                    name = name.Trim('\\');
-                    DriveUD.Items.Add(j + " " + name);
-                    j++;
-                }
-            }
-            DescBox.Text = "コンピュータ情報" + LB;
-            /*
-            using (ManagementClass mc = new ManagementClass("Win32_OperatingSystem"))
-            {
-                mc.Get();
-                mc.Scope.Options.EnablePrivileges = true;
-                float memorySize;
-                using (ManagementObjectCollection moc = mc.GetInstances())
-                {
-                    string memStr;
-                    foreach (ManagementObject mo in moc)
-                    {
-                        memStr = mo["TotalVisibleMemorySize"] + LB;
-                        memorySize = float.Parse(memStr);
-                        DescBox.Text += mo["Caption"] + LB;
-                        mo.Dispose();
-                        actTotalMem = new ValueManager((long)(memorySize * 1000.0f));
-                        DescBox.Text += "物理メモリ数: " + actTotalMem.data.ToString("F2") + actTotalMem.HeadToString() + "B" + LB;
-                    }
-                }
-            }
-            using (ManagementClass mc = new ManagementClass("Win32_Processor"))
-            {
-                mc.Get();
-                mc.Scope.Options.EnablePrivileges = true;
-                using (ManagementObjectCollection moc = mc.GetInstances())
-                {
-                    foreach (ManagementObject mo in moc)
-                    {
-                        DescBox.Text += mo["Name"] + LB;
-                        mo.Dispose();
-                    }
-                }
-            }
-            */
-
-            if (this.nvidiaSmiFile != null)
-            {
-                try
-                {
-                    string result = GetGpuData(@"--query-gpu=name --format=csv,noheader,nounits");
-                    DescBox.Text += result;
-                    gpuOk = true;
-                }
-                catch (Exception)
-                {
-                    SearchGpuFile();
-                    if (nvidiaSmiFile != null)
-                    {
-                        Close();
-                    }
-                }
-            }
-            else
-            {
-                DescBox.Text += "GPUのデータが参照できません" + LB;
-            }
-            DescBox.Text += LB + "ドライブ情報" + LB;
-            foreach (DriveInfo driveInfo in driveInfos)
-            {
-                if (driveInfo.DriveType == DriveType.Fixed)
-                {
-                    ValueManager valueManager = new ValueManager(driveInfo.TotalSize);
-                    double avaPer = ((double)valueManager.num - driveInfo.AvailableFreeSpace) / valueManager.num * 100.0;
-                    DescBox.Text += driveInfo.Name + ": " + valueManager.data.ToString("F0") + valueManager.HeadToString() + "B " + avaPer.ToString("F1") + "%使用中(" + driveInfo.DriveFormat + ")" + LB;
-                }
-            }
-            DescBox.Text += LB + DateTime.Now.ToString() + "に更新" + LB;
         }
 
         private void NetName_MouseEnter(object sender, EventArgs e)
@@ -1059,41 +700,9 @@ namespace Moni
                 CD.Color = Color.LightSkyBlue;
                 if (CD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SaveData.faceColor = ColorTranslator.ToWin32(CD.Color);
-                    SaveData.DataSave();
+                    ColorTranslator.ToWin32(CD.Color);
                 }
             }
-        }
-
-        private void スタートアップに指定ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dm.SetStartUp();
-        }
-
-        private void SaveStyleUD_SelectedItemChanged(object sender, EventArgs e)
-        {
-            if (!ready) return;
-            SaveData.DataSave();
-            try
-            {
-                File.Move(@".\tcData\MaxSpeed.dat", @".\tcData\MaxSpeed" + DateTime.Now.ToString() + ".dat");
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.ErrorOutput("MaxSpeedファイル変更処理中にエラー", ex.Message, false);
-            }
-        }
-
-
-        private void GCTimer_Tick(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
-
-        private void resourceUpdateTimer_Tick(object sender, EventArgs e)
-        {
-            if (!ready) return;
-            SetDesc();
         }
 
         private void MinimizePic_MouseEnter(object sender, EventArgs e)
@@ -1118,64 +727,6 @@ namespace Moni
 
         private bool updateSlideRight = true;
 
-        private void UpdatePanel_MouseEnter(object sender, EventArgs e)
-        {
-            updateSlideRight = true;
-            UpdateAlert.Enabled = true;
-        }
-
-        private void UpdatePanel_MouseLeave(object sender, EventArgs e)
-        {
-            updateSlideRight = false;
-            UpdateAlert.Enabled = true;
-        }
-
-        private void UpdateAlert_Tick(object sender, EventArgs e)
-        {
-            if (updateSlideRight)
-            {
-                if (UpdatePanel.Left < 0)
-                {
-                    UpdatePanel.Left += 3;
-                }
-                else
-                {
-                    UpdatePanel.Left = 0;
-                    UpdateAlert.Enabled = false;
-                }
-            }
-            else
-            {
-                if (UpdatePanel.Left > -147)
-                {
-                    UpdatePanel.Left -= 3;
-                }
-                else
-                {
-                    UpdatePanel.Left = -147;
-                    UpdateAlert.Enabled = false;
-                }
-            }
-        }
-
-        private void Clock_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (UpdatePanel.Visible == true)
-            {
-                try
-                {
-                    Process proc = new Process();
-
-                    proc.StartInfo.FileName = @"MoniInstaller.exe";
-                    proc.Start();
-                }
-                catch (Exception ex)
-                {
-                    ErrorLog.ErrorOutput("アプリ更新エラー", ex + ex.Message, true);
-                }
-            }
-        }
-
         DateTime windowMovingTime;
 
         private void Clock_Move(object sender, EventArgs e)
@@ -1193,10 +744,6 @@ namespace Moni
         {
             try
             {
-                if (SaveData.transparent && this != null)
-                {
-                    this.Opacity = 0.5f;
-                }
             }
             catch (System.ComponentModel.Win32Exception)
             {
@@ -1205,48 +752,18 @@ namespace Moni
             }
         }
 
-        private void applyButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 夜(22時から5時までの間)にtrueを返す
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckNight()
         {
-            try
+            DateTime dt = DateTime.Now;
+            if ((dt.Hour >= 22 || dt.Hour <= 5))
             {
-                string apiText = apiTextBox.Text;
-                if (apiText != null && apiText != "")
-                {
-                    using (StreamWriter sw = new StreamWriter(apiFileName, false))
-                    {
-                        sw.WriteLine(apiText);
-                    }
-                }
-                else
-                {
-                    ErrorLog.ErrorOutput("APIキーエラー", "APIキーが無効です", true);
-                }
-
+                return true;
             }
-            catch (Exception ex)
-            {
-                ErrorLog.ErrorOutput("APIキー保存エラー", ex.Message, true);
-            }
-        }
-
-        private int apiUpdateNum = 0;
-        private List<string> newsList = new List<string>();
-        private int currentNews = 0;
-
-        private void apiTimer_Tick(object sender, EventArgs e)
-        {
-        }
-
-        private void NewsMover_Tick(object sender, EventArgs e)
-        {
-            apiLabel.Left -= 10;
-            if (apiLabel.Right <= 2)
-            {
-                apiLabel.Left = 215;
-                currentNews++;
-                if (currentNews >= 20) currentNews = 0;
-                apiLabel.Text = newsList[currentNews];
-            }
+            return false;
         }
     }
 }

@@ -9,6 +9,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <FileVersion></FileVersion>
     <AssemblyVersion></AssemblyVersion>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Product />
   </PropertyGroup>
 
