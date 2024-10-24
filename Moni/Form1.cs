@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using System.Drawing;
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Windows.Forms;
-using System.IO.Compression;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Moni
 {
