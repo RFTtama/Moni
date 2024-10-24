@@ -43,8 +43,6 @@ namespace Moni
                 SystemEvents.SessionEnding += new SessionEndingEventHandler(Detect_EndWindows);
                 dt = DateTime.Now;
                 day = dt.Day;
-                HoursUD.Value = int.Parse(dt.ToString("HH"));
-                MinutesUD.Value = int.Parse(dt.ToString("mm"));
                 this.Width = 228;
                 this.Height = 208;
                 panel1.Width = 420;
@@ -187,30 +185,13 @@ namespace Moni
                 this.TimeLabel.Text = dt.ToString("HH:mm");
                 int min = int.Parse(dt.ToString("mm"));
                 int hour = int.Parse(dt.ToString("HH"));
-                if (min == 0 && this.tellBef != hour && checkBox3.Enabled == true)
+                if (min == 0 && this.tellBef != hour)
                 {
                     Task task = Task.Run(() =>
                     {
                         Console.Beep();
                     });
                     this.tellBef = hour;
-                }
-                if (AlarmBox.Checked == true)
-                {
-                    string alarmTime = HoursUD.Value + ":" + MinutesUD.Value;
-                    string nowTime = int.Parse(dt.ToString("HH")) + ":" + int.Parse(dt.ToString("mm"));
-                    if (alarmTime == nowTime)
-                    {
-                        AlarmTimer.Enabled = true;
-                    }
-                    else
-                    {
-                        AlarmTimer.Enabled = false;
-                    }
-                }
-                else
-                {
-                    AlarmTimer.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -230,21 +211,6 @@ namespace Moni
         }
 
         private const int moveLength = 4;
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ResourceTimer_Tick(object sender, EventArgs e)
         {
@@ -467,7 +433,6 @@ namespace Moni
         {
             FaceTimer.Enabled = false;
             ResourceTimer.Enabled = false;
-            AlarmTimer.Enabled = false;
             DateTimer.Enabled = false;
             mt.IsSafe();
         }
@@ -592,27 +557,9 @@ namespace Moni
             }
         }
 
-        private void FacePic_Click(object sender, EventArgs e)
-        {
-            breakingTimer = 0;
-            if (AlarmBox.Checked == true && AlarmTimer.Enabled == true)
-            {
-                AlarmTimer.Enabled = false;
-                AlarmBox.Checked = false;
-            }
-        }
-
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             HelpPanel.Top = -vScrollBar1.Value;
-        }
-
-        private void AlarmTimer_Tick(object sender, EventArgs e)
-        {
-            Task task = Task.Run(() =>
-            {
-                Console.Beep();
-            });
         }
 
         private void DriveUD_SelectedItemChanged(object sender, EventArgs e)
@@ -671,18 +618,6 @@ namespace Moni
         private void NetPic_Click(object sender, EventArgs e)
         {
             Process.Start("https://sites.google.com/view/moni-toppage/%E3%83%9B%E3%83%BC%E3%83%A0");
-        }
-
-        private void AlarmBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (AlarmBox.Checked)
-            {
-                AlarmPanel.Enabled = true;
-            }
-            else
-            {
-                AlarmPanel.Enabled = false;
-            }
         }
 
         private void äÁêFïœçXToolStripMenuItem_Click(object sender, EventArgs e)

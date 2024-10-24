@@ -79,7 +79,6 @@ namespace Moni
             終了ToolStripMenuItem = new ToolStripMenuItem();
             InfoSlideTimer = new System.Windows.Forms.Timer(components);
             FaceTimer = new System.Windows.Forms.Timer(components);
-            AlarmTimer = new System.Windows.Forms.Timer(components);
             toolTip1 = new ToolTip(components);
             NetNameTimer = new System.Windows.Forms.Timer(components);
             HelpPanel.SuspendLayout();
@@ -553,7 +552,6 @@ namespace Moni
             FacePic.SizeMode = PictureBoxSizeMode.StretchImage;
             FacePic.TabIndex = 31;
             FacePic.TabStop = false;
-            FacePic.Click += FacePic_Click;
             // 
             // FaceMenuStrip
             // 
@@ -621,11 +619,6 @@ namespace Moni
             // FaceTimer
             // 
             FaceTimer.Tick += FaceTimer_Tick;
-            // 
-            // AlarmTimer
-            // 
-            AlarmTimer.Interval = 1000;
-            AlarmTimer.Tick += AlarmTimer_Tick;
             // 
             // toolTip1
             // 
@@ -706,7 +699,6 @@ namespace Moni
         private System.Windows.Forms.Timer FaceTimer;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer AlarmTimer;
         private System.Windows.Forms.Label NetName;
         private System.Windows.Forms.Label Sent;
         private System.Windows.Forms.PictureBox pictureBox1;
