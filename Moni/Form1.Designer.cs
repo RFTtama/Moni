@@ -36,29 +36,19 @@ namespace Moni
             SecondLabel = new Label();
             HelpPanel = new Panel();
             MemUsingPic = new PictureBox();
-            AlarmPanel = new Panel();
-            HoursUD = new NumericUpDown();
-            MinutesUD = new NumericUpDown();
-            label4 = new Label();
-            label5 = new Label();
             label6 = new Label();
             DriveUD = new DomainUpDown();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             Sent = new Label();
             NetName = new Label();
-            AlarmBox = new CheckBox();
             RedPic2 = new PictureBox();
             label3 = new Label();
             RedPic5 = new PictureBox();
-            checkBox3 = new CheckBox();
             BluePic5 = new PictureBox();
-            checkBox2 = new CheckBox();
             BusyLabel = new Label();
             VersionLabel = new Label();
-            checkBox1 = new CheckBox();
             RedPic4 = new PictureBox();
-            label1 = new Label();
             BluePic4 = new PictureBox();
             RedPic3 = new PictureBox();
             GPULabel = new Label();
@@ -68,7 +58,6 @@ namespace Moni
             BluePic3 = new PictureBox();
             BluePic2 = new PictureBox();
             MemoryLabel = new Label();
-            PpmsPic = new PictureBox();
             ResourceTimer = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
             vScrollBar1 = new VScrollBar();
@@ -95,9 +84,6 @@ namespace Moni
             NetNameTimer = new System.Windows.Forms.Timer(components);
             HelpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MemUsingPic).BeginInit();
-            AlarmPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)HoursUD).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)MinutesUD).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RedPic2).BeginInit();
@@ -108,7 +94,6 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)RedPic3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BluePic3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BluePic2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PpmsPic).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoadPic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizePic).BeginInit();
@@ -161,25 +146,19 @@ namespace Moni
             // 
             HelpPanel.BackColor = Color.LightSteelBlue;
             HelpPanel.Controls.Add(MemUsingPic);
-            HelpPanel.Controls.Add(AlarmPanel);
             HelpPanel.Controls.Add(label6);
             HelpPanel.Controls.Add(DriveUD);
             HelpPanel.Controls.Add(pictureBox2);
             HelpPanel.Controls.Add(pictureBox1);
             HelpPanel.Controls.Add(Sent);
             HelpPanel.Controls.Add(NetName);
-            HelpPanel.Controls.Add(AlarmBox);
             HelpPanel.Controls.Add(RedPic2);
             HelpPanel.Controls.Add(label3);
             HelpPanel.Controls.Add(RedPic5);
-            HelpPanel.Controls.Add(checkBox3);
             HelpPanel.Controls.Add(BluePic5);
-            HelpPanel.Controls.Add(checkBox2);
             HelpPanel.Controls.Add(BusyLabel);
             HelpPanel.Controls.Add(VersionLabel);
-            HelpPanel.Controls.Add(checkBox1);
             HelpPanel.Controls.Add(RedPic4);
-            HelpPanel.Controls.Add(label1);
             HelpPanel.Controls.Add(BluePic4);
             HelpPanel.Controls.Add(RedPic3);
             HelpPanel.Controls.Add(GPULabel);
@@ -189,7 +168,6 @@ namespace Moni
             HelpPanel.Controls.Add(BluePic3);
             HelpPanel.Controls.Add(BluePic2);
             HelpPanel.Controls.Add(MemoryLabel);
-            HelpPanel.Controls.Add(PpmsPic);
             HelpPanel.Location = new Point(251, 0);
             HelpPanel.Margin = new Padding(4);
             HelpPanel.Name = "HelpPanel";
@@ -199,7 +177,7 @@ namespace Moni
             // MemUsingPic
             // 
             MemUsingPic.Image = Properties.Resources.face_0;
-            MemUsingPic.Location = new Point(200, 232);
+            MemUsingPic.Location = new Point(200, 62);
             MemUsingPic.Margin = new Padding(4);
             MemUsingPic.Name = "MemUsingPic";
             MemUsingPic.Size = new Size(23, 25);
@@ -207,63 +185,10 @@ namespace Moni
             MemUsingPic.TabIndex = 84;
             MemUsingPic.TabStop = false;
             // 
-            // AlarmPanel
-            // 
-            AlarmPanel.Controls.Add(HoursUD);
-            AlarmPanel.Controls.Add(MinutesUD);
-            AlarmPanel.Controls.Add(label4);
-            AlarmPanel.Controls.Add(label5);
-            AlarmPanel.Enabled = false;
-            AlarmPanel.Location = new Point(8, 139);
-            AlarmPanel.Margin = new Padding(4);
-            AlarmPanel.Name = "AlarmPanel";
-            AlarmPanel.Size = new Size(124, 28);
-            AlarmPanel.TabIndex = 82;
-            // 
-            // HoursUD
-            // 
-            HoursUD.Location = new Point(2, 1);
-            HoursUD.Margin = new Padding(4);
-            HoursUD.Maximum = new decimal(new int[] { 23, 0, 0, 0 });
-            HoursUD.Name = "HoursUD";
-            HoursUD.ReadOnly = true;
-            HoursUD.Size = new Size(43, 23);
-            HoursUD.TabIndex = 35;
-            // 
-            // MinutesUD
-            // 
-            MinutesUD.Location = new Point(61, 1);
-            MinutesUD.Margin = new Padding(4);
-            MinutesUD.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            MinutesUD.Name = "MinutesUD";
-            MinutesUD.ReadOnly = true;
-            MinutesUD.Size = new Size(43, 23);
-            MinutesUD.TabIndex = 36;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(43, 5);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(19, 15);
-            label4.TabIndex = 37;
-            label4.Text = "時";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(103, 5);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(19, 15);
-            label5.TabIndex = 38;
-            label5.Text = "分";
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(169, 326);
+            label6.Location = new Point(169, 156);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(41, 15);
@@ -272,7 +197,7 @@ namespace Moni
             // 
             // DriveUD
             // 
-            DriveUD.Location = new Point(170, 342);
+            DriveUD.Location = new Point(170, 172);
             DriveUD.Margin = new Padding(4);
             DriveUD.Name = "DriveUD";
             DriveUD.ReadOnly = true;
@@ -285,7 +210,7 @@ namespace Moni
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.downArrow;
-            pictureBox2.Location = new Point(4, 393);
+            pictureBox2.Location = new Point(4, 223);
             pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(18, 19);
@@ -297,7 +222,7 @@ namespace Moni
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.upArrow;
-            pictureBox1.Location = new Point(115, 393);
+            pictureBox1.Location = new Point(115, 223);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(18, 19);
@@ -309,7 +234,7 @@ namespace Moni
             // Sent
             // 
             Sent.AutoSize = true;
-            Sent.Location = new Point(132, 395);
+            Sent.Location = new Point(132, 225);
             Sent.Margin = new Padding(4, 0, 4, 0);
             Sent.Name = "Sent";
             Sent.Size = new Size(52, 15);
@@ -320,7 +245,7 @@ namespace Moni
             // NetName
             // 
             NetName.AutoSize = true;
-            NetName.Location = new Point(6, 376);
+            NetName.Location = new Point(6, 206);
             NetName.Margin = new Padding(4, 0, 4, 0);
             NetName.Name = "NetName";
             NetName.Size = new Size(86, 15);
@@ -329,22 +254,10 @@ namespace Moni
             toolTip1.SetToolTip(NetName, "ネットワークインタフェースの名称です\r\n内蔵のネットワークインタフェースが複数ある場合は\r\n使用率が一番高いものが指定されます");
             NetName.MouseEnter += NetName_MouseEnter;
             // 
-            // AlarmBox
-            // 
-            AlarmBox.AutoSize = true;
-            AlarmBox.Location = new Point(13, 116);
-            AlarmBox.Margin = new Padding(4);
-            AlarmBox.Name = "AlarmBox";
-            AlarmBox.Size = new Size(93, 19);
-            AlarmBox.TabIndex = 34;
-            AlarmBox.Text = "アラームを有効";
-            AlarmBox.UseVisualStyleBackColor = true;
-            AlarmBox.CheckedChanged += AlarmBox_CheckedChanged;
-            // 
             // RedPic2
             // 
             RedPic2.Image = Properties.Resources.red;
-            RedPic2.Location = new Point(5, 218);
+            RedPic2.Location = new Point(5, 48);
             RedPic2.Margin = new Padding(4);
             RedPic2.Name = "RedPic2";
             RedPic2.Size = new Size(154, 12);
@@ -357,7 +270,7 @@ namespace Moni
             // 
             label3.AutoSize = true;
             label3.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label3.Location = new Point(9, 178);
+            label3.Location = new Point(9, 8);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(31, 12);
@@ -367,7 +280,7 @@ namespace Moni
             // RedPic5
             // 
             RedPic5.Image = Properties.Resources.red;
-            RedPic5.Location = new Point(5, 346);
+            RedPic5.Location = new Point(5, 176);
             RedPic5.Margin = new Padding(4);
             RedPic5.Name = "RedPic5";
             RedPic5.Size = new Size(154, 12);
@@ -376,23 +289,10 @@ namespace Moni
             RedPic5.TabStop = false;
             toolTip1.SetToolTip(RedPic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
             // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Enabled = false;
-            checkBox3.Location = new Point(13, 91);
-            checkBox3.Margin = new Padding(4);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(133, 19);
-            checkBox3.TabIndex = 5;
-            checkBox3.Text = "時針の経過を知らせる";
-            checkBox3.UseVisualStyleBackColor = true;
-            checkBox3.CheckedChanged += checkBox3_CheckedChanged;
-            // 
             // BluePic5
             // 
             BluePic5.Image = Properties.Resources.blue;
-            BluePic5.Location = new Point(5, 346);
+            BluePic5.Location = new Point(5, 176);
             BluePic5.Margin = new Padding(4);
             BluePic5.Name = "BluePic5";
             BluePic5.Size = new Size(154, 12);
@@ -401,22 +301,10 @@ namespace Moni
             BluePic5.TabStop = false;
             toolTip1.SetToolTip(BluePic5, "ドライブの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです");
             // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(13, 65);
-            checkBox2.Margin = new Padding(4);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(83, 19);
-            checkBox2.TabIndex = 4;
-            checkBox2.Text = "時計を表示";
-            checkBox2.UseVisualStyleBackColor = true;
-            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
-            // 
             // BusyLabel
             // 
             BusyLabel.AutoSize = true;
-            BusyLabel.Location = new Point(9, 328);
+            BusyLabel.Location = new Point(9, 158);
             BusyLabel.Margin = new Padding(4, 0, 4, 0);
             BusyLabel.Name = "BusyLabel";
             BusyLabel.Size = new Size(86, 15);
@@ -434,22 +322,10 @@ namespace Moni
             VersionLabel.TabIndex = 2;
             VersionLabel.Text = "Ver 0.0.0.0";
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(13, 38);
-            checkBox1.Margin = new Padding(4);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(92, 19);
-            checkBox1.TabIndex = 1;
-            checkBox1.Text = "常に上に表示";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
             // RedPic4
             // 
             RedPic4.Image = Properties.Resources.red;
-            RedPic4.Location = new Point(5, 302);
+            RedPic4.Location = new Point(5, 132);
             RedPic4.Margin = new Padding(4);
             RedPic4.Name = "RedPic4";
             RedPic4.Size = new Size(154, 12);
@@ -458,21 +334,10 @@ namespace Moni
             RedPic4.TabStop = false;
             toolTip1.SetToolTip(RedPic4, "GPUの使用率です\r\nゲームをプレイしているときなどは\r\n数値が高くなる傾向にあります\r\n");
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label1.Location = new Point(9, 11);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(31, 12);
-            label1.TabIndex = 0;
-            label1.Text = "設定";
-            // 
             // BluePic4
             // 
             BluePic4.Image = Properties.Resources.blue;
-            BluePic4.Location = new Point(5, 302);
+            BluePic4.Location = new Point(5, 132);
             BluePic4.Margin = new Padding(4);
             BluePic4.Name = "BluePic4";
             BluePic4.Size = new Size(154, 12);
@@ -484,7 +349,7 @@ namespace Moni
             // RedPic3
             // 
             RedPic3.Image = Properties.Resources.red;
-            RedPic3.Location = new Point(5, 259);
+            RedPic3.Location = new Point(5, 89);
             RedPic3.Margin = new Padding(4);
             RedPic3.Name = "RedPic3";
             RedPic3.Size = new Size(154, 12);
@@ -496,7 +361,7 @@ namespace Moni
             // GPULabel
             // 
             GPULabel.AutoSize = true;
-            GPULabel.Location = new Point(9, 283);
+            GPULabel.Location = new Point(9, 113);
             GPULabel.Margin = new Padding(4, 0, 4, 0);
             GPULabel.Name = "GPULabel";
             GPULabel.Size = new Size(86, 15);
@@ -507,7 +372,7 @@ namespace Moni
             // Received
             // 
             Received.AutoSize = true;
-            Received.Location = new Point(20, 395);
+            Received.Location = new Point(20, 225);
             Received.Margin = new Padding(4, 0, 4, 0);
             Received.Name = "Received";
             Received.Size = new Size(52, 15);
@@ -518,7 +383,7 @@ namespace Moni
             // CPULabel
             // 
             CPULabel.AutoSize = true;
-            CPULabel.Location = new Point(12, 199);
+            CPULabel.Location = new Point(12, 29);
             CPULabel.Margin = new Padding(4, 0, 4, 0);
             CPULabel.Name = "CPULabel";
             CPULabel.Size = new Size(86, 15);
@@ -529,7 +394,7 @@ namespace Moni
             // MaxMemLabel
             // 
             MaxMemLabel.AutoSize = true;
-            MaxMemLabel.Location = new Point(159, 258);
+            MaxMemLabel.Location = new Point(159, 88);
             MaxMemLabel.Margin = new Padding(4, 0, 4, 0);
             MaxMemLabel.Name = "MaxMemLabel";
             MaxMemLabel.Size = new Size(43, 15);
@@ -540,7 +405,7 @@ namespace Moni
             // BluePic3
             // 
             BluePic3.Image = Properties.Resources.blue;
-            BluePic3.Location = new Point(5, 259);
+            BluePic3.Location = new Point(5, 89);
             BluePic3.Margin = new Padding(4);
             BluePic3.Name = "BluePic3";
             BluePic3.Size = new Size(154, 12);
@@ -552,7 +417,7 @@ namespace Moni
             // BluePic2
             // 
             BluePic2.Image = Properties.Resources.blue;
-            BluePic2.Location = new Point(5, 218);
+            BluePic2.Location = new Point(5, 48);
             BluePic2.Margin = new Padding(4);
             BluePic2.Name = "BluePic2";
             BluePic2.Size = new Size(154, 12);
@@ -564,25 +429,13 @@ namespace Moni
             // MemoryLabel
             // 
             MemoryLabel.AutoSize = true;
-            MemoryLabel.Location = new Point(9, 240);
+            MemoryLabel.Location = new Point(9, 70);
             MemoryLabel.Margin = new Padding(4, 0, 4, 0);
             MemoryLabel.Name = "MemoryLabel";
             MemoryLabel.Size = new Size(86, 15);
             MemoryLabel.TabIndex = 13;
             MemoryLabel.Text = "リソース取得中…";
             toolTip1.SetToolTip(MemoryLabel, "メモリの使用率です\r\n数値が高い状態が長く続いているほど\r\nボトルネックの可能性が高いです\r\n");
-            // 
-            // PpmsPic
-            // 
-            PpmsPic.Image = Properties.Resources.grade;
-            PpmsPic.Location = new Point(195, 29);
-            PpmsPic.Margin = new Padding(4);
-            PpmsPic.Name = "PpmsPic";
-            PpmsPic.Size = new Size(23, 25);
-            PpmsPic.SizeMode = PictureBoxSizeMode.Zoom;
-            PpmsPic.TabIndex = 79;
-            PpmsPic.TabStop = false;
-            toolTip1.SetToolTip(PpmsPic, "更新を待ってください");
             // 
             // ResourceTimer
             // 
@@ -809,10 +662,6 @@ namespace Moni
             HelpPanel.ResumeLayout(false);
             HelpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MemUsingPic).EndInit();
-            AlarmPanel.ResumeLayout(false);
-            AlarmPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)HoursUD).EndInit();
-            ((System.ComponentModel.ISupportInitialize)MinutesUD).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)RedPic2).EndInit();
@@ -823,7 +672,6 @@ namespace Moni
             ((System.ComponentModel.ISupportInitialize)RedPic3).EndInit();
             ((System.ComponentModel.ISupportInitialize)BluePic3).EndInit();
             ((System.ComponentModel.ISupportInitialize)BluePic2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PpmsPic).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)LoadPic).EndInit();
@@ -837,8 +685,6 @@ namespace Moni
         #endregion
         private System.Windows.Forms.Timer DateTimer;
         private System.Windows.Forms.Panel HelpPanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label Received;
         private System.Windows.Forms.Timer ResourceTimer;
@@ -858,14 +704,8 @@ namespace Moni
         private System.Windows.Forms.PictureBox BluePic5;
         private System.Windows.Forms.PictureBox FacePic;
         private System.Windows.Forms.Timer FaceTimer;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox AlarmBox;
-        private System.Windows.Forms.NumericUpDown HoursUD;
-        private System.Windows.Forms.NumericUpDown MinutesUD;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer AlarmTimer;
         private System.Windows.Forms.Label NetName;
         private System.Windows.Forms.Label Sent;
@@ -873,7 +713,6 @@ namespace Moni
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer NetNameTimer;
-        public System.Windows.Forms.PictureBox PpmsPic;
         public System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.DomainUpDown DriveUD;
         public System.Windows.Forms.Label TimeLabel;
@@ -881,8 +720,6 @@ namespace Moni
         public System.Windows.Forms.Label SecondLabel;
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Panel AlarmPanel;
         private System.Windows.Forms.ContextMenuStrip FaceMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 顔色変更ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem メニュー切り替えToolStripMenuItem;
